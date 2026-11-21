@@ -338,7 +338,7 @@ body.testing #v-drive{padding-top:30px}
 .tpanel button,.tpanel select{min-height:44px;border-radius:10px;border:1.5px solid var(--d-line);background:var(--d-bg);color:var(--d-ink);font:700 15px/1.1 -apple-system,Inter,sans-serif;padding:0 10px;cursor:pointer}
 .tpanel button[aria-pressed=true]{background:#f5a623;border-color:#f5a623;color:#000}
 .tbar{display:flex;align-items:center;gap:10px}.tbar b{color:#f5a623;letter-spacing:.1em}.tbar span{flex:1;font-variant-numeric:tabular-nums}
-.trow{display:flex;gap:8px;margin-top:8px}.trow button{flex:1}
+.trow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.trow button{flex:1 1 auto}
 .tlab{display:block;margin-top:10px;color:var(--d-sub);font-weight:700}.tlab select{display:block;width:100%;margin-top:4px}
 .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
 .tclips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}.tclips button{min-height:38px;font-size:13px}
@@ -921,7 +921,9 @@ function playNext(){if(!AQ.length){AB=false;return}AB=true;const k=AQ.shift();co
 AU.addEventListener('ended',playNext);AU.addEventListener('error',playNext);
 function play(ids){AQ.push(...ids);if(!AB)playNext()}
 /* crit = safety alerts that still chime in Podcast mode */
+const ESS=k=>/^(in\d|[br]\d|a_|m_|w_|o_range)/.test(k);
 function say(key,ids,crit){if(D.vmode==='off'||D.said[key]||document.visibilityState!=='visible')return;
+ if(D.sim&&D.sim.on&&D.sim.x==='smartp'&&(key.startsWith('c1')||!ids.every(ESS))){D.said[key]=NOW();return}
  if(D.vmode==='podcast'&&!crit)return;D.said[key]=NOW();play(D.vmode==='podcast'?['chime']:['chime',...ids])}
 vbtn.addEventListener('click',()=>{D.vmode=D.vmode==='off'?'music':D.vmode==='music'?'podcast':'off';LS.set('trt26-vmode',D.vmode);setVoiceBtn();setSession();AQ=[];
  try{AU.pause()}catch(_){}AB=false;if(D.vmode==='music')play(['chime','v_music']);else if(D.vmode==='podcast')play(['chime','v_pod']);dtick()});
@@ -1040,7 +1042,8 @@ function dtick(){
  C.sort((x,y)=>x.p-y.p);const top=C[0];
  const wxCard=top&&top.p>=1&&top.p<=1.5;D.hideWx=wxCard;
  {const s=$('dstat'),u=[...new Set(STAT)];s.hidden=!u.length||wxCard;D.statOn=!s.hidden;s.textContent=u.length?'⚠ '+u.slice(0,2).join(' · ')+(u.length>2?` +${u.length-2}`:''):''}
- const ae=$('dalert');ae.className='dalert'+(top?' on '+top.cls:'');ae.innerHTML=top?top.html:'';
+ const ae=$('dalert');ae.className='dalert'+(top?' on '+top.cls:'');const nh=top?top.html:'';
+ if(nh!==ae.innerHTML){ae.innerHTML=nh;if(sim&&top){const imp=top.p<=4.5||/>Now ·/.test(nh);D.holdUntil=performance.now()+(D.sim.x==='smart'?3000:D.sim.x==='smartp'?(imp?1200:0):0)}}
  if(showAt&&VOICE['a_'+atKey]){say('arr'+atKey,['a_'+atKey]);if(D.said['g'+'bg'+atKey])say('br'+atKey,['g_br']);if(atKey==='bishop'&&D.said.gtesla)say('teslaend',['g_tesla_end'])}
  if(top&&top.speak){const crit=top.speak.some(x=>CRIT.has(x));say('a'+top.speak.join()+(top.p<2?Math.floor(now/12e4):''),top.speak,crit)}
  /* charge line */
@@ -1065,7 +1068,7 @@ function dtick(){
 
 /* ================= TEST MODE ================= */
 /* hold the GPS chip for 3 seconds. Fakes a drive along the route; the kickoff and close-out stay muted. */
-D.sim={on:false,t:T(7,58),x:30,play:false};
+D.sim={on:false,t:T(7,58),x:'smart',play:false};
 let holdT=null;const chipEl=$('dgps');
 const startHold=e=>{holdT=setTimeout(()=>{D.sim.on?exitTest():enterTest()},3000)};const endHold=()=>clearTimeout(holdT);
 chipEl.addEventListener('pointerdown',startHold);['pointerup','pointerleave','pointercancel'].forEach(ev=>chipEl.addEventListener(ev,endHold));
@@ -1076,7 +1079,8 @@ function enterTest(){D.sim.on=true;D.sim.t=T(7,58);D.sim.play=false;D.said={};D.
  document.body.classList.add('testing');TP.hidden=false;buildTestPanel();simStep(0)}
 function exitTest(msg){D.sim.on=false;D.sim.play=false;D.fix=null;D.mile=LS.get('trt26-mile',{});D.said={};D.mock={};D.force=null;D.seen={};D.lastA=null;D.origin=null;
  document.body.classList.remove('testing');TP.hidden=true;if(msg){D.force={p:0.5,cls:'look',html:esc(msg),until:Date.now()+8000}}dtick()}
-function simStep(realMs){if(!D.sim.on)return;const r=R_();if(D.sim.play)D.sim.t+=realMs*D.sim.x;
+function simX(){const x=D.sim.x;if(typeof x==='number')return x;const busy=AB||performance.now()<(D.holdUntil||0);return busy?1:x==='smart'?120:600}
+function simStep(realMs){if(!D.sim.on)return;const r=R_();if(D.sim.play)D.sim.t+=realMs*simX();
  const p=planAlong(r,D.sim.t);const pos=pointAlongR(r,p.a);
  const nk=r.keys.find(([k,i])=>r.cum[i]>p.a+0.6)||r.keys[r.keys.length-1],pk=[...r.keys].reverse().find(([k,i])=>r.cum[i]<=p.a+0.6)||r.keys[0];
  const legMs=r.sched[nk[0]][0]-r.sched[pk[0]][1],legMi=(r.cum[nk[1]]-r.cum[pk[1]])*r.scale||1,mph=Math.max(25,Math.min(75,legMi/(legMs/36e5)||60));
@@ -1094,7 +1098,7 @@ function jumpList(){const r=R_(),L=[['Start · Pico & Westwood',T(7,59)]];
  return L.sort((x,y)=>x[1]-y[1])}
 function buildTestPanel(){const J=jumpList();
  TP.innerHTML=`<div class="tbar"><b>TEST</b><span id="tclock"></span><button id="tmin">Hide</button><button id="tx">Exit</button></div>
- <div class="trow"><button id="tplay">▶ Play</button>${[30,120,600].map(x=>`<button data-x="${x}" aria-pressed="${D.sim.x===x}">${x}×</button>`).join('')}</div>
+ <div class="trow"><button id="tplay">▶ Play</button>${[['smart','Smart'],['smartp','Smart+'],[30,'30×'],[120,'120×'],[600,'600×']].map(([x,l])=>`<button data-x="${x}" aria-pressed="${D.sim.x===x}">${l}</button>`).join('')}</div>
  <label class="tlab">Jump to<select id="tjump">${J.map(([n,t],i)=>`<option value="${t}">${hm(t).join(' ')} · ${esc(n)}</option>`).join('')}</select></label>
  <div class="tlab">Fake an alert</div><div class="tgrid">
   <button data-f="w_395">395 wrong way</button><button data-f="w_fallon">Fallon wrong way</button><button data-f="w_geiger">Geiger Grade</button><button data-f="w_off">Off route</button>
@@ -1102,7 +1106,7 @@ function buildTestPanel(){const J=jumpList();
  <div class="tlab">Every voice line</div><div class="tclips">${CLIPLIST().map(k=>`<button data-c="${k}">${k}</button>`).join('')}</div>`;
  $('tx').onclick=()=>exitTest();$('tmin').onclick=()=>{const m=TP.classList.toggle('min');$('tmin').textContent=m?'Show':'Hide'};
  $('tplay').onclick=()=>{D.sim.play=!D.sim.play;$('tplay').textContent=D.sim.play?'⏸ Pause':'▶ Play';simStep(0)};
- TP.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{D.sim.x=+b.dataset.x;TP.querySelectorAll('[data-x]').forEach(z=>z.setAttribute('aria-pressed',z===b))});
+ TP.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{const v=b.dataset.x;D.sim.x=/^\d+$/.test(v)?+v:v;TP.querySelectorAll('[data-x]').forEach(z=>z.setAttribute('aria-pressed',z===b))});
  $('tjump').onchange=e=>{D.sim.t=+e.target.value;D.lastA=null;D.prevA=null;D.fix=null;simStep(0)};
  const FW={w_395:'This is 395 toward Mammoth. Turn around for US-6, or switch the route to 395.',w_fallon:'This is US-95 toward Fallon. 95 Alt at Schurz was the plan.',w_geiger:'This heads to Geiger Grade. The plan is I-80 from Fernley.',w_off:'Off the plan by about 8 mi. Check the nav.'};
  TP.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{const k=b.dataset.f;delete D.said['a'+k+Math.floor(NOW()/12e4)];D.force={p:0,cls:'bad',html:FW[k],speak:[k],until:NOW()+6e4};dtick()});
@@ -1115,7 +1119,7 @@ function buildTestPanel(){const J=jumpList();
  TP.querySelectorAll('[data-c]').forEach(b=>{b.onclick=()=>{const k=b.dataset.c;
   if(/^[kx]_/.test(k)&&b.dataset.arm!=='1'){b.dataset.arm='1';const t=b.textContent;b.textContent='Tap again: plays OUT LOUD';setTimeout(()=>{b.dataset.arm='';b.textContent=t},3500);return}
   b.dataset.arm='';AQ=[];try{AU.pause()}catch(_){}AB=false;play(['chime',k])}})}
-function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x}×`}
+function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project};
 const APPV='v7 · Nov 21';if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'look',html:'<small>App updated</small>Version '+APPV,until:Date.now()+8000};LS.set('trt26-ver',APPV)}
