@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TRT26">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thanksgiving Road Trip 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a warm family road-trip companion, big and glanceable from the back seat
+   IDEA: an illustrated trip ticket that follows the clock and keeps the kids playing
+   PICTURE: sunset desert-and-Sierra scene with our car on the road; a route map with a moving car
+   COLOUR and TYPE: cranberry dominant, warm paper ground, marigold sunset accent; Sora + Inter
+   LAYOUT: one column up to 760px, app-style bottom tabs, hanging times, 48px tap targets */
+:root{color-scheme:light dark;
+--bg:light-dark(#f4f4f4,#000000);--card:light-dark(#ffffff,#141416);--card2:light-dark(#ececee,#1e1e21);
+--ink:light-dark(#171a20,#f2f2f2);--soft:light-dark(#5c5e62,#9a9aa0);--line:light-dark(#e0e0e3,#29292d);
+--cran:#3e6ae1;--cranI:light-dark(#3e6ae1,#6d93ff);--gold:#3e6ae1;--goldI:light-dark(#a15c00,#f5b14a);
+--sage:light-dark(#1b8a4b,#3ddc84);--sagebg:light-dark(#e2f4e9,#0f2a1a);--goldbg:light-dark(#e7edfc,#131c33);
+--night:light-dark(#ececee,#0c0c0e);--map:light-dark(#e7e8ea,#101012);--mapink:light-dark(#4f5257,#a4a5ab);
+--relief:light-dark(#cfd2d7,#202024);--lake:light-dark(#a8c1db,#233a55);--lakeink:light-dark(#3d6488,#7ea6cf);
+--sky0:light-dark(#d9dee7,#000000);--sky1:light-dark(#f4f4f4,#0e1016);--m1:light-dark(#c3c8d0,#17191e);--m2:light-dark(#9fa5ae,#262a31);
+--snow:light-dark(#ffffff,#7d838e);--ground:light-dark(#e6e7ea,#0a0a0c);--road:light-dark(#3a3d44,#1c1e23);--star:light-dark(0,.7);
+--sc:#e82127;--disp:-apple-system,"SF Pro Display",Inter,system-ui,sans-serif;--safe:env(safe-area-inset-bottom,0px)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 -apple-system,"SF Pro Text",Inter,system-ui,sans-serif;overflow-x:clip;-webkit-text-size-adjust:100%;padding-bottom:calc(96px + var(--safe))}
+h1,h2,h3,.name,.t,.big{font-family:var(--disp)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 max(4vw,14px)}
+
+/* hero */
+.hero{position:relative;color:#fff;background:#3a1022;overflow:hidden;padding-top:env(safe-area-inset-top,0px)}
+.scene{display:block;width:100%;height:clamp(320px,84vw,440px)}
+.hero::after{content:"";position:absolute;left:0;right:0;top:0;height:150px;background:linear-gradient(rgba(42,8,22,.55),rgba(42,8,22,0));pointer-events:none}
+.hero .top{z-index:1}
+.hero .top{position:absolute;inset:env(safe-area-inset-top,0px) 0 auto 0;padding:18px max(4vw,16px)}
+.brand{max-width:760px;margin:0 auto;display:flex;gap:14px;align-items:center}
+.logo{width:64px;height:64px;flex:none;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
+h1{margin:0;font-size:clamp(28px,7.6vw,46px);line-height:1.02;font-weight:700;text-wrap:balance;text-shadow:0 2px 18px rgba(60,8,24,.45)}
+.tag{margin-top:6px;font-size:17px;font-weight:600;color:#ffe6c7;text-shadow:0 1px 10px rgba(60,8,24,.5)}
+.strip{background:var(--cran);color:#fff;padding:14px max(4vw,14px) 18px}
+.strip .in{max-width:760px;margin:0 auto}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.facts div{background:rgba(255,255,255,.1);border-radius:14px;padding:10px 4px;text-align:center}
+.facts b{display:block;font:700 clamp(18px,5vw,24px)/1.05 var(--disp)}
+.facts span{font-size:14px;color:#ffd9c4}
+.live{margin-top:12px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:stretch}
+.now{background:var(--gold);color:#2a1218;border-radius:16px;padding:12px 14px;font-weight:700;font-size:18px;line-height:1.3}
+.now small{display:block;font-weight:500;font-size:15px;margin-top:2px}
+.ayt{border:0;border-radius:16px;background:#fff;color:var(--cran);font:700 16px/1.15 var(--disp);padding:8px 14px;min-height:56px;cursor:pointer;max-width:132px}
+.bubble{display:none;margin-top:10px;background:#fff;color:#2a1218;border-radius:16px;padding:14px 16px;font-size:18px;line-height:1.4;position:relative}
+.bubble.on{display:block;animation:pop .35s ease-out}
+.bubble b{font-family:var(--disp);color:var(--cran);font-size:22px;display:block}
+.trk{margin-top:12px;height:10px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden}
+.trk i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd37a,var(--gold));border-radius:99px;transition:width .6s}
+.trkl{display:flex;justify-content:space-between;font-size:14px;color:#ffd9c4;margin-top:4px}
+@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
+
+/* bottom tabs */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:light-dark(rgba(255,248,241,.94),rgba(22,12,17,.94));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px max(2vw,6px) calc(6px + var(--safe))}
+.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.tabs a{white-space:nowrap}
+.tabs a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:58px;border-radius:14px;text-decoration:none;font-weight:700;font-size:14px;color:var(--soft)}
+.tabs svg{width:26px;height:26px}
+.tabs a[aria-current=page]{color:var(--cranI);background:var(--card2)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+section{display:none;padding-top:20px}section.on{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2{font-size:clamp(24px,6vw,30px);margin:26px 0 12px;line-height:1.1}
+h2:first-child{margin-top:4px}
+.lead{color:var(--soft);font-size:17px;margin:-4px 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px}
+.fine{font-size:14px;color:var(--soft);margin-top:10px}
+
+/* profile chart */
+.fig{position:relative;height:270px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;color:var(--soft);margin-top:10px}
+.legend i{display:inline-block;width:18px;height:5px;border-radius:3px;vertical-align:middle;margin-right:6px}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.st{position:relative;display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.st:last-child{border-bottom:0}
+.t{font-weight:700;font-size:21px;line-height:1.05;color:var(--cranI);white-space:nowrap}
+.t small{display:block;font:600 14px Inter,sans-serif;color:var(--soft);margin-top:4px}
+.name{font-size:21px;font-weight:700;line-height:1.2}
+.note{color:var(--soft);font-size:17px;margin-top:4px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pill{font-size:15px;font-weight:700;padding:5px 11px;border-radius:99px;background:var(--sagebg);color:var(--sage);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.pill.g{background:var(--goldbg);color:var(--goldI)}
+.batt{display:inline-block;width:26px;height:12px;border:2px solid currentColor;border-radius:3px;position:relative}
+.batt::after{content:"";position:absolute;right:-5px;top:2px;width:3px;height:4px;background:currentColor;border-radius:0 1px 1px 0}
+.batt i{position:absolute;left:1px;top:1px;bottom:1px;background:currentColor;border-radius:1px}
+.fact{margin-top:10px;background:var(--card2);border-radius:14px;padding:10px 12px;font-size:16px;line-height:1.45}
+.fact b{color:var(--cranI)}
+.st.dark{background:var(--night);color:#f7e9e4;margin:0 -16px;padding:16px;border-color:#3d2431}
+.st.dark .note{color:#d2bcbc}.st.dark .t{color:var(--gold)}.st.dark .t small{color:#bfa7a8}
+.st.dark .fact{background:#3a2230}.st.dark .fact b{color:#ffc95c}
+.st.dark .pill{background:#1d3a2a;color:#7fe0ad}.st.dark .pill.g{background:#4a3410;color:#ffd27a}
+.st.past{opacity:.42}
+.st.next{background:var(--goldbg);margin:0 -16px;padding:16px;border-radius:0}
+.st.dark.next{background:#3d2030;box-shadow:inset 0 0 0 3px var(--gold)}
+.st.next .name::after{content:"Up next";font:700 13px Inter,sans-serif;background:var(--gold);color:#2a1218;border-radius:99px;padding:3px 9px;margin-left:8px;vertical-align:3px}
+.dusk{list-style:none;display:flex;align-items:center;gap:10px;margin:0 -16px;padding:14px 16px 10px;background:linear-gradient(var(--card),var(--night));color:#f2a516;font-weight:700;font-size:15px}
+.dusk svg{width:22px;height:22px}
+.wx{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.wx div{background:var(--card2);border-radius:16px;padding:12px 14px}
+.wx b{display:block;font:700 17px var(--disp)}
+.wx span{font-size:16px;color:var(--soft)}
+.decide{background:var(--cran);color:#fff;border:0;margin-top:18px}
+.decide h3{margin:0 0 4px;font-size:22px;color:var(--gold)}
+.decide p{margin:10px 0 0;font-size:17px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 16px;border-radius:14px;background:#fff;color:var(--cran);font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;text-align:center}
+.btn.o{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.big{width:100%;background:var(--cran);color:#fff;min-height:58px;font-size:18px}
+.btn.big.alt{background:var(--card);color:var(--cranI);border:2px solid var(--cranI)}
+
+/* map */
+.mapwrap{position:relative;background:var(--map);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.mapwrap svg{display:block;width:100%;height:auto}
+.maplegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;color:var(--soft);margin-top:10px}
+.maplegend i{display:inline-block;width:22px;height:0;border-top:5px solid var(--cran);vertical-align:middle;margin-right:6px;border-radius:3px}
+.maplegend i.d{border-top:4px dashed var(--mapink)}
+.maplegend i.sc{width:14px;height:14px;border:2px solid #fff;border-radius:50%;background:#e82127;box-shadow:0 0 0 1px var(--line)}
+.pin{cursor:pointer;outline:none}.pin:focus-visible circle:nth-child(2){stroke:#3e6ae1;stroke-width:4}
+.mapcard{margin-top:12px;display:none}.mapcard.on{display:block;animation:pop .3s}
+.mapcard .name{font-size:22px}
+
+/* spot + plates */
+.prog{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.bar{flex:1;height:16px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#f07a2a);width:0;transition:width .45s}
+.prog b{font:700 22px var(--disp);white-space:nowrap}
+.spot{display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:10px;cursor:pointer;transition:transform .15s,background .2s}
+.spot:active{transform:scale(.985)}
+.box{width:44px;height:44px;border-radius:13px;border:3px solid var(--cranI);display:flex;align-items:center;justify-content:center;transition:.2s}
+.box svg{width:26px;height:26px;opacity:0;transform:scale(.5) rotate(-15deg);transition:.25s}
+.spot[aria-pressed=true]{background:var(--goldbg);border-color:var(--gold)}
+.spot[aria-pressed=true] .box{background:var(--cranI);border-color:var(--cranI)}
+.spot[aria-pressed=true] .box svg{opacity:1;transform:none}
+.spot .w{font-size:14px;font-weight:700;color:var(--cranI)}
+.spot .h{font:700 21px/1.2 var(--disp);display:block;margin-top:2px}
+.spot .p{display:block;font-size:17px;color:var(--soft);margin-top:5px}
+.done{display:none;text-align:center;background:var(--cran);color:#fff;border-radius:22px;padding:20px;margin-bottom:14px}
+.done.on{display:block;animation:pop .4s}
+.done b{display:block;font:700 26px var(--disp);color:var(--gold)}
+.plates{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
+.plate{min-height:52px;border-radius:12px;border:2px solid var(--line);background:var(--card);font:700 17px var(--disp);cursor:pointer;letter-spacing:.5px}
+.plate[aria-pressed=true]{background:var(--cranI);border-color:var(--cranI);color:#fff}
+.reset{margin-top:12px;background:none;border:0;color:var(--soft);text-decoration:underline;font-size:16px;cursor:pointer;min-height:44px}
+.prep .spot{align-items:center;padding:14px}
+.prep .h{font:600 19px/1.3 Inter,sans-serif}
+
+/* nav */
+.ns{list-style:none;margin:0;padding:0;counter-reset:n}
+.ns li{counter-increment:n;display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ns li:last-child{border-bottom:0}
+.ns li::before{content:counter(n);width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font:700 19px var(--disp)}
+.ns li.k::before{background:var(--cranI);color:#fff}
+.ns b{display:block;font-size:19px;line-height:1.3}
+.ns em{display:block;font-style:normal;font-size:16px;color:var(--soft);margin-top:3px}
+.ns .btns{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.ns .btn{min-height:46px;font-size:15px;padding:0 6px}
+.tip{background:var(--goldbg);border-radius:18px;padding:14px 16px;font-size:17px;margin-top:14px}
+.phones{list-style:none;margin:0;padding:0}
+.phones li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:17px}
+.phones li:last-child{border-bottom:0}
+.phones b{font-family:var(--disp);white-space:nowrap}
+footer{text-align:center;color:var(--soft);font-size:15px;margin:34px 0 10px}
+footer svg{width:56px;height:56px;display:block;margin:0 auto 8px}
+footer b{display:block;font:700 24px var(--disp);color:var(--cranI);margin-top:2px}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;animation:fall 2.6s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+@keyframes dash{to{stroke-dashoffset:-40}}
+.car{animation:bob 1.2s ease-in-out infinite}
+.roaddash{animation:dash 1.4s linear infinite}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (min-width:700px){.wx{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* (overrides appended at end) */
+/* ---------- DRIVE screen: built for a 1-2 second glance ---------- */
+:root{--d-bg:#f4f4f4;--d-ink:#171a20;--d-sub:#5c5e62;--d-acc:#3e6ae1;--d-card:#ffffff;--d-line:#dcdcdf;--d-alert:#f5a623;--d-alertink:#000;--d-ok:#1b8a4b;--d-bad:#e82127}
+:root[data-theme=dark]{--d-bg:#000;--d-ink:#f2f2f2;--d-sub:#9a9aa0;--d-acc:#6d93ff;--d-card:#141416;--d-line:#29292d;--d-alert:#f5a623;--d-alertink:#000;--d-ok:#3ddc84;--d-bad:#ff453a}
+body.driving{background:var(--d-bg);color:var(--d-ink)}
+body.driving .hero,body.driving .strip,body.driving footer{display:none}
+body.driving main.wrap{max-width:none;padding:0}
+body.driving nav.tabs{background:var(--d-bg);border-top-color:var(--d-line)}
+body.driving .tabs a{color:var(--d-sub);min-height:52px}
+body.driving .tabs a[aria-current=page]{color:var(--d-ink);background:var(--d-card)}
+#v-drive{padding:calc(8px + env(safe-area-inset-top,0px)) 14px 8px;font-family:-apple-system,"SF Pro Display",Inter,system-ui,sans-serif;min-height:calc(100dvh - 76px - var(--safe));display:none;flex-direction:column;gap:8px}
+#v-drive.on{display:flex;animation:none}
+.dtop{display:flex;gap:8px;align-items:center}
+.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--d-card);border-radius:14px;padding:4px;gap:4px;flex:1}
+.seg button{min-height:46px;border:0;border-radius:11px;background:transparent;color:var(--d-sub);font:700 17px/1 -apple-system,Inter,sans-serif;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--d-acc);color:#fff}
+.chip{display:inline-flex;align-items:center;gap:7px;font:700 16px/1 -apple-system,Inter,sans-serif;padding:0 12px;min-height:54px;border-radius:14px;background:var(--d-card);color:var(--d-sub);white-space:nowrap}
+.chip i{width:12px;height:12px;border-radius:50%;background:var(--d-sub)}
+.chip.live i{background:var(--d-ok)}.chip.weak i{background:var(--d-alert)}
+.dlab{font:700 17px/1 -apple-system,Inter,sans-serif;letter-spacing:.06em;color:var(--d-sub);text-transform:uppercase}
+.dname{font:700 clamp(30px,9.4vw,48px)/1.02 -apple-system,"SF Pro Display",Inter,sans-serif;margin-top:6px;letter-spacing:-.01em;text-wrap:balance}
+.deta{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;border-top:2px solid var(--d-line);padding-top:10px}
+.deta .clock{font:700 clamp(48px,15vw,76px)/.95 -apple-system,"SF Pro Display",Inter,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.deta .clock small{font-size:.42em;margin-left:4px;letter-spacing:0}
+.deta .rt{text-align:right;font:700 clamp(26px,8vw,36px)/1.15 -apple-system,Inter,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+.deta .rt span{display:block;color:var(--d-sub);font-weight:700}
+.dcue{background:var(--d-card);border-radius:16px;box-shadow:inset 4px 0 0 var(--d-acc);padding:14px 16px}
+.dcue .txt{font:750 clamp(22px,6.6vw,30px)/1.18 -apple-system,Inter,sans-serif;margin-top:6px}
+.dcue .meta{font:700 22px/1 -apple-system,Inter,sans-serif;color:var(--d-acc);margin-top:10px}
+.dalert{display:none;background:var(--d-alert);color:var(--d-alertink);border-radius:18px;padding:14px 16px;font:700 clamp(21px,6.2vw,26px)/1.2 -apple-system,Inter,sans-serif}
+.dalert.on{display:block}
+.dalert.bad{background:var(--d-bad);color:#fff}
+.dalert.look{background:var(--d-acc);color:#fff}
+.dalert.mile{background:var(--d-ok);color:#04140b}
+.dalert small{display:block;font:700 15px/1.2 -apple-system,Inter,sans-serif;letter-spacing:.05em;text-transform:uppercase;opacity:.9;margin-bottom:5px}
+.dalert .sub{display:block;font:600 clamp(17px,5vw,20px)/1.25 -apple-system,Inter,sans-serif;margin-top:5px;opacity:.92}
+.vbtn{border:0;cursor:pointer;padding:0 10px}
+.vbtn span{display:none}
+.vbtn[aria-pressed=true]{background:var(--d-acc);color:#fff}
+@media (min-width:420px){.vbtn span{display:inline}}
+.dstat{font:700 clamp(17px,5vw,20px)/1.3 -apple-system,Inter,sans-serif;color:light-dark(#9a5b00,#f5b14a)}
+:root[data-theme=dark] .dstat{color:#f5b14a}:root[data-theme=light] .dstat{color:#9a5b00}
+.dwx{font:650 clamp(17px,5vw,20px)/1.3 -apple-system,Inter,sans-serif;color:var(--d-sub)}
+.rwx{list-style:none;margin:0;padding:0}.rwx li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line)}.rwx li:last-child{border-bottom:0}
+.rwx .wt{font-weight:700;white-space:nowrap;grid-row:span 2}.rwx .wn{font-weight:700}.rwx .wv{color:var(--soft);font-size:16px}
+.wxf{display:inline-block;font-size:13px;padding:2px 8px;border-radius:99px;margin-left:4px;color:#fff}.wxf.s{background:#3e6ae1}.wxf.i{background:#f5a623;color:#000}.wxf.w{background:#5c5e62}
+.dcharge{display:flex;align-items:center;gap:12px;font:700 clamp(20px,6vw,24px)/1.25 -apple-system,Inter,sans-serif}
+.dcharge .b{flex:none;width:44px;height:22px;border:3px solid currentColor;border-radius:5px;position:relative}
+.dcharge .b::after{content:"";position:absolute;right:-7px;top:4px;width:4px;height:8px;background:currentColor;border-radius:0 2px 2px 0}
+.dcharge .b i{position:absolute;left:2px;top:2px;bottom:2px;background:var(--d-ok);border-radius:2px}
+.dprog .bar2{height:14px;border-radius:99px;background:var(--d-card);overflow:hidden}
+.dprog .bar2 i{display:block;height:100%;background:var(--d-acc);width:0}
+.dprog .row{display:flex;justify-content:space-between;font:700 19px/1 -apple-system,Inter,sans-serif;color:var(--d-sub);margin-top:8px;font-variant-numeric:tabular-nums}
+.dact{display:flex;gap:10px;margin-top:auto}
+.dact button{flex:1;min-height:56px;border-radius:14px;font:700 22px/1 -apple-system,Inter,sans-serif;cursor:pointer;border:2px solid var(--d-line);background:transparent;color:var(--d-ink)}
+.dact button.pri{background:var(--d-acc);border-color:var(--d-acc);color:#fff}
+.dact button[hidden],.droute[hidden]{display:none}
+.droute{display:flex;align-items:center;gap:10px;font:700 16px/1.2 -apple-system,Inter,sans-serif;color:var(--d-sub)}
+.droute .seg{flex:1}.droute .seg{grid-template-columns:repeat(2,minmax(0,1fr))}
+.dnote{font:600 15px/1.35 -apple-system,Inter,sans-serif;color:var(--d-sub)}
+@media (orientation:landscape) and (min-width:600px) and (max-height:600px){
+ #v-drive{min-height:0;gap:8px 18px;padding:8px 16px;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);grid-template-areas:"top top" "next cue" "eta cue" "prog alert";align-content:start}
+ #v-drive.on{display:grid}
+ .dtop{grid-area:top}.dnext{grid-area:next}.deta{grid-area:eta}.dcue{grid-area:cue}.dalert{grid-area:alert;padding:10px 14px;font-size:19px}.dprog{grid-area:prog;align-self:end}
+ .dcharge,.dact,.droute,.dnote{display:none!important}
+ .seg button{min-height:36px}.chip{min-height:44px}
+ .dname{font-size:clamp(28px,4.4vw,40px);margin-top:4px}
+ .deta{padding-top:6px}.deta .clock{font-size:clamp(46px,7vw,60px)}.deta .rt{font-size:clamp(22px,3.4vw,28px)}
+ .dcue{padding:10px 14px}.dcue .txt{font-size:clamp(22px,3.4vw,28px)}.dcue .meta{margin-top:6px}
+ body.driving .tabs a{min-height:40px;flex-direction:row;gap:6px}body.driving .tabs svg{width:20px;height:20px}
+ body.driving nav.tabs{padding-top:3px;padding-bottom:calc(3px + var(--safe))}
+}
+
+/* ===== Tesla-adjacent look: neutral greys, one blue accent, no glare ===== */
+.hero{background:var(--bg);color:var(--ink)}
+.hero::after{display:none}
+.scene{height:clamp(270px,72vw,400px)}
+.s0{stop-color:var(--sky0)}.s1{stop-color:var(--sky1)}
+.stars{fill:#fff;opacity:var(--star)}
+.m1{fill:var(--m1)}.m2{fill:var(--m2)}.sn{fill:var(--snow)}.gr{fill:var(--ground)}.rd{fill:var(--road)}
+.cb{fill:light-dark(#ffffff,#e9e9ea)}.beam{opacity:light-dark(0,.35)}
+h1{text-shadow:none;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.tag{color:var(--soft);text-shadow:none;font-weight:500}
+.logo{filter:none}
+.strip{background:var(--bg);color:var(--ink);padding-top:4px}
+.facts div{background:var(--card);border:1px solid var(--line)}
+.facts span{color:var(--soft)}
+.now{background:#3e6ae1;color:#fff}
+.now small{color:#dfe6ff}
+.ayt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.bubble{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.bubble b{color:#3e6ae1}
+.trk{background:var(--card2)}.trk i{background:#3e6ae1}
+.trkl{color:var(--soft)}
+nav.tabs{background:light-dark(rgba(244,244,244,.95),rgba(0,0,0,.95))}
+.tabs a{color:var(--soft)}
+.tabs a[aria-current=page]{color:var(--ink);background:var(--card2)}
+:focus-visible{outline-color:#3e6ae1}
+.card{border-radius:18px}
+.t{color:var(--ink)}
+.st.next{background:var(--goldbg);box-shadow:inset 4px 0 0 #3e6ae1}
+.st.next .name::after{background:#3e6ae1;color:#fff}
+.st.dark{background:var(--night);color:var(--ink);border-color:var(--line)}
+.st.dark .note,.st.dark .t small{color:var(--soft)}.st.dark .t{color:var(--ink)}
+.st.dark .fact{background:var(--card2)}.st.dark .fact b{color:var(--ink)}
+.st.dark .pill{background:var(--sagebg);color:var(--sage)}.st.dark .pill.g,.pill.g{background:var(--card2);color:var(--soft)}
+.st.dark.next{background:var(--goldbg);box-shadow:inset 4px 0 0 #3e6ae1}
+.dusk{background:var(--night);color:var(--soft)}
+.fact b{color:var(--ink)}
+.decide{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:inset 4px 0 0 #3e6ae1}
+.decide h3{color:var(--ink)}
+.decide b{color:var(--ink)}
+.decide .btn,.btn{background:#3e6ae1;color:#fff}
+.btn.o{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.big{background:#3e6ae1}
+.btn.big.alt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.box{border-color:var(--soft);border-width:2.5px}
+.spot[aria-pressed=true]{background:var(--goldbg);border-color:#3e6ae1}
+.spot[aria-pressed=true] .box{background:#3e6ae1;border-color:#3e6ae1}
+.spot .w{color:var(--soft)}
+.bar i{background:#3e6ae1}
+.done{background:#3e6ae1}.done b{color:#fff}
+.plate[aria-pressed=true]{background:#3e6ae1;border-color:#3e6ae1}
+.ns li::before{background:var(--card2);color:var(--ink)}
+.ns li.k::before{background:#3e6ae1;color:#fff}
+.tip{background:var(--card);border:1px solid var(--line);box-shadow:inset 4px 0 0 #f5a623}
+footer b{color:var(--ink)}
+
+/* v7: bigger touch targets (Tesla 2026 sizing), checklist, Spot It read-only, test mode */
+.seg button{min-height:54px}.chip{min-height:60px}.dact button{min-height:64px}body.driving .tabs a{min-height:60px}
+button.chip{border:0;cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.vbtn span{display:inline!important;font-size:15px}.vbtn{gap:5px;padding:0 9px}.vbtn[data-mode=podcast]{background:var(--d-alert);color:#000}
+.tpanel.min>:not(.tbar){display:none}
+.dgo{background:var(--d-card);border-radius:16px;padding:12px 14px;display:grid;gap:8px}
+.dgo[hidden]{display:none}
+.dgo .gi{display:flex;align-items:center;gap:12px;min-height:54px;border:0;border-radius:12px;background:transparent;color:var(--d-ink);font:700 20px/1.2 -apple-system,Inter,sans-serif;text-align:left;cursor:pointer;padding:0 4px}
+.dgo .box{flex:none;width:34px;height:34px;border-radius:9px;border:2.5px solid var(--d-sub);display:grid;place-items:center}
+.dgo .box svg{width:22px;height:22px;opacity:0}
+.dgo .gi[aria-pressed=true] .box{background:var(--d-acc);border-color:var(--d-acc)}.dgo .gi[aria-pressed=true] .box svg{opacity:1}
+.dgo .gi[aria-pressed=true]{color:var(--d-sub)}
+.spot.ro{cursor:default;grid-template-columns:34px minmax(0,1fr)}.spot.ro .ic{font-size:22px;color:#3e6ae1;padding-top:2px}
+h3.sh{margin:18px 2px 10px;font-size:18px}
+.bchg{margin:12px 0;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.bchg .seg{margin:8px 0 4px;background:var(--card2)}
+.bchg .seg button{color:var(--soft)}.bchg .seg button[aria-pressed=true]{background:#3e6ae1;color:#fff}
+body.testing::before{content:"TEST MODE";position:fixed;top:0;left:0;right:0;z-index:60;background:#f5a623;color:#000;font:800 15px/1 -apple-system,Inter,sans-serif;letter-spacing:.2em;text-align:center;padding:calc(6px + env(safe-area-inset-top)) 0 6px}
+body.testing #v-drive{padding-top:30px}
+.tpanel{position:fixed;left:8px;right:8px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:55;max-height:46vh;overflow:auto;background:var(--d-card);color:var(--d-ink);border:2px solid #f5a623;border-radius:18px;padding:10px;box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 15px/1.3 -apple-system,Inter,sans-serif}
+.tpanel[hidden]{display:none}
+.tpanel button,.tpanel select{min-height:44px;border-radius:10px;border:1.5px solid var(--d-line);background:var(--d-bg);color:var(--d-ink);font:700 15px/1.1 -apple-system,Inter,sans-serif;padding:0 10px;cursor:pointer}
+.tpanel button[aria-pressed=true]{background:#f5a623;border-color:#f5a623;color:#000}
+.tbar{display:flex;align-items:center;gap:10px}.tbar b{color:#f5a623;letter-spacing:.1em}.tbar span{flex:1;font-variant-numeric:tabular-nums}
+.trow{display:flex;gap:8px;margin-top:8px}.trow button{flex:1}
+.tlab{display:block;margin-top:10px;color:var(--d-sub);font-weight:700}.tlab select{display:block;width:100%;margin-top:4px}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
+.tclips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}.tclips button{min-height:38px;font-size:13px}
+</style></head>
+<body>
+
+<header class="hero">
+  <svg class="scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s0"/><stop offset="1" class="s1"/></linearGradient>
+      <linearGradient id="routeg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3e6ae1"/><stop offset="1" stop-color="#7fa2ff"/></linearGradient>
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2"/></filter>
+    </defs>
+    <rect width="400" height="300" fill="url(#sky)"/>
+    <g class="stars"><circle cx="40" cy="30" r="1"/><circle cx="96" cy="16" r=".8"/><circle cx="168" cy="38" r=".9"/><circle cx="236" cy="14" r=".7"/><circle cx="300" cy="34" r="1"/><circle cx="352" cy="20" r=".8"/><circle cx="384" cy="52" r=".7"/><circle cx="128" cy="60" r=".6"/></g>
+    <g transform="translate(0 40)">
+      <path class="m1" d="M0 160 L40 120 L62 134 L98 96 L128 126 L150 112 L190 150 L230 118 L262 140 L300 104 L336 132 L372 110 L400 128 L400 200 L0 200Z"/>
+      <path class="sn" d="M98 96 L108 106 L100 104 L92 108Z M300 104 L310 114 L301 111 L292 115Z M372 110 L380 118 L372 116 L365 119Z M40 120 L48 128 L41 126 L34 129Z M230 118 L238 126 L231 124 L223 127Z"/>
+      <path class="m2" d="M0 186 L52 150 L84 168 L130 140 L176 172 L214 156 L262 178 L318 150 L364 172 L400 160 L400 220 L0 220Z"/>
+      <path class="sn" opacity=".8" d="M130 140 L140 148 L131 146 L122 150Z M318 150 L327 157 L318 155 L310 158Z"/>
+      <path class="gr" d="M0 214 C80 200 150 206 210 204 C290 200 340 208 400 202 L400 260 L0 260Z"/>
+      <path class="rd" d="M120 260 C170 236 220 222 236 205 C244 197 252 194 262 193 L268 193 C258 196 252 200 246 207 C232 226 200 244 190 260Z"/>
+      <path d="M155 260 C190 240 228 222 241 206 C246 200 252 196 264 193" fill="none" stroke="#3e6ae1" stroke-width="5" opacity=".55" filter="url(#glow)"/>
+      <path class="routeline" d="M155 260 C190 240 228 222 241 206 C246 200 252 196 264 193" fill="none" stroke="url(#routeg)" stroke-width="3" stroke-linecap="round"/>
+      <g transform="translate(184 213)"><g class="car">
+        <ellipse cx="17" cy="15" rx="19" ry="2.6" fill="#000" opacity=".35"/>
+        <path class="cb" d="M2 11 C2 6 6 4 10 3.5 L14 0.5 C16 -0.5 22 -0.5 25 1 L30 4.5 C33 5 35 7 35 11 L35 13 L2 13Z"/>
+        <path d="M14.5 1.8 C16 1 21.5 1 24 2.2 L27.5 4.6 L12 4.6Z" fill="#171a20"/>
+        <circle cx="9" cy="13" r="3.1" fill="#0c0c0e"/><circle cx="28" cy="13" r="3.1" fill="#0c0c0e"/>
+        <circle cx="9" cy="13" r="1.2" fill="#8e9196"/><circle cx="28" cy="13" r="1.2" fill="#8e9196"/>
+        <path d="M35 8.5 L50 5 L50 13 L35 10.5Z" fill="#dfe8ff" class="beam"/>
+      </g></g>
+    </g>
+  </svg>
+  <div class="top"><div class="brand">
+    <svg class="logo" viewBox="0 0 72 72" role="img" aria-label="Trip logo"><use href="#logo"/></svg>
+    <div><h1>Thanksgiving Road Trip 2026</h1><div class="tag">West LA → Reno · the back-roads way</div></div>
+</header>
+
+<div class="strip"><div class="in">
+  <div class="facts">
+    <div><b>Sun</b><span>Nov 22</span></div>
+    <div><b>8:00</b><span>wheels roll</span></div>
+    <div><b>~7:35</b><span>arrive</span></div>
+    <div><b>550</b><span>miles</span></div>
+  </div>
+  <div class="live">
+    <div class="now" id="now" aria-live="polite">Departs Sunday at 8:00 AM</div>
+    <button class="ayt" id="ayt">Are we there yet?</button>
+  </div>
+  <div class="bubble" id="bubble" role="status"></div>
+  <div class="trk" aria-hidden="true"><i id="trk"></i></div>
+  <div class="trkl"><span>West LA</span><span id="trkp">0% of the way</span><span>Reno</span></div>
+</div></div>
+
+<main class="wrap">
+
+
+<section id="v-drive" aria-label="Drive screen">
+  <div class="dtop">
+    <div class="seg" role="group" aria-label="Screen brightness">
+      <button data-th="day">Day</button><button data-th="night">Night</button><button data-th="auto">Auto</button>
+    </div>
+    <button class="chip" id="dgps" aria-label="GPS status. Hold 3 seconds for test mode."><i></i><span>Plan</span></button>
+    <button class="chip vbtn" id="dvoice" aria-pressed="false" aria-label="Voice alerts"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor" stroke="none"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg><span>Voice off</span></button>
+  </div>
+  <div class="dnext">
+    <div class="dlab" id="dlab">Next stop</div>
+    <div class="dname" id="dname">Mojave Supercharger</div>
+  </div>
+  <div class="deta">
+    <div class="clock" id="deta">9:45<small>AM</small></div>
+    <div class="rt"><div id="dmin">—</div><span id="dmi">—</span></div>
+  </div>
+  <div class="dcue">
+    <div class="dlab" id="dcuelab">Road</div>
+    <div class="txt" id="dcue">—</div>
+    <div class="meta" id="dcuemeta"></div>
+  </div>
+  <div class="dgo" id="dgo" hidden></div>
+  <div class="dalert" id="dalert" role="status" aria-live="polite"></div>
+  <div class="dstat" id="dstat" hidden></div>
+  <div class="dwx" id="dwx" hidden></div>
+  <div class="dcharge" id="dcharge"><span class="b"><i id="dbatt"></i></span><span id="dchargetxt">—</span></div>
+  <div class="dprog"><div class="bar2"><i id="dbar"></i></div><div class="row"><span id="dleft">—</span><span id="dpct">—</span></div></div>
+  <div class="dact">
+    <button class="pri" id="dhere">We’re here</button>
+    <button id="dlate">+15 min</button>
+    <button id="dreset" hidden>On time</button>
+  </div>
+  <div class="droute"><span>Route after Bishop</span><div class="seg" role="group" aria-label="Route after Bishop"><button data-rt="bypass">Bypass</button><button data-rt="395">395</button></div></div>
+  <p class="dnote" id="dnote" hidden>Taps are for when you’re parked.</p>
+</section>
+<div class="tpanel" id="tpanel" hidden></div>
+
+<section id="v-trip">
+  <h2>The day at a glance</h2>
+  <div class="card">
+    <div class="fig"><svg id="chart" role="img" aria-label="Elevation and estimated battery level across the day"></svg></div>
+    <div class="legend"><span><i style="background:var(--ink)"></i>How high we are</span><span><i style="background:#22a35a"></i>Battery (estimate)</span><span><i style="background:currentColor;opacity:.25"></i>After dark</span></div>
+  </div>
+
+  <h2>Stop by stop</h2>
+  <div class="card"><ol class="tl" id="tl"></ol></div>
+
+  <div class="card decide">
+    <h3>The Bishop decision</h3>
+    <p><b>Default: take the bypass</b> (US-6 → 95 → 95A). Low desert, one 7,149′ pass, no snow summits.</p>
+    <div class="bchg"><b>Bishop charger</b><div class="seg" role="group" aria-label="Bishop charger"><button data-bc="auto">Auto</button><button data-bc="lot13">Lot 13</button><button data-bc="rockingw">Rocking W</button></div><p class="fine" id="bcnote"></p><p class="fine">Both are 250 kW, so the car charges at the same speed. Lot 13 is on the route near Schat’s. Rocking W has twice the stalls but sits past the US-6 turnoff, so Auto picks it only for the 395 route.</p></div>
+    <p><b>Stay on 395 only if</b> QuickMap shows no chain controls to the Nevada line <b>and</b> the Deadman and Conway cameras show dry road. It saves about 1½ hours. To switch, delete nav stops 3–6.</p>
+    <div class="btns"><a class="btn" href="https://quickmap.dot.ca.gov/">Caltrans QuickMap</a><a class="btn" href="https://www.nvroads.com/">NV roads</a></div>
+  </div>
+
+  <h2>Weather along the route</h2>
+  <div class="card" id="routewx"></div>
+  <h2>What the sky is doing</h2>
+  <p class="lead">The NWS outlook we planned around, as of Thursday, Nov 19.</p>
+  <div class="wx">
+    <div><b>Montgomery Pass</b><span>Partly sunny, high near 35°F. No snow in the forecast.</span></div>
+    <div><b>Conway Summit (395)</b><span>30% chance of snow after 10 AM, little or none sticking.</span></div>
+    <div><b>Sunset</b><span>About 4:40 PM, right around Walker Lake.</span></div>
+    <div><b>Reno Sunday</b><span>Cold, highs in the upper 30s, a few snow showers possible.</span></div>
+  </div>
+  <p class="fine">Times, elevations and battery levels are estimates for a Long Range AWD in cold weather at about 70 mph. The car’s trip planner will be more precise on the day.</p>
+</section>
+
+<section id="v-map">
+  <h2>Our route</h2>
+  <p class="lead">Tap any dot for what’s there. The little car shows where we are (GPS) or where we should be (plan).</p>
+  <div class="mapwrap"><svg id="map" role="img" aria-label="Route map from West LA to Reno"></svg></div>
+  <div class="maplegend"><span><i></i>Our route (the bypass)</span><span><i class="d"></i>395 over the summits</span><span><i class="sc"></i>Supercharger</span></div>
+  <div class="card mapcard" id="mapcard"></div>
+</section>
+
+<section id="v-spot">
+  <h2>Spot it!</h2>
+  <p class="lead">What to look for, in order. The Tesla Turkey calls each one out as it comes up on the Drive screen.</p>
+  <div id="spots"></div>
+  <h2>License plate game</h2>
+  <p class="lead">Tap a state when you see its plate. How many can you get?</p>
+  <p class="fine">Voice games along the way: battery guess at every charger, elevation guess before the big pass, Tesla count from Mojave to Bishop, and first to spot snow.</p>
+  <div class="prog"><div class="bar"><i id="pbar"></i></div><b id="pcount">0 states</b></div>
+  <div class="plates" id="plates"></div>
+  <button class="reset" id="preset">Start the plate game over</button>
+</section>
+
+<section id="v-nav">
+  <h2 id="nav-h">Nav plot</h2>
+  <p class="lead">Enter these in order in the Tesla, Apple Maps or Google Maps.</p>
+  <a class="btn big" id="gmall" href="#nav">Open full route in Google Maps</a>
+  <div class="btns" style="margin-top:8px"><button class="btn big alt" id="copyall">Copy all 8 stops</button></div>
+  <p class="fine">The Google link starts from where you are. If it drops some stops, add the rest from the list.</p>
+  <div class="card" style="margin-top:14px"><ol class="ns" id="ns"></ol></div>
+  <div class="tip"><b>Check the map:</b> Bishop → Mina heads northeast through Benton, not toward Mammoth. Fernley → drop-off takes I-80 west then I-580 south, not Virginia City. If the Tesla adds a Mammoth stop, delete it.</div>
+</section>
+
+<section id="v-ready">
+  <h2>Before we roll</h2>
+  <div class="prep" id="prep"></div>
+  <h2>Good numbers to have</h2>
+  <div class="card"><ul class="phones">
+    <li><span>Tesla Roadside Assistance</span><b>877-798-3752</b></li>
+    <li><span>Caltrans road conditions</span><b>800-427-7623</b></li>
+    <li><span>Nevada road conditions</span><b>511</b></li>
+  </ul></div>
+  <div class="btns"><a class="btn o" href="https://quickmap.dot.ca.gov/">Caltrans QuickMap</a><a class="btn o" href="https://www.nvroads.com/">nvroads.com</a></div>
+</section>
+
+<footer><svg viewBox="0 0 72 72" aria-hidden="true"><use href="#logo"/></svg>Drive safe, look out the window.<b>Happy Thanksgiving!</b></footer>
+</main>
+
+<nav class="tabs" aria-label="Sections"><div class="in">
+  <a href="#drive" data-v="drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M3.5 10.5h6M14.5 10.5h6M12 14.5V21"/></svg>Drive</a>
+  <a href="#trip" data-v="trip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="18" r="2.2"/><path d="M8 6h7a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h7"/></svg>Trip</a>
+  <a href="#map" data-v="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Map</a>
+  <a href="#spot" data-v="spot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="14" r="4"/><circle cx="17" cy="14" r="4"/><path d="M11 14h2M5 10l2-5h2M19 10l-2-5h-2"/></svg>Spot it</a>
+  <a href="#info" data-v="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2l7 19-7-4-7 4z"/></svg>Nav &amp; info</a>
+</div></nav>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="logo" viewBox="0 0 72 72">
+    <rect width="72" height="72" rx="18" fill="#171a20"/>
+    <path d="M0 52 L18 32 L28 42 L40 26 L72 56 L72 72 L0 72Z" fill="#3a3d44"/>
+    <path d="M18 32 L23 38 L18 36 L14 37Z M40 26 L46 33 L40 31 L35 33Z" fill="#ffffff"/>
+    <path d="M24 72 C26 62 44 60 42 52 C40 46 34 46 37 41" fill="none" stroke="#3e6ae1" stroke-width="5.5" stroke-linecap="round"/>
+    <text x="36" y="17" text-anchor="middle" font-family="-apple-system,Inter,sans-serif" font-weight="700" font-size="11" fill="#ffffff" letter-spacing=".5">TRT·26</text>
+  </symbol>
+</defs></svg>
+
+<script src="voice.js"></script>
+<script>
+{
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const T=(h,m)=>new Date(`2026-11-22T${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:00-08:00`).getTime();
+const fmt=ms=>{const d=new Date(ms);let h=((d.getUTCHours()+16)%24),m=d.getUTCMinutes();const ap=h>=12?'PM':'AM';h=h%12||12;return `${h}:${String(m).padStart(2,'0')} ${ap}`};
+const dur=ms=>{const m=Math.max(0,Math.round(ms/6e4)),h=Math.floor(m/60);return h?`${h} hr ${m%60} min`:`${m} min`};
+
+/* ---------- route data ---------- */
+const P=[ /* lat, lon, stop key: road geometry, Superchargers at their stalls */
+ [34.04012,-118.42851,'la'],[34.1115,-118.4819],[34.3720,-118.4995],[34.5048,-118.2514],[34.4855,-118.1444],[34.5122,-118.1105],[34.6909,-118.1698],[35.0687,-118.1741,'mojave'],[35.3427,-117.9709],[35.4356,-117.9782],[35.6808,-117.8667],[35.8562,-117.8755],[36.2816,-118.0273],[36.5942,-118.0578],[36.8359,-118.2283],[37.0543,-118.2340],[37.36063,-118.396576,'bishop'],[37.372,-118.395],[37.4628,-118.3496],[37.8700,-118.4704],[37.9736,-118.3267,'pass'],[38.0026,-118.2807],[38.1017,-118.2783],[38.1754,-118.1867],[38.2325,-118.1734],[38.2701,-118.0963],[38.3878,-118.1072,'mina'],[38.5259,-118.2201],[38.5504,-118.4826],[38.5278,-118.6240,'hawthorne'],[38.6784,-118.7739,'walker'],[38.7751,-118.7502],[38.9554,-118.8291],[38.9765,-118.8591],[39.0174,-118.8914],[39.0463,-118.9694],[39.0297,-119.0388],[38.9983,-119.1023],[38.9903,-119.1622,'yerington'],[38.9940,-119.1819],[39.1478,-119.1826],[39.2065,-119.2152],[39.2636,-119.2392],[39.2899,-119.2496],[39.3319,-119.2416],[39.4162,-119.2247],[39.4727,-119.2058],[39.5479,-119.2335],[39.5932,-119.2508],[39.6096,-119.2205,'fernley'],[39.5902,-119.4582],[39.5122,-119.6480],[39.5306,-119.7870],[39.4731,-119.7907],[39.4520,-119.7720],[39.4222,-119.7413,'hawkshead'],[39.4731,-119.7907],[39.5189,-119.7810],[39.5303,-119.8137,'legacy']];
+const ALT=[[37.3772,-118.4227],[37.5138,-118.5841],[37.6443,-118.9212],[37.9562,-119.1214],[38.0881,-119.1819],[38.2553,-119.2232],[38.5120,-119.4500],[38.7333,-119.5573],[38.9559,-119.7793],[39.1646,-119.7664],[39.3719,-119.7550]];
+/* arrive / depart times in ms */
+const sched={la:[T(8,0),T(8,0)],mojave:[T(9,45),T(10,35)],bishop:[T(13,20),T(13,50)],pass:[T(14,45),T(14,45)],mina:[T(15,25),T(15,25)],hawthorne:[T(16,0),T(16,30)],walker:[T(16,45),T(16,45)],yerington:[T(17,50),T(17,50)],fernley:[T(18,50),T(19,0)],hawkshead:[T(19,35),T(19,45)],legacy:[T(20,5),T(20,5)]};
+const R=6371/1.609,rad=Math.PI/180;
+const hav=(a,b)=>{const dl=(b[0]-a[0])*rad,dn=(b[1]-a[1])*rad,x=Math.sin(dl/2)**2+Math.cos(a[0]*rad)*Math.cos(b[0]*rad)*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(x))};
+const cum=[0];for(let i=1;i<P.length;i++)cum.push(cum[i-1]+hav(P[i-1],P[i]));
+const hk=P.findIndex(p=>p[2]==='hawkshead');const scale=550/cum[hk];
+/* position at time t: returns {i,f,mi} */
+const keys=P.map((p,i)=>[p[2],i]).filter(k=>k[0]);
+function where(t){
+ if(t<=sched.la[1])return{d:0,state:'before'};
+ for(let k=0;k<keys.length;k++){const [key,i]=keys[k];const [a,dep]=sched[key];
+  if(t>=a&&t<=dep)return{d:cum[i],at:key,state:'stopped'};
+  const nx=keys[k+1];if(!nx)break;const [nk,j]=nx;const na=sched[nk][0];
+  if(t>dep&&t<na){const f=(t-dep)/(na-dep);return{d:cum[i]+f*(cum[j]-cum[i]),state:'moving',next:nk}}}
+ return{d:cum[P.length-1],state:'done'};
+}
+function pointAt(d){for(let i=1;i<P.length;i++){if(d<=cum[i]){const f=(d-cum[i-1])/((cum[i]-cum[i-1])||1);return[P[i-1][0]+f*(P[i][0]-P[i-1][0]),P[i-1][1]+f*(P[i][1]-P[i-1][1])]}}return P[P.length-1]}
+
+/* ---------- timeline ---------- */
+const stops=[
+ {k:'la',t:'8:00',ap:'AM',name:'Leave West LA',b:[90],fact:'<b>Fun fact:</b> we start near sea level. By mid-afternoon we’ll be over 7,100 feet up.'},
+ {k:'mojave',t:'9:45',ap:'AM',name:'Mojave Supercharger',note:'Lunch at The Workz while the car charges.',b:[50,90],g:['~50 min'],fact:'<b>Look for it:</b> rows of parked jumbo jets at the Mojave Air &amp; Space Port, where airlines store planes in the dry desert air.'},
+ {k:'bishop',t:'1:20',ap:'PM',name:'Bishop Supercharger',note:'Lot 13 (on the route, near Schat’s Bakkerÿ) or Rocking W (24 stalls). Then the route decision.',b:[25,85],g:['Decision point'],fact:'<b>Elevation:</b> about 4,150 ft. The Sierra wall rises almost 10,000 feet straight above town to the west.'},
+ {k:'pass',t:'~2:45',ap:'PM',name:'Montgomery Pass · 7,149′',note:'Highest point of the day. Nevada begins just before it.',fact:'<b>Look south:</b> the big white peak is Boundary Peak, Nevada’s tallest mountain at about 13,140 ft.'},
+ {k:'hawthorne',t:'4:00',ap:'PM',name:'Hawthorne Supercharger',note:'Golden Gate truck stop · 150 kW stalls.',b:[35,70],g:['~30 min'],fact:'<b>Those mounds:</b> thousands of grass-covered bunkers belong to the Hawthorne Army Depot, often called the world’s largest ammunition storage site.'},
+ {k:'walker',t:'~4:45',ap:'PM',name:'Walker Lake sunset',note:'Pullouts along the shore for a quick photo.',fact:'<b>Ice Age leftover:</b> this lake is one of the last pieces of giant Lake Lahontan, which once covered much of western Nevada.'},
+ {k:'yerington',t:'~5:50',ap:'PM',name:'Yerington',note:'Onto 95 Alternate through the Mason Valley.',dark:1},
+ {k:'fernley',t:'~6:50',ap:'PM',name:'Fernley Supercharger',note:'Quick top-up and restroom, then I-80 into Reno.',b:[25,45],g:['~10 min'],dark:1},
+ {k:'hawkshead',t:'~7:35',ap:'PM',name:'South Reno · We made it!',note:'Family drop-off.',b:[28],dark:1},
+ {k:'legacy',t:'~8:05',ap:'PM',name:'Silver Legacy',note:'Our hotel through Nov 27, about 12 miles north. The famous Reno Arch is a block away.',dark:1}
+];
+const battPill=v=>`<span class="batt"><i style="width:${Math.max(8,v*0.22)}px"></i></span>`;
+const moon='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4a8.5 8.5 0 1 0 11.5 11.5z"/></svg>';
+$('tl').innerHTML=stops.map((s,i)=>(s.dark&&!stops[i-1].dark?`<li class="dusk" aria-hidden="true">${moon}After dark</li>`:'')+
+ `<li class="st${s.dark?' dark':''}" data-k="${s.k}"><div class="t">${s.t}<small>${s.ap}</small></div><div><div class="name">${esc(s.name)}</div>${s.note?`<div class="note">${esc(s.note)}</div>`:''}`+
+ ((s.b||s.g)?`<div class="pills">${s.b?`<span class="pill">${battPill(s.b[s.b.length-1])}${s.b.length>1?`${s.b[0]}% → ${s.b[1]}%`:`${s.b[0]}%`}</span>`:''}${(s.g||[]).map(p=>`<span class="pill g">${p}</span>`).join('')}</div>`:'')+
+ (s.fact?`<div class="fact">${s.fact}</div>`:'')+`</div></li>`).join('');
+
+/* ---------- live status + are we there yet ---------- */
+const total=cum[hk];
+function status(){
+ const now=Date.now(),w=where(now),el=$('now');
+ const pct=Math.min(100,Math.round(w.d/total*100));
+ $('trk').style.width=pct+'%';$('trkp').textContent=w.state==='before'?'Not started':`${pct}% of the way`;
+ document.querySelectorAll('.st').forEach(r=>r.classList.remove('past','next'));
+ let html;
+ if(w.state==='before'){html=`Wheels roll Sunday at 8:00 AM<small>${dur(sched.la[1]-now).replace(/(\d+) hr/,(m,h)=>h>=24?`${Math.floor(h/24)} day${h>=48?'s':''} ${h%24} hr`:m)} to go</small>`}
+ else if(w.state==='done'||now>sched.hawkshead[0]){html='We made it to Reno! 🎉'.replace(' 🎉','')+'<small>Happy Thanksgiving.</small>';document.querySelectorAll('.st').forEach(r=>{if(r.dataset.k!=='legacy'||now>sched.legacy[0])r.classList.add('past')})}
+ else{const nextK=w.state==='stopped'?w.at:w.next;const ni=stops.findIndex(s=>s.k===nextK);
+  document.querySelectorAll('.st').forEach(r=>{const i=stops.findIndex(s=>s.k===r.dataset.k);if(i<ni)r.classList.add('past');if(i===ni)r.classList.add(w.state==='stopped'?'next':'next')});
+  const s=stops[ni];html=w.state==='stopped'?`Now: ${esc(s.name)}<small>Back on the road about ${fmt(sched[w.at][1])}</small>`:`Next: ${esc(s.name)}<small>Planned for ${fmt(sched[nextK][0])}, about ${dur(sched[nextK][0]-now)} away</small>`}
+ el.innerHTML=html;drawMapCar();
+}
+const nope=['Nope!','Not yet!','Nope, keep looking out the window!','Getting closer!','Almost!'];
+$('ayt').addEventListener('click',()=>{
+ const now=Date.now(),w=where(now),b=$('bubble');let h;
+ if(w.state==='before')h=`<b>Not even close!</b>We haven’t left yet. Wheels roll Sunday at 8:00 AM.`;
+ else if(now>=sched.hawkshead[0])h=`<b>YES!</b>We’re here. Go hug somebody.`;
+ else{const left=Math.round((total-w.d)*scale),tl=sched.hawkshead[0]-now,pct=w.d/total;
+  const word=pct>.85?nope[4]:pct>.6?nope[3]:nope[Math.floor(Math.random()*3)];
+  const ns=stops.find(s=>s.k===(w.state==='stopped'?w.at:w.next));
+  h=`<b>${word}</b>About ${left} miles and ${dur(tl)} to go.${ns?` Next up: ${esc(ns.name)}.`:''}`}
+ b.innerHTML=h;b.classList.remove('on');void b.offsetWidth;b.classList.add('on');
+});
+
+/* ---------- elevation + battery chart ---------- */
+const elev=[[0,100],[.056,700],[.111,2350],[.139,1850],[.183,2750],[.25,3200],[.306,3700],[.358,4150],[.389,4650],[.417,5000],[.444,6000],[.475,7149],[.503,6000],[.535,5000],[.569,4400],[.604,4330],[.653,4250],[.708,4380],[.75,4380],[.806,4250],[.861,4150],[.918,4150],[.951,4350],[1,4600]];
+const batt=[[0,90],[.183,50],[.183,90],[.358,25],[.358,85],[.604,35],[.604,70],[.918,25],[.918,45],[1,28]];
+const marks=[[0,'LA','West LA'],[.183,'Mojave','Mojave'],[.358,'Bishop','Bishop'],[.604,'Hawth.','Hawthorne'],[.918,'Fernley','Fernley'],[1,'Reno','Reno']];
+const chart=$('chart');
+function drawChart(){
+ const W=chart.clientWidth,H=chart.clientHeight;if(!W)return;
+ const L=10,Rr=10,sm=W<520,x=f=>L+f*(W-L-Rr),fs=sm?13:14;
+ const eTop=30,eBot=H*.52,bTop=H*.64,bBot=H-8;
+ const ey=v=>eBot-(v/7600)*(eBot-eTop),by=v=>bBot-(v/100)*(bBot-bTop);
+ const ep=elev.map(([f,v])=>`${x(f).toFixed(1)},${ey(v).toFixed(1)}`).join(' L'),bp=batt.map(([f,v])=>`${x(f).toFixed(1)},${by(v).toFixed(1)}`).join(' L');
+ const dk=x(.653);let s=`<defs><linearGradient id="eg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8e9196" stop-opacity=".45"/><stop offset="1" stop-color="#8e9196" stop-opacity=".03"/></linearGradient></defs>`;
+ s+=`<rect x="${dk}" y="4" width="${W-Rr-dk}" height="${H-8}" rx="10" fill="currentColor" opacity=".08"/>`;
+ s+=`<path d="M${ep} L${x(1)},${eBot} L${x(0)},${eBot}Z" fill="url(#eg)"/><path d="M${ep}" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/><line x1="${x(0)}" x2="${x(1)}" y1="${eBot}" y2="${eBot}" stroke="currentColor" opacity=".2"/>`;
+ s+=`<text x="${x(.475)}" y="18" text-anchor="middle" font-size="${fs}" font-weight="700" fill="currentColor">Montgomery Pass 7,149′</text><circle cx="${x(.475)}" cy="${ey(7149)}" r="5.5" fill="#3e6ae1" stroke="var(--card)" stroke-width="1.5"/>`;
+ marks.forEach(([f,a,b],i)=>{const last=i===marks.length-1,cy=ey((elev.find(e=>e[0]===f)||[0,4000])[1]),anc=i===0?'start':last?'end':'middle';
+  s+=`<circle cx="${x(f)}" cy="${cy}" r="4.5" fill="var(--ink)"/><text x="${x(f)}" y="${last?cy-11:eBot+19}" text-anchor="${anc}" font-size="${fs}" font-weight="600" fill="currentColor" opacity=".8">${sm?a:b}</text>`});
+ s+=`<line x1="${x(0)}" x2="${x(1)}" y1="${by(20)}" y2="${by(20)}" stroke="#e82127" stroke-dasharray="4 4" opacity=".5"/>`;
+ s+=`<path d="M${bp} L${x(1)},${bBot} L${x(0)},${bBot}Z" fill="#22a35a" opacity=".13"/><path d="M${bp}" fill="none" stroke="#22a35a" stroke-width="3" stroke-linejoin="round"/>`;
+ [[.183,90],[.358,85],[.604,70],[.918,45]].forEach(([f,v])=>s+=`<text x="${x(f)}" y="${by(v)-8}" text-anchor="middle" font-size="${fs}" font-weight="700" fill="#22a35a">${v}%</text>`);
+ s+=`<text x="${x(.358)}" y="${by(25)+17}" text-anchor="middle" font-size="${fs}" font-weight="700" fill="#22a35a">25%</text>`;
+ const nw=where(Date.now());if(nw.state!=='before'&&nw.state!=='done'){const f=nw.d/total;s+=`<line x1="${x(f)}" x2="${x(f)}" y1="26" y2="${bBot}" stroke="#3e6ae1" stroke-width="3"/><text x="${x(f)}" y="${bBot+0}" font-size="12" font-weight="700" fill="#3e6ae1" text-anchor="middle" dy="-4">now</text>`}
+ chart.innerHTML=s;
+}
+const roChart=new ResizeObserver(drawChart);roChart.observe(chart);
+
+/* ---------- map ---------- */
+const map=$('map');
+const BB={n:39.78,s:33.86,w:-120.22,e:-117.2};const KX=Math.cos(37*rad),KY=.8;
+const MW=400,MH=Math.round(MW*((BB.n-BB.s)*KY)/((BB.e-BB.w)*KX));
+const mx=lon=>(lon-BB.w)/(BB.e-BB.w)*MW,my=lat=>(BB.n-lat)/(BB.n-BB.s)*MH;
+const pp=a=>a.map(p=>`${mx(p[1]).toFixed(1)},${my(p[0]).toFixed(1)}`).join(' L');
+const pins={
+ la:['West LA','8:00 AM','We start here, near sea level.'],
+ mojave:['Mojave','9:45 AM · lunch + charge','Lunch at The Workz. Look for the parked jumbo jets at the air and space port.'],
+ bishop:['Bishop','1:20 PM · charge + decide','Schat’s Bakkerÿ for snacks. Then we decide: bypass (default) or 395 over the summits.'],
+ pass:['Montgomery Pass','~2:45 PM · 7,149 ft','Highest point of the day. Nevada starts just before here.'],
+ mina:['Mina','~3:25 PM','A tiny desert town. This nav stop keeps us on the safe route.'],
+ hawthorne:['Hawthorne','4:00 PM · charge ~30 min','Watch for the bunker fields of the Army Depot.'],
+ walker:['Walker Lake','~4:45 PM · sunset','Leftover from a giant Ice Age lake. Home of Cecil the sea serpent.'],
+ yerington:['Yerington','~5:50 PM','Onto 95 Alternate through farm country.'],
+ fernley:['Fernley','~6:50 PM · quick top-up','Then I-80 west into Reno.'],
+ hawkshead:['Drop-off','~7:35 PM','We made it! Family drop-off.'],
+ legacy:['Silver Legacy','~8:05 PM · check in','Our hotel through Nov 27, a block from the Reno Arch.']};
+const sierra=[[35.0,-118.7],[35.3,-118.45],[35.8,-118.15],[36.3,-118.22],[36.7,-118.38],[37.2,-118.78],[37.6,-119.05],[38.1,-119.45],[38.6,-119.85],[39.1,-120.12],[39.78,-120.22],[39.78,-120.22],[35.0,-120.22]];
+const white=[[37.10,-118.12],[37.35,-118.18],[37.60,-118.22],[37.85,-118.33],[37.95,-118.25],[37.70,-118.05],[37.30,-117.98],[37.05,-118.02]];
+const ell=(lat,lon,rx,ry,extra='')=>`<ellipse cx="${mx(lon)}" cy="${my(lat)}" rx="${rx}" ry="${ry}" ${extra}/>`;
+let mapBase='';
+function buildMap(){
+ map.setAttribute('viewBox',`0 0 ${MW} ${MH}`);
+ const stateLine=[[39.78,-120.0],[39.0,-120.0],[37.29,-117.7],[36.9,-117.17]];
+ const tri=(lat,lon,s)=>{const X=mx(lon),Y=my(lat);return `M${X-s},${Y+s*.8} L${X},${Y-s} L${X+s},${Y+s*.8}Z`};
+ let s=`<defs><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="7" stroke="var(--mapink)" stroke-width="1" opacity=".18"/></pattern></defs>`;
+ s+=`<rect width="${MW}" height="${MH}" fill="var(--map)"/>`;
+ s+=`<path d="M${pp(sierra)}Z" fill="var(--relief)"/><path d="M${pp(sierra)}Z" fill="url(#hatch)"/>`;
+ s+=`<path d="M${pp(white)}Z" fill="var(--relief)"/>`;
+ [[36.58,-118.29,'Mt. Whitney 14,505′','end'],[37.85,-118.35,'Boundary Peak 13,140′','start']].forEach(([a,b,l,anc])=>{s+=`<path d="${tri(a,b,7)}" fill="var(--mapink)"/><path d="${tri(a,b,3)}" transform="translate(0,-3)" fill="var(--map)"/><text x="${mx(b)+(anc==='end'?-10:10)}" y="${my(a)+4}" text-anchor="${anc}" font-size="11" font-weight="700" fill="var(--mapink)">${l}</text>`});
+ s+=`<text x="${mx(-119.75)}" y="${my(37.0)}" font-size="13" font-weight="700" fill="var(--mapink)" opacity=".55" transform="rotate(-62 ${mx(-119.75)} ${my(37.0)})" letter-spacing="3">SIERRA NEVADA</text>`;
+ s+=ell(39.09,-120.04,7,13,'fill="var(--lake)" opacity=".7"')+ell(38.01,-119.01,6,4,'fill="var(--lake)" opacity=".6"')+`<path d="M${pp([[38.83,-118.75],[38.75,-118.70],[38.62,-118.69],[38.60,-118.74],[38.70,-118.80],[38.82,-118.79]])}Z" fill="var(--lake)" opacity=".75"/>`+ell(36.42,-117.94,7,8,'fill="none" stroke="var(--lake)" stroke-dasharray="2 3" opacity=".8"');
+ s+=`<text x="${mx(-117.86)}" y="${my(36.42)+4}" font-size="10.5" font-weight="700" fill="var(--lakeink)">Owens L. (dry)</text><text x="${mx(-118.98)}" y="${my(38.08)}" font-size="10.5" font-weight="700" fill="var(--lakeink)">Mono L.</text><text x="${mx(-120.0)}" y="${my(39.22)}" font-size="10.5" font-weight="700" fill="var(--lakeink)">Tahoe</text>`;
+ s+=`<path d="M${pp(stateLine)}" fill="none" stroke="var(--mapink)" stroke-width="1.5" stroke-dasharray="7 5" opacity=".6"/>`;
+ s+=`<text x="${mx(-119.15)}" y="${my(36.15)}" font-size="15" font-weight="700" fill="var(--mapink)" opacity=".45" letter-spacing="4">CALIFORNIA</text><text x="${mx(-118.55)}" y="${my(39.25)}" font-size="15" font-weight="700" fill="var(--mapink)" opacity=".45" letter-spacing="4">NEVADA</text>`;
+ s+=`<path d="M${pp(ALT)}" fill="none" stroke="var(--mapink)" stroke-width="2.5" stroke-dasharray="5 5" opacity=".7" stroke-linecap="round"/>`;
+ s+=`<text x="${mx(-119.35)}" y="${my(38.42)}" font-size="10.5" font-weight="700" fill="var(--mapink)" text-anchor="end">395 summits</text>`;
+ s+=`<path d="M${pp(P)}" fill="none" stroke="#1d3f9e" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" opacity=".55"/><path d="M${pp(P)}" fill="none" stroke="#3e6ae1" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>`;
+ const lab={la:['end',-12,4],mojave:['end',-12,4],bishop:['end',-12,4],pass:['start',12,4],mina:['start',12,4],hawthorne:['end',-12,16],walker:['start',12,4],yerington:['end',-12,4],fernley:['start',12,4],hawkshead:['start',12,14],legacy:['middle',0,-14]};
+ P.forEach(p=>{if(!p[2])return;const k=p[2],X=mx(p[1]),Y=my(p[0]),[anc,dx,dy]=lab[k],big=['mojave','bishop','hawthorne','fernley'].includes(k);
+  s+=`<g class="pin" data-k="${k}" tabindex="0" role="button" aria-label="${esc(pins[k][0])}"><circle cx="${X}" cy="${Y}" r="16" fill="transparent"/><circle cx="${X}" cy="${Y}" r="${big?7.5:6}" fill="${big?'#e82127':'var(--card)'}" stroke="${big?'#fff':'var(--ink)'}" stroke-width="${big?2.5:2.2}"/><text x="${X+dx}" y="${Y+dy}" text-anchor="${anc}" font-size="13" font-weight="700" fill="var(--ink)" paint-order="stroke" stroke="var(--map)" stroke-width="4">${esc(pins[k][0])}</text></g>`});
+ mapBase=s;drawMapCar();
+}
+function drawMapCar(){
+ if(!mapBase)return;const w=where(Date.now());const pt=window.__liveFix||pointAt(w.d),X=mx(pt[1]),Y=my(pt[0]);
+ const label=window.__liveFix?'You':w.state==='before'?'Sun 8 AM':w.state==='done'?'Arrived':'Planned spot';
+ map.innerHTML=mapBase+`<g transform="translate(${X},${Y})"><circle r="18" fill="#3e6ae1" opacity=".22"><animate attributeName="r" values="12;21;12" dur="2s" repeatCount="indefinite"/></circle><circle r="11" fill="#3e6ae1" stroke="#fff" stroke-width="2.5"/><path d="M0 -6 L5 5 L0 2.5 L-5 5Z" fill="#fff"/><text x="16" y="-12" font-size="12" font-weight="700" fill="#fff" paint-order="stroke" stroke="#3e6ae1" stroke-width="7" stroke-linejoin="round">${label}</text></g>`;
+}
+map.addEventListener('click',e=>{const g=e.target.closest('.pin');if(g)showPin(g.dataset.k)});
+map.addEventListener('keydown',e=>{const g=e.target.closest('.pin');if(g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showPin(g.dataset.k)}});
+function showPin(k){const [n,t,d]=pins[k],c=$('mapcard');c.innerHTML=`<div class="t" style="font-size:16px">${esc(t)}</div><div class="name" style="margin-top:4px">${esc(n)}</div><div class="note">${esc(d)}</div>`;c.classList.remove('on');void c.offsetWidth;c.classList.add('on');c.scrollIntoView({behavior:'smooth',block:'nearest'})}
+buildMap();
+
+/* ---------- checklists ---------- */
+const load=k=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(_){return[]}};
+const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}};
+const tick='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function checklist(el,key,items,onchg){
+ const on=new Set(load(key));
+ el.innerHTML=items.map((it,i)=>{const [w,h,p]=Array.isArray(it)?it:['',it,''];return `<button class="spot" data-i="${i}" aria-pressed="${on.has(i)}"><span class="box">${tick}</span><span>${w?`<span class="w">${esc(w)}</span>`:''}<span class="h">${esc(h)}</span>${p?`<span class="p">${esc(p)}</span>`:''}</span></button>`}).join('');
+ el.addEventListener('click',e=>{const b=e.target.closest('.spot');if(!b)return;const i=+b.dataset.i,was=on.size;on.has(i)?on.delete(i):on.add(i);save(key,[...on]);b.setAttribute('aria-pressed',on.has(i));onchg&&onchg(on.size,was)});
+ onchg&&onchg(on.size,on.size);
+}
+function drawSpots(){const g=[['both','Every route: LA to Bishop'],['bypass','The bypass: Bishop to Reno'],['r395','Full 395: Bishop to Reno']];
+ $('spots').innerHTML=g.map(([r,h])=>`<h3 class="sh">${h}</h3>`+SIGHTS.filter(s=>s.r===r).map(s=>`<div class="spot ro"><span class="ic">${s.side.startsWith('LEFT')?'◀':s.side.startsWith('RIGHT')?'▶':'●'}</span><span><span class="w">${esc(s.side)}</span><span class="h">${esc(s.t)}</span><span class="p">${esc(s.l)}</span></span></div>`).join('')).join('')}
+checklist($('prep'),'trt26-prep',['Charge to 90% at home, precondition the battery','Check tire pressures','Chains in the car','Offline maps downloaded: Bishop → Reno','Check QuickMap + nvroads.com Saturday night and Sunday morning','Test mode run-through (hold the GPS chip 3 seconds)','Water, snacks and warm layers','Phone chargers and car games']);
+
+/* plates */
+const ST='AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC'.split(' ');
+let pl=new Set(load('trt26-plates'));
+function drawPlates(){$('plates').innerHTML=ST.map(s=>`<button class="plate" data-s="${s}" aria-pressed="${pl.has(s)}">${s}</button>`).join('');$('pcount').textContent=`${pl.size} state${pl.size===1?'':'s'}`;$('pbar').style.width=pl.size/ST.length*100+'%'}
+$('plates').addEventListener('click',e=>{const b=e.target.closest('.plate');if(!b)return;const s=b.dataset.s;pl.has(s)?pl.delete(s):pl.add(s);save('trt26-plates',[...pl]);b.setAttribute('aria-pressed',pl.has(s));$('pcount').textContent=`${pl.size} state${pl.size===1?'':'s'}`;$('pbar').style.width=pl.size/ST.length*100+'%'});
+let armed=false;$('preset').addEventListener('click',e=>{if(!armed){armed=true;e.target.textContent='Tap again to clear all states';setTimeout(()=>{armed=false;e.target.textContent='Start the plate game over'},3000);return}pl=new Set();save('trt26-plates',[]);drawPlates();armed=false;e.target.textContent='Start the plate game over'});
+drawPlates();
+
+/* ---------- nav ---------- */
+const gm=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q),am=q=>'https://maps.apple.com/?daddr='+encodeURIComponent(q)+'&dirflg=d';
+let nav=[];
+function drawNav(){const B=BISHOP[bishopKey()];
+ nav=[['Tesla Supercharger, 16862 CA-14, Mojave, CA 93501','At The Workz · lunch · charge 50% → 90%',0,'16862 CA-14, Mojave, CA 93501'],
+ [B.addr,'Charge 25% → 85% · decision point',0,B.q],
+ ['Mina, NV','Most important stop: forces US-6, keeps us off the 395 summits',1,'Mina, NV'],
+ ['Tesla Supercharger, 705 Hwy 362, Hawthorne, NV 89415','Golden Gate truck stop · charge 35% → 70% (~30 min)',0,'705 Hwy 362, Hawthorne, NV 89415'],
+ ['Yerington, NV','Forces 95 Alternate (skips the Fallon detour)',1,'Yerington, NV'],
+ ['Tesla Supercharger, 1330 Hwy 95A, Fernley, NV 89408','Top-up 25% → 45% · forces I-80, avoids Geiger Grade',1,'1330 Hwy 95A, Fernley, NV 89408'],
+ ['Family drop-off (south Reno)','Family drop-off · ~7:35 PM · use the address in your phone',0,'Damonte Ranch Pkwy, Reno, NV'],
+ ['Silver Legacy Resort Casino, 407 N Virginia St, Reno, NV 89501','Our hotel · check in ~8:05 PM',0,'407 N Virginia St, Reno, NV 89501']];
+ $('ns').innerHTML=nav.map(n=>`<li class="${n[2]?'k':''}"><div><b>${esc(n[0])}</b><em>${esc(n[1])}</em><div class="btns"><button class="btn o" data-copy="${esc(n[0])}">Copy</button><a class="btn o" href="${am(n[3])}">Apple</a><a class="btn o" href="${gm(n[3])}">Google</a></div></div></li>`).join('');
+ const pts=nav.map(n=>n[3]);
+ $('gmall').href='https://www.google.com/maps/dir/?api=1&travelmode=driving&destination='+encodeURIComponent(pts[pts.length-1])+'&waypoints='+encodeURIComponent(pts.slice(0,-1).join('|'))}
+async function copy(btn,text,label){try{await navigator.clipboard.writeText(text);btn.textContent='Copied!'}catch(_){btn.textContent='Copy didn’t work'}setTimeout(()=>btn.textContent=label,1700)}
+$('ns').addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(b)copy(b,b.dataset.copy,'Copy')});
+$('copyall').addEventListener('click',e=>copy(e.currentTarget,nav.map((n,i)=>`${i+1}. ${n[0]}`).join('\n'),'Copy all 8 stops'));
+
+
+/* ================= DRIVE SCREEN ================= */
+const D={};
+const LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(_){return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}};
+/* clock: real time, or the simulated clock in test mode */
+const NOW=()=>D.sim&&D.sim.on?D.sim.t:Date.now();
+const PICO=[34.04012,-118.42851];           /* kickoff: Pico Blvd & Westwood Blvd */
+const DROP=P[P.findIndex(p=>p[2]==='hawkshead')].slice(0,2);
+const LEGACY=[39.5303,-119.8137];
+const BISHOP={lot13:{pos:[37.36063,-118.396576],name:'Bishop · Lot 13',addr:'Tesla Supercharger, 151 S Warren St, Bishop, CA 93514',q:'151 S Warren St, Bishop, CA 93514',note:'12 stalls, on the route, near Schat’s'},
+ rockingw:{pos:[37.3772,-118.4227],name:'Bishop · Rocking W',addr:'Tesla Supercharger, 1335 Rocking W Dr, Bishop, CA 93514',q:'1335 Rocking W Dr, Bishop, CA 93514',note:'24 stalls, west edge of town'}};
+D.bishop=LS.get('trt26-bishop','auto');
+const bishopKey=()=>D.bishop==='auto'?(D.route==='395'?'rockingw':'lot13'):D.bishop;
+const CHARGE={mojave:{pos:[35.0687,-118.1741],arr:50,to:90,note:'Lunch at The Workz'},bishop:{arr:25,to:85,note:'Check QuickMap before you leave'},hawthorne:{pos:[38.5278,-118.6240],arr:35,to:70,note:'About 30 min (150 kW stalls)'},fernley:{pos:[39.6096,-119.2205],arr:25,to:45,note:'Quick top-up'}};
+const chPos=k=>k==='bishop'?BISHOP[bishopKey()].pos:CHARGE[k].pos;
+const NAMES={la:'West LA',mojave:'Mojave Supercharger',bishop:'Bishop Supercharger',pass:'Montgomery Pass',mina:'Mina',hawthorne:'Hawthorne Supercharger',walker:'Walker Lake',yerington:'Yerington',fernley:'Fernley Supercharger',hawkshead:'Family drop-off',legacy:'Silver Legacy',conway:'Conway Summit',carson:'Carson City'};
+const ALTK=[[37.36063,-118.396576,'bishop'],[37.3772,-118.4227],[37.4085,-118.5479],[37.5138,-118.5841],[37.5573,-118.6524],[37.5767,-118.7564],[37.6158,-118.8136],[37.6443,-118.9212],[37.7554,-118.9852],[37.8311,-119.0682],[37.9562,-119.1214],[38.0055,-119.1541],[38.0833,-119.1587],[38.0881,-119.1819,'conway'],[38.1813,-119.1966],[38.2119,-119.2313],[38.2553,-119.2232],[38.2576,-119.2708],[38.2841,-119.3021],[38.3460,-119.3266],[38.3450,-119.4526],[38.5120,-119.4500],[38.5420,-119.4986],[38.7333,-119.5573],[38.8419,-119.6367],[38.9559,-119.7793],[39.1646,-119.7664,'carson'],[39.2041,-119.7812],[39.2108,-119.8060],[39.3084,-119.8259],[39.3719,-119.7550],[DROP[0],DROP[1],'hawkshead'],[39.4731,-119.7907],[39.5189,-119.7810],[LEGACY[0],LEGACY[1],'legacy']];
+const bi=P.findIndex(p=>p[2]==='bishop');
+const ROUTES={
+ bypass:{key:'bypass',pts:P,miles:550,sched:sched,cues:[
+  [34.36,-118.50,'Take CA-14 north (Antelope Valley Fwy) toward Palmdale / Lancaster.'],
+  [35.77,-117.88,'CA-14 ends. Continue north on US-395 toward Bishop.'],
+  [37.372,-118.395,'North end of Bishop: EXIT RIGHT onto US-6 east toward Tonopah. Do not keep left on 395.'],
+  [38.0026,-118.2807,'At Basalt: turn LEFT onto NV-360 north toward Hawthorne.'],
+  [38.3878,-118.1072,'End of NV-360: turn LEFT onto US-95 north toward Mina / Hawthorne.'],
+  [38.9556,-118.8291,'Schurz: turn LEFT onto US-95 Alt west toward Yerington.'],
+  [39.4162,-119.2247,'Silver Springs: cross US-50. Stay on 95 Alt north to Fernley.'],
+  [39.6096,-119.2205,'Fernley: I-80 WEST toward Reno.'],
+  [39.5306,-119.7870,'Reno: take I-580 SOUTH toward Carson City.'],
+  [39.4600,-119.7800,'Follow the nav for the last few miles.']]},
+ r395:{key:'r395',pts:P.slice(0,bi).concat(ALTK),miles:465,sched:Object.assign({},{la:sched.la,mojave:sched.mojave,bishop:sched.bishop},{conway:[T(15,20),T(15,20)],carson:[T(17,10),T(17,10)],hawkshead:[T(17,45),T(17,55)],legacy:[T(18,15),T(18,15)]}),cues:[
+  [34.36,-118.50,'Take CA-14 north (Antelope Valley Fwy) toward Palmdale / Lancaster.'],
+  [35.77,-117.88,'CA-14 ends. Continue north on US-395 toward Bishop.'],
+  [37.372,-118.40,'North end of Bishop: KEEP LEFT on US-395 north toward Mammoth / Reno.'],
+  [37.70,-118.98,'Deadman Summit, about 8,000 ft. Watch for ice in the shade.'],
+  [38.0833,-119.1587,'Conway Summit, about 8,100 ft. Then downhill to Bridgeport.'],
+  [38.69,-119.52,'Nevada line at Topaz. Stay on US-395 through Minden and Carson City.'],
+  [39.1646,-119.7664,'Carson City: I-580 NORTH toward Reno. Windy in Washoe Valley.'],
+  [39.3719,-119.7550,'Follow the nav for the last few miles.']]}
+};
+const mpd=(a,b)=>{const x=(b[1]-a[1])*Math.cos((a[0]+b[0])/2*rad)*69.17,y=(b[0]-a[0])*69.17;return Math.hypot(x,y)};
+function prep(r){
+ r.cum=[0];for(let i=1;i<r.pts.length;i++)r.cum.push(r.cum[i-1]+mpd(r.pts[i-1],r.pts[i]));
+ r.keys=r.pts.map((p,i)=>[p[2],i]).filter(k=>k[0]&&r.sched[k[0]]);
+ const hi=r.pts.findIndex(p=>p[2]==='hawkshead');r.scale=r.miles/r.cum[hi];r.endAlong=r.cum[hi];
+ r.cueA=r.cues.map((c,i)=>({a:project(r,[c[0],c[1]],null).a,t:c[2],id:(r.key==='bypass'?'b':'r')+i}));
+}
+function project(r,pt,hint){
+ let best={d:1e9,a:0};
+ for(let i=1;i<r.pts.length;i++){
+  const A=r.pts[i-1],B=r.pts[i],k=Math.cos(pt[0]*rad)*69.17;
+  const bx=(B[1]-A[1])*k,by=(B[0]-A[0])*69.17,px=(pt[1]-A[1])*k,py=(pt[0]-A[0])*69.17;
+  const L2=bx*bx+by*by||1e-9;let t=(px*bx+py*by)/L2;t=Math.max(0,Math.min(1,t));
+  const d=Math.hypot(px-t*bx,py-t*by),a=r.cum[i-1]+t*(r.cum[i]-r.cum[i-1]);
+  if(hint!=null&&(a<hint-4||a>hint+80))continue;
+  if(d<best.d)best={d,a};
+ }
+ if(hint!=null&&best.d>15)return project(r,pt,null);
+ return best;
+}
+prep(ROUTES.bypass);prep(ROUTES.r395);
+D.route=LS.get('trt26-route','bypass');D.theme=LS.get('trt26-theme','auto');D.offset=LS.get('trt26-offset',0);
+const R_=()=>D.route==='395'?ROUTES.r395:ROUTES.bypass;
+/* theme: Auto follows the clock (sunset in Reno is about 4:40 PM) */
+function applyTheme(){const d=new Date(NOW()),h=d.getHours()+d.getMinutes()/60;const night=D.theme==='night'||(D.theme==='auto'&&(h>=16.67||h<6.6));
+ document.documentElement.setAttribute('data-theme',night?'dark':'light');
+ document.querySelectorAll('[data-th]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.th===D.theme));}
+document.querySelectorAll('[data-th]').forEach(b=>b.addEventListener('click',()=>{D.theme=b.dataset.th;LS.set('trt26-theme',D.theme);applyTheme();wake()}));
+document.querySelectorAll('[data-rt]').forEach(b=>b.addEventListener('click',()=>{D.route=b.dataset.rt;LS.set('trt26-route',D.route);D.lastA=null;drawBishop();dtick()}));
+function planAlong(r,t){
+ const ks=r.keys;if(t<=r.sched.la[1])return{a:0,state:'before'};
+ for(let k=0;k<ks.length;k++){const [key,i]=ks[k],[ar,dp]=r.sched[key];
+  if(t>=ar&&t<=dp)return{a:r.cum[i],state:'at',at:key};
+  const nx=ks[k+1];if(!nx)break;const na=r.sched[nx[0]][0];
+  if(t>dp&&t<na)return{a:r.cum[i]+(t-dp)/(na-dp)*(r.cum[nx[1]]-r.cum[i]),state:'moving'}}
+ return{a:r.cum[r.pts.length-1],state:'done'};
+}
+/* time at which the plan reaches road position a (for test-mode jumps) */
+function timeAt(r,a){let lo=r.sched.la[1],hi=r.sched.legacy[0];for(let j=0;j<40;j++){const m=(lo+hi)/2;if(planAlong(r,m).a<a)lo=m;else hi=m}return Math.round(hi)}
+function pointAlongR(r,a){for(let i=1;i<r.pts.length;i++){if(a<=r.cum[i]){const f=(a-r.cum[i-1])/((r.cum[i]-r.cum[i-1])||1);return[r.pts[i-1][0]+f*(r.pts[i][0]-r.pts[i-1][0]),r.pts[i-1][1]+f*(r.pts[i][1]-r.pts[i-1][1])]}}return r.pts[r.pts.length-1].slice(0,2)}
+/* GPS */
+D.fix=null;D.gps='off';D.stillSince=null;D.lastFast=0;
+function takeFix(lat,lon,acc,spdIn,alt,t){const prev=D.fix;D.fix={lat,lon,acc,alt,t};
+ let spd=spdIn;if((spd==null||isNaN(spd))&&prev){const dt=(t-prev.t)/1000;spd=dt>0?mpd([prev.lat,prev.lon],[lat,lon])*1609/dt:null}
+ D.fix.spd2=spd;if(spd!=null&&spd<1.5){D.stillSince=D.stillSince||t}else D.stillSince=null;
+ if(spd!=null&&spd*2.237>55)D.lastFast=t;
+ D.gps=acc<=300?'live':'weak';window.__liveFix=[lat,lon]}
+function onFix(p){const c=p.coords;
+ if(D.sim&&D.sim.on){if(c.speed!=null&&c.speed*2.237>20){exitTest('Real driving detected, test mode is off.')}else return}
+ takeFix(c.latitude,c.longitude,c.accuracy,c.speed,c.altitude,Date.now());
+ if(!D.origin&&isTripDay())D.origin=[c.latitude,c.longitude];
+ dtick();if(typeof drawMapCar==='function')drawMapCar()}
+function onErr(){if(!(D.sim&&D.sim.on)){D.gps='off';dtick()}}
+try{if(navigator.geolocation)navigator.geolocation.watchPosition(onFix,onErr,{enableHighAccuracy:true,maximumAge:5000,timeout:30000})}catch(_){D.gps='off'}
+let lock=null;async function wake(){try{if('wakeLock' in navigator&&!lock){lock=await navigator.wakeLock.request('screen');lock.addEventListener('release',()=>lock=null)}}catch(_){}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){wake();dtick()}});
+document.addEventListener('click',wake,{once:true});
+$('dlate').addEventListener('click',()=>{D.offset+=15*6e4;LS.set('trt26-offset',D.offset);dtick()});
+$('dreset').addEventListener('click',()=>{D.offset=0;LS.set('trt26-offset',0);dtick()});
+$('dhere').addEventListener('click',()=>{const r=R_(),now=NOW(),p=planAlong(r,now-D.offset);
+ const nk=r.keys.find(([k,i])=>r.cum[i]>p.a+0.01&&(CHARGE[k]||k==='hawkshead'||k==='legacy'));
+ if(nk){D.offset=now-r.sched[nk[0]][0];LS.set('trt26-offset',D.offset);}dtick()});
+const sunset=T(16,40);
+const isTripDay=()=>{const d=new Date(NOW());return d.getFullYear()===2026&&d.getMonth()===10&&d.getDate()===22};
+function hm(ms){const d=new Date(ms);let h=d.getHours(),m=d.getMinutes();const ap=h>=12?'PM':'AM';h=h%12||12;return [`${h}:${String(m).padStart(2,'0')}`,ap]}
+function mins(ms){const m=Math.max(0,Math.round(ms/6e4)),h=Math.floor(m/60);return h?`${h}h ${String(m%60).padStart(2,'0')}m`:`${m} min`}
+
+/* ---------- sights along both routes (informational) ---------- */
+const SIGHTS=[
+ {k:'cascades',lat:34.3255,lon:-118.4986,side:'RIGHT side',t:'LA Aqueduct Cascades',l:'Where LA’s water arrives from the Owens Valley',r:'both',s5:1},
+ {k:'split',lat:34.3350,lon:-118.5083,side:'All around',t:'The 5 / 14 interchange',l:'Fell down in the 1971 and 1994 earthquakes',r:'both'},
+ {k:'placerita',lat:34.3790,lon:-118.4870,side:'RIGHT side',t:'Placerita Canyon',l:'California’s first gold, 1842',r:'both'},
+ {k:'vasquez',lat:34.4880,lon:-118.3200,side:'LEFT side',t:'Vasquez Rocks',l:'Captain Kirk fought an alien here',r:'both',s5:1},
+ {k:'sanandreas',lat:34.5410,lon:-118.1230,side:'RIGHT side',t:'San Andreas Fault',l:'Rock layers bent by the fault. We cross it here.',r:'both',s5:1},
+ {k:'windfarm',lat:34.9800,lon:-118.1700,side:'LEFT side',t:'Tehachapi wind farm',l:'More than 4,700 wind turbines',r:'both'},
+ {k:'boneyard',lat:35.0450,lon:-118.1650,side:'RIGHT side',t:'Mojave Air & Space Port',l:'Parked jumbo jets. First private spaceflight, 2004.',r:'both',s5:1},
+ {k:'redrock',lat:35.3600,lon:-117.9900,side:'BOTH sides',t:'Red Rock Canyon',l:'150+ movies, including Jurassic Park',r:'both',s5:1},
+ {k:'redhill',lat:35.9950,lon:-117.9150,side:'RIGHT side',t:'Red Hill volcano',l:'The road cuts through a cinder cone',r:'both',s5:1},
+ {k:'owens',lat:36.4000,lon:-117.9900,side:'RIGHT side',t:'Owens Lake',l:'Dried up after its water went to LA',r:'both'},
+ {k:'alabama',lat:36.5850,lon:-118.0650,side:'LEFT side',t:'Alabama Hills',l:'Tremors, Gladiator, Iron Man',r:'both',s5:1},
+ {k:'whitney',lat:36.6300,lon:-118.0800,side:'LEFT side, look high',t:'Mt. Whitney',l:'Tallest in the lower 48, 14,505 ft',r:'both'},
+ {k:'manzanar',lat:36.7280,lon:-118.1540,side:'LEFT side',t:'Manzanar',l:'WWII camp where Japanese Americans were held',r:'both'},
+ {k:'williamson',lat:36.8000,lon:-118.2000,side:'LEFT side',t:'Mt. Williamson',l:'California’s 2nd highest, 14,379 ft',r:'both'},
+ {k:'palisade',lat:37.1600,lon:-118.2900,side:'LEFT side, look high',t:'Palisade Glacier',l:'Southernmost glacier in the US',r:'both'},
+ {k:'laws',lat:37.4005,lon:-118.3460,side:'RIGHT side',t:'Laws Railroad Museum',l:'Home of the Slim Princess train',r:'bypass'},
+ {k:'petro',lat:37.5550,lon:-118.3600,side:'LEFT side',t:'Chalfant petroglyphs',l:'Ancient rock carvings on the low cliffs',r:'bypass'},
+ {k:'nvsign',side:'At the state line',t:'“Welcome to Nevada” sign',l:'Count down and cheer!',r:'both',stateline:true,s5:1},
+ {k:'boundary',lat:37.9000,lon:-118.4200,side:'RIGHT side',t:'Boundary Peak',l:'Nevada’s highest mountain, about 13,140 ft',r:'bypass'},
+ {k:'bunkers',lat:38.5000,lon:-118.5000,side:'BOTH sides',t:'Hawthorne Army Depot',l:'About 2,400 bunkers on 226 square miles',r:'bypass',s5:1},
+ {k:'walker',lat:38.6800,lon:-118.7700,side:'RIGHT side',t:'Walker Lake',l:'Home of Cecil the sea serpent',r:'bypass',s5:1},
+ {k:'schurz',lat:38.9500,lon:-118.8200,side:'Here',t:'Schurz',l:'Walker River Paiute Reservation',r:'bypass'},
+ {k:'churchill',lat:39.2924,lon:-119.2600,side:'LEFT side',t:'Fort Churchill',l:'Built in 1860 to guard the Pony Express',r:'bypass'},
+ {k:'giga',lat:39.5650,lon:-119.4700,side:'LEFT side',t:'Tesla Gigafactory',l:'One of the biggest buildings in the world',r:'bypass'},
+ {k:'sherwin',lat:37.4900,lon:-118.6000,side:'BOTH sides',t:'Sherwin Grade',l:'Pink rock from a supervolcano',r:'r395'},
+ {k:'caldera',lat:37.6443,lon:-118.9212,side:'All around',t:'Long Valley Caldera',l:'Inside a giant crater',r:'r395'},
+ {k:'monocraters',lat:37.8500,lon:-119.0600,side:'RIGHT side',t:'Mono Craters',l:'Youngest volcanoes in North America',r:'r395'},
+ {k:'mono',lat:37.9900,lon:-119.1300,side:'RIGHT side',t:'Mono Lake',l:'Almost 3× saltier than the ocean',r:'r395',s5:1},
+ {k:'bodie',lat:38.2150,lon:-119.2260,side:'RIGHT side',t:'Road to Bodie',l:'Biggest unrestored ghost town in America',r:'r395'},
+ {k:'genoa',lat:39.0000,lon:-119.7900,side:'LEFT side',t:'Genoa',l:'Nevada’s first town, 1851',r:'r395'},
+ {k:'capitol',lat:39.1642,lon:-119.7664,side:'Here',t:'Carson City',l:'The capitol dome was once red',r:'r395'}];
+const nvSide=(lat,lon)=>lat-(39-(lon+120)*0.745)>0;
+function lineAlong(r){for(let i=1;i<r.pts.length;i++){const A=r.pts[i-1],B=r.pts[i];if(nvSide(A[0],A[1])!==nvSide(B[0],B[1])){let lo=0,hi=1;for(let j=0;j<30;j++){const m=(lo+hi)/2,la=A[0]+m*(B[0]-A[0]),lo2=A[1]+m*(B[1]-A[1]);if(nvSide(la,lo2)===nvSide(A[0],A[1]))lo=m;else hi=m}return r.cum[i-1]+lo*(r.cum[i]-r.cum[i-1])}}return null}
+for(const key of ['bypass','r395']){const r=ROUTES[key];r.lineA=lineAlong(r);
+ r.sights=SIGHTS.filter(s=>s.r==='both'||s.r===key).map(s=>({...s,a:s.stateline?r.lineA:project(r,[s.lat,s.lon],null).a})).filter(s=>s.a!=null).sort((x,y)=>x.a-y.a);
+ r.bentonA=key==='bypass'?project(r,[37.82,-118.48],null).a:null;
+ const topA=key==='bypass'?r.cum[P.findIndex(p=>p[2]==='pass')]:project(r,[38.0881,-119.1819],null).a;r.topA=topA;
+ r.miles_=[{k:'nv',a:r.lineA,t:'Welcome to Nevada!',l:'Same time zone: still Pacific.',v:'m_nv'},{k:'half',a:r.endAlong/2,t:'Halfway there!',l:'About '+Math.round(r.endAlong/2*r.scale)+' miles to go.',v:'m_half'},
+  key==='bypass'?{k:'top',a:topA,t:'Montgomery Pass · 7,149 ft',l:'Highest point of the day. All downhill from here.',v:'m_top'}:{k:'top',a:topA,t:'Conway Summit · 8,143 ft',l:'The highest point on all of US-395.',v:'m_top395'}];}
+D.mile=LS.get('trt26-mile',{});D.prevA=null;
+
+/* ---------- weather: NWS alerts + Open-Meteo forecasts (saved while there is signal) ---------- */
+D.wx=LS.get('trt26-wx',null);D.wxAt=0;
+async function fetchWx(lat,lon){if(Date.now()-D.wxAt<15*6e4||(D.sim&&D.sim.on))return;D.wxAt=Date.now();
+ try{const res=await fetch(`https://api.weather.gov/alerts/active?point=${lat.toFixed(3)},${lon.toFixed(3)}`);if(!res.ok)return;
+  const j=await res.json();const order=['Extreme','Severe','Moderate','Minor','Unknown'];
+  const f=(j.features||[]).map(x=>x.properties).filter(p=>p&&p.status==='Actual'&&p.messageType!=='Cancel').sort((a,b)=>order.indexOf(a.severity)-order.indexOf(b.severity))[0];
+  D.wx=f?{event:f.event,ends:f.ends||f.expires,area:(f.areaDesc||'').split(';')[0],t:Date.now()}:{event:null,t:Date.now()};LS.set('trt26-wx',D.wx);dtick()}catch(_){}}
+const WMO=c=>c===0?'Clear':c<=1?'Mostly clear':c===2?'Partly cloudy':c===3?'Cloudy':c===45||c===48?'Fog':c>=51&&c<=55?'Drizzle':c===56||c===57?'Freezing drizzle':c>=61&&c<=65?'Rain':c===66||c===67?'Freezing rain':c>=71&&c<=77?'Snow':c>=80&&c<=82?'Showers':c===85||c===86?'Snow showers':c>=95?'Thunderstorms':'—';
+const WXPTS=[['mojave',35.0687,-118.1741],['redrock',35.37,-117.99],['lonepine',36.61,-118.06],['bishop',37.36,-118.40],['pass',37.9736,-118.3267],['hawthorne',38.5278,-118.6240],['yerington',38.99,-119.16],['fernley',39.6096,-119.2205],['reno',DROP[0],DROP[1]],['conway',38.0881,-119.1819],['carson',39.16,-119.77]];
+const WXNAME={mojave:'Mojave',redrock:'Red Rock Canyon',lonepine:'Lone Pine',bishop:'Bishop',pass:'Montgomery Pass',hawthorne:'Hawthorne',yerington:'Yerington',fernley:'Fernley',reno:'Reno',conway:'Conway Summit (395)',carson:'Carson City (395)'};
+const WXTIME={mojave:sched.mojave[0],redrock:T(10,55),lonepine:T(12,15),bishop:sched.bishop[0],pass:sched.pass[0],hawthorne:sched.hawthorne[0],yerington:sched.yerington[0],fernley:sched.fernley[0],reno:sched.hawkshead[0],conway:T(15,20),carson:T(17,10)};
+D.om=LS.get('trt26-om',null);D.omAt=0;
+async function fetchOM(force){if(!force&&Date.now()-D.omAt<30*6e4)return;D.omAt=Date.now();
+ try{const la=WXPTS.map(x=>x[1]).join(','),lo=WXPTS.map(x=>x[2]).join(',');
+  const u=`https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}&hourly=temperature_2m,precipitation_probability,snowfall,weather_code,wind_gusts_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FLos_Angeles&forecast_days=3`;
+  const res=await fetch(u);if(!res.ok)return;let j=await res.json();if(!Array.isArray(j))j=[j];
+  const pts={};j.forEach((d,i)=>{const h=d.hourly;pts[WXPTS[i][0]]={t:h.time,T:h.temperature_2m,pp:h.precipitation_probability,sn:h.snowfall,wc:h.weather_code,g:h.wind_gusts_10m}});
+  D.om={at:Date.now(),pts};LS.set('trt26-om',D.om);renderRouteWx();dtick()}catch(_){}}
+function omAt(k,ms){if(D.mock&&D.mock.snow&&['pass','conway','bishop','hawthorne'].includes(k))return{T:29,pp:80,sn:0.4,wc:73,g:20,txt:'Snow',snow:true,ice:false,wind:false};
+ const p=D.om&&D.om.pts&&D.om.pts[k];if(!p)return null;const d=new Date(ms);const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}T${String(d.getHours()).padStart(2,'0')}:00`;const i=p.t.indexOf(key);if(i<0)return null;
+ const r={T:Math.round(p.T[i]),pp:p.pp[i]||0,sn:p.sn[i]||0,wc:p.wc[i],g:Math.round(p.g[i]||0)};r.txt=WMO(r.wc);r.snow=r.sn>=0.01||[71,73,75,77,85,86].includes(r.wc);r.ice=!r.snow&&r.T<=34&&r.pp>=40;r.wind=r.g>=45;return r}
+const asOf=at=>{const age=Date.now()-at;return age>20*6e4?` · as of ${hm(at).join(' ')}`:''};
+D.cc=LS.get('trt26-cc',null);D.ccAt=0;
+async function fetchCC(){if(Date.now()-D.ccAt<10*6e4||(D.sim&&D.sim.on))return;D.ccAt=Date.now();
+ try{const res=await fetch('https://cwwp2.dot.ca.gov/data/d9/cc/ccStatusD09.json');if(!res.ok)return;const j=await res.json();
+  const list=(j.data||[]).map(x=>x.cc).filter(c=>c&&String(c.inService)==='true').map(c=>{const parts=String(c.index||'').split('-');const st=c.statusData&&c.statusData.status||'';return{route:parts[2],county:parts[1],st,loc:(c.location&&c.location.locationName)||''}}).filter(c=>/^R-[1-3]$|CLOS|R3/i.test(c.st)&&['6','14','395'].includes(c.route));
+  D.cc={at:Date.now(),list};LS.set('trt26-cc',D.cc);dtick()}catch(_){}}
+function renderRouteWx(){const el=document.getElementById('routewx');if(!el)return;
+ if(!D.om){el.innerHTML='<p class="lead" style="margin:0">Live forecasts load in the GitHub version of the app. Inside Claude, outside data is blocked.</p>';return}
+ const rows=WXPTS.filter(x=>!['conway','carson'].includes(x[0])||D.route==='395').map(([k])=>{const w=omAt(k,WXTIME[k]+(D.offset||0));if(!w)return'';const [t,ap]=hm(WXTIME[k]+(D.offset||0));const flag=w.snow?'<b class="wxf s">Snow</b>':w.ice?'<b class="wxf i">Icy?</b>':w.wind?'<b class="wxf w">Windy</b>':'';
+  return `<li><span class="wt">${t} ${ap}</span><span class="wn">${WXNAME[k]}</span><span class="wv">${w.T}° · ${w.txt}${w.pp>=30?` · ${w.pp}%`:''}${w.wind?` · gusts ${w.g}`:''} ${flag}</span></li>`}).join('');
+ const [at,aap]=hm(D.om.at);el.innerHTML=`<ul class="rwx">${rows}</ul><p class="fine">Open-Meteo forecast for each stop at our planned time. Saved ${at} ${aap}, so it still shows in dead zones.</p>`}
+
+/* ---------- voice: Tesla Turkey (Music / Podcast / Off) ---------- */
+{const old=LS.get('trt26-voice',null);D.vmode=LS.get('trt26-vmode',old===true?'music':'off')}
+D.said={};
+const vbtn=$('dvoice');const VLAB={off:'Off',music:'Music',podcast:'Podcast'};
+function setVoiceBtn(){vbtn.setAttribute('aria-pressed',D.vmode!=='off');vbtn.dataset.mode=D.vmode;vbtn.lastElementChild.textContent=VLAB[D.vmode]}
+function setSession(){try{if(navigator.audioSession)navigator.audioSession.type=D.vmode==='off'?'auto':'ambient'}catch(_){}}
+const AU=new Audio();AU.preload='auto';let AQ=[],AB=false;
+function playNext(){if(!AQ.length){AB=false;return}AB=true;const k=AQ.shift();const src=(window.VOICE||{})[k];if(!src){playNext();return}AU.src=src;AU.play().catch(()=>{AB=false;AQ=[]})}
+AU.addEventListener('ended',playNext);AU.addEventListener('error',playNext);
+function play(ids){AQ.push(...ids);if(!AB)playNext()}
+/* crit = safety alerts that still chime in Podcast mode */
+function say(key,ids,crit){if(D.vmode==='off'||D.said[key]||document.visibilityState!=='visible')return;
+ if(D.vmode==='podcast'&&!crit)return;D.said[key]=NOW();play(D.vmode==='podcast'?['chime']:['chime',...ids])}
+vbtn.addEventListener('click',()=>{D.vmode=D.vmode==='off'?'music':D.vmode==='music'?'podcast':'off';LS.set('trt26-vmode',D.vmode);setVoiceBtn();setSession();AQ=[];
+ try{AU.pause()}catch(_){}AB=false;if(D.vmode==='music')play(['chime','v_music']);else if(D.vmode==='podcast')play(['chime','v_pod']);dtick()});
+setVoiceBtn();setSession();
+const CRIT=new Set(['w_off','w_395','w_fallon','w_geiger','w_wx','w_chain','w_snow','o_range']);
+
+/* ---------- before-you-roll checklist (on the Drive screen until you leave) ---------- */
+const GO=['Phone on the charger','Volume up','Voice mode set','Route picked (bypass or 395)','Supercharger stops in the Tesla nav'];
+D.go=new Set(LS.get('trt26-go',[]));
+function drawGo(){const el=$('dgo');el.innerHTML=`<div class="dlab">Before you roll</div>`+GO.map((g,i)=>`<button class="gi" data-i="${i}" aria-pressed="${D.go.has(i)}"><span class="box">${tick}</span>${esc(g)}</button>`).join('')}
+$('dgo').addEventListener('click',e=>{const b=e.target.closest('.gi');if(!b)return;const i=+b.dataset.i;D.go.has(i)?D.go.delete(i):D.go.add(i);LS.set('trt26-go',[...D.go]);b.setAttribute('aria-pressed',D.go.has(i));dtick()});
+drawGo();
+
+/* ---------- Bishop charger setting ---------- */
+function drawBishop(){document.querySelectorAll('[data-bc]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.bc===D.bishop));
+ const k=bishopKey(),el=$('bcnote');if(el)el.textContent=`${D.bishop==='auto'?'Auto picks ':''}${BISHOP[k].name}: ${BISHOP[k].note}.`;
+ if(typeof drawNav==='function')drawNav()}
+document.querySelectorAll('[data-bc]').forEach(b=>b.addEventListener('click',()=>{D.bishop=b.dataset.bc;LS.set('trt26-bishop',D.bishop);drawBishop();dtick()}));
+
+/* ---------- once-only moments ---------- */
+D.kick=LS.get('trt26-kick',0);D.close=LS.get('trt26-close',0);D.slowSince=null;
+
+function dtick(){
+ applyTheme();
+ const r=R_(),now=NOW(),sim=D.sim&&D.sim.on;
+ document.querySelectorAll('[data-rt]').forEach(b=>b.setAttribute('aria-pressed',(b.dataset.rt==='395')===(D.route==='395')));
+ const live=D.fix&&(now-D.fix.t<45000);
+ let a,state='moving',atKey=null,offRoute=0;
+ if(live){const pr=project(r,[D.fix.lat,D.fix.lon],D.lastA);a=pr.a;offRoute=pr.d;D.lastA=a;
+  const near=r.keys.find(([k])=>{const pos=CHARGE[k]?chPos(k):k==='hawkshead'?DROP:k==='legacy'?LEGACY:null;if(!pos)return false;return mpd([D.fix.lat,D.fix.lon],pos)<(k==='hawkshead'?2.2:0.5)});
+  if(near&&D.stillSince&&now-D.stillSince>45000){state='at';atKey=near[0]}
+  if(a<0.2&&!D.fix.spd2)state='before'}
+ else{const p=planAlong(r,now-D.offset);a=p.a;state=p.state;atKey=p.at||null}
+ if(D.prevA!=null&&a>D.prevA&&a-D.prevA<40)r.miles_.forEach(m=>{if(m.a!=null&&D.prevA<m.a&&a>=m.a&&!D.mile[D.route+m.k]){D.mile[D.route+m.k]=now;if(!sim)LS.set('trt26-mile',D.mile)}});
+ const prevA=D.prevA;D.prevA=a;
+ const elev=live&&D.fix.alt!=null?` · ${Math.round(D.fix.alt*3.281).toLocaleString()} ft`:'';
+ const chip=$('dgps');chip.className='chip '+(live?(D.gps==='live'?'live':'weak'):'');chip.lastElementChild.textContent=(sim?'Test':live?(D.gps==='live'?'GPS':'GPS weak'):'Plan')+elev;
+ const nx=r.keys.find(([k,i])=>r.cum[i]>a+0.6&&k!=='la')||r.keys[r.keys.length-1];
+ const nk=nx[0],nA=r.cum[nx[1]];
+ const prevK=[...r.keys].reverse().find(([k,i])=>r.cum[i]<=a+0.6)||r.keys[0];
+ const legMs=r.sched[nk][0]-r.sched[prevK[0]][1],legMi=(nA-r.cum[prevK[1]])*r.scale||1,planMph=Math.max(25,Math.min(75,legMi/(legMs/36e5)||60));
+ const gpsMph=live&&D.fix.spd2!=null?D.fix.spd2*2.237:null;
+ const mph=gpsMph&&gpsMph>20?(gpsMph*0.4+planMph*0.6):planMph;
+ const remMi=Math.max(0,(nA-a)*r.scale);
+ let eta;if(live)eta=now+remMi/planMph*36e5;else eta=r.sched[nk][0]+D.offset;
+ if(state==='before')eta=r.sched[nk][0]+D.offset;
+ const delay=state==='before'?D.offset:live?eta-r.sched[nk][0]:D.offset;
+ const renoEta=r.sched.hawkshead[0]+delay;
+ const showAt=state==='at'&&atKey;
+ const nameOf=k=>k==='bishop'?BISHOP[bishopKey()].name:NAMES[k];
+ $('dlab').textContent=state==='before'?'First stop':showAt?'You’re at · leave at':'Next stop';
+ $('dname').textContent=nameOf(showAt?atKey:nk);
+ if(showAt){const dwell=r.sched[atKey][1]-r.sched[atKey][0];const depAt=live?(D.atSince&&D.atKey===atKey?D.atSince:(D.atKey=atKey,D.atSince=now))+dwell:r.sched[atKey][1]+D.offset;
+  const [t,ap]=hm(depAt);$('deta').innerHTML=`${t}<small>${ap}</small>`;const left=depAt-now;
+  $('dmin').textContent=left>0?`in ${mins(left)}`:'now';$('dmi').textContent='to leave';}
+ else{if(!live||state!=='at'){D.atKey=null;D.atSince=null}
+  const [t,ap]=hm(eta);$('deta').innerHTML=`${t}<small>${ap}</small>`;$('dmin').textContent=state==='before'?'planned':mins(eta-now);$('dmi').textContent=state==='before'?'':`${Math.round(remMi)} mi`;}
+ const cue=r.cueA.find(c=>c.a>a+0.3);let cm=null;
+ if(cue){$('dcue').textContent=cue.t;cm=(cue.a-a)*r.scale;$('dcuemeta').textContent=state==='before'?'':showAt?'after you leave':cm<1?'now':`in ${Math.round(cm)} mi`}
+ else{$('dcue').textContent='Follow the nav.';$('dcuemeta').textContent=''}
+ if(cue&&state!=='before'&&state!=='at'){const n=Math.round(cm);if(cm<=5.5&&cm>1.5&&n>=2&&n<=5)say('c5'+cue.id,['in'+n,cue.id]);if(cm<=1.2)say('c1'+cue.id,[cue.id])}
+ /* cards: one at a time, by priority */
+ const C=[];const add=(p,cls,html,speak)=>C.push({p,cls,html,speak});
+ const STAT=[];D.seen=D.seen||{};const fresh=k=>{if(!D.seen[k])D.seen[k]=now;return now-D.seen[k]<18e4};
+ if(D.force&&now<D.force.until)add(D.force.p,D.force.cls,D.force.html,D.force.speak);
+ if(live&&offRoute>6)add(0.1,'bad',`Off the plan by about ${Math.round(offRoute)} mi. Check the nav.`,['w_off']);
+ if(live&&D.route!=='395'){const f=D.fix;const passedBishop=a>r.cum[bi]+1,beforeHaw=a<r.cum[P.findIndex(p=>p[2]==='hawthorne')];
+  if(passedBishop&&beforeHaw&&f.lat>37.42&&f.lat<38.15&&f.lon<-118.55)add(0,'bad','This is 395 toward Mammoth. Turn around for US-6, or switch the route to 395.',['w_395']);
+  if(f.lat>39.05&&f.lon>-118.95&&f.lon<-118.55&&f.lat<39.5)add(0,'bad','This is US-95 toward Fallon. 95 Alt at Schurz was the plan.',['w_fallon']);
+  if(f.lat>39.27&&f.lat<39.40&&f.lon>-119.68&&f.lon<-119.55&&mpd([f.lat,f.lon],DROP)>3.5)add(0,'bad','This heads to Geiger Grade. The plan is I-80 from Fernley.',['w_geiger'])}
+ if(D.wx&&D.wx.event&&now-D.wx.t<3*36e5){const until=D.wx.ends?` until ${hm(Date.parse(D.wx.ends)).join(' ')}`:'';STAT.unshift(D.wx.event);if(fresh('wx:'+D.wx.event+D.wx.area))add(1,'',`<small>Weather · ${esc(D.wx.area)}</small>${esc(D.wx.event)}${until}`,['w_wx'])}
+ const rn=c=>c.route==='6'?'US-6':c.route==='14'?'CA-14':'395';
+ if(D.cc&&D.cc.list&&now-D.cc.at<2*36e5){
+  const onRoute=D.cc.list.filter(c=>D.route==='395'||c.route!=='395'||c.county!=='MNO');
+  const decide=D.route!=='395'&&a>r.cum[bi]-30/r.scale&&a<r.cum[bi]+1?D.cc.list.filter(c=>c.route==='395'&&c.county==='MNO'):[];
+  onRoute.forEach(c=>{const k='cc:'+c.route+c.st+c.loc;STAT.push(`${c.st} chains on ${rn(c)}`);if(fresh(k))add(1.2,'',`<small>Caltrans chain control</small>${esc(c.st)} on ${rn(c)}${c.loc?' · '+esc(c.loc):''}`,['w_chain'])});
+  if(decide.length){const c=decide[0];add(2,'',`<small>For the Bishop decision</small>395 north: ${esc(c.st)}${c.loc?' · '+esc(c.loc):''}. Take the bypass.`)}}
+ {const ahead=r.keys.filter(([k,i])=>r.cum[i]>a-0.5).slice(0,3).map(([k])=>k==='hawkshead'?'reno':k).filter(k=>WXTIME[k]);
+  if(D.route==='395'&&a<r.cum[bi]+60)ahead.push('conway');
+  for(const k of ahead){const w=omAt(k,WXTIME[k]+delay);if(w&&(w.snow||w.ice)){const [t,ap]=hm(WXTIME[k]+delay);STAT.push(`${w.snow?'Snow':'Icy'} forecast at ${WXNAME[k]}`);if(fresh('sn:'+k+(w.snow?'s':'i')))add(1.5,'',`<small>Forecast · ${WXNAME[k]} ~${t} ${ap}</small>${w.snow?'Snow possible':'Freezing temps with precipitation'} · ${w.T}°F`,['w_snow']);break}}}
+ /* open range after dark */
+ if(state!=='before'&&now>sunset+10*6e4&&a>r.cum[bi]+20&&a<r.endAlong-15){if(fresh('range'))add(2.2,'','<small>After dark</small>Open range. Watch for cattle, deer and wild horses.',['o_range'])}
+ if(showAt&&atKey==='bishop')add(2,'',`<small>Before you leave Bishop</small>Check QuickMap. Few services for ~125 mi. Restroom stop?`,['i_bishop']);
+ else if(showAt&&CHARGE[atKey])add(4,'look',`<small>Charging</small>${esc(CHARGE[atKey].note||'Charge to '+CHARGE[atKey].to+'%')}`);
+ if(state==='moving'&&now<sunset&&sunset-now<15*6e4)add(2.5,'',`Sunset in ${Math.round((sunset-now)/6e4)} min. Headlights on.`,['i_sunset']);
+ if(r.bentonA!=null&&state!=='at'){const toB=(r.bentonA-a)*r.scale/mph*60;if(toB>0&&toB<=12)add(3,'','<small>Signal</small>Spotty for ~90 mi past Benton. Download podcasts now.',['i_signal'])}
+ if(D.route!=='395'&&state!=='at'&&a>r.cum[bi]+1&&a<r.cum[bi]+12)add(6,'','Few services until Mina. Next charger: Hawthorne.');
+ /* kickoff (Pico & Westwood) and close-out (just off the freeway), once each */
+ if(live&&(isTripDay()||sim)){
+  const dPico=mpd([D.fix.lat,D.fix.lon],PICO),moved=D.origin?mpd(D.origin,[D.fix.lat,D.fix.lon]):0;
+  if(!D.kick&&(dPico<0.1||(!sim&&moved>3))&&(D.fix.spd2||0)>1.5){if(sim){if(!D.simKick)D.simKick=now}else{D.kick=now;LS.set('trt26-kick',now);say('kick',[D.route==='395'?'k_395':'k_bypass'])}}
+  const dDrop=mpd([D.fix.lat,D.fix.lon],DROP),spdMph=(D.fix.spd2||0)*2.237;
+  if(dDrop<4&&spdMph<50)D.slowSince=D.slowSince||now;else D.slowSince=null;
+  const offFwy=dDrop<4&&D.slowSince&&now-D.slowSince>20000&&now-D.lastFast<10*6e4;
+  if(!D.close&&a>r.endAlong*0.8&&(offFwy||dDrop<1.2)){if(sim){if(!D.simClose)D.simClose=now}else{D.close=now;LS.set('trt26-close',now);say('close',[D.route==='395'?'x_395':'x_bypass'])}}}
+ if(sim&&D.simKick&&now-D.simKick<12e4)add(0.5,'mile','<small>Test · muted</small>The kickoff surprise plays here.');
+ if(sim&&D.simClose&&now-D.simClose<12e4)add(0.5,'mile','<small>Test · muted</small>The close-out plays here, just off the freeway.');
+ if(!sim&&D.kick&&now-D.kick<9e4)add(0.6,'mile','<small>Thanksgiving Road Trip 2026</small>Here we go!');
+ if(!sim&&D.close&&now-D.close<12e4)add(0.6,'mile','<small>Almost there</small>Happy Thanksgiving!');
+ /* sights: 10, 5, 1 min, now */
+ if(state!=='before'&&state!=='at'){for(const s of r.sights){const d=(s.a-a)*r.scale;const tm=d/mph*60;let lab=null;
+  if(d<=0&&d>-0.6||d>0&&tm<=0.5)lab='Now';else if(tm<=1.5&&tm>0.5)lab='In 1 min';else if(tm<=5.5&&tm>1.5)lab='In 5 min';else if(tm<=10.5&&tm>5.5)lab='In 10 min';
+  if(lab){add(lab==='In 10 min'?5.6:lab==='In 5 min'?5.2:5,'look',`<small>${lab} · ${esc(s.side)}</small>${esc(s.t)}<span class="sub">${esc(s.l)}</span>`,lab==='In 5 min'&&s.s5?['s5_'+s.k]:lab==='Now'?['sn_'+s.k]:null);break}}}
+ for(const m of r.miles_){const at=D.mile[D.route+m.k];if(at&&now-at<120000){add(4.5,'mile',`<small>Milestone</small>${esc(m.t)}<span class="sub">${esc(m.l)}</span>`,[m.v]);break}}
+ if(D.route!=='395'&&a>r.topA-15/r.scale&&a<r.topA)add(7,'','Climbing toward 7,149 ft. Watch for ice in the shade.',['i_ice']);
+ /* games (voice only; a card stays up for 2 min) */
+ const G=(key,cond,clip,html)=>{if(cond&&!D.said['g'+key])D.gameAt=Object.assign(D.gameAt||{},{[key]:now});const at=D.gameAt&&D.gameAt[key];if(cond)say('g'+key,[clip]);if(at&&now-at<12e4)add(5.4,'look',html)};
+ if(state!=='before'){
+  const chs=r.keys.filter(([k])=>CHARGE[k]&&(D.route!=='395'||k==='mojave'||k==='bishop'));
+  const nextCh=chs.find(([k,i])=>r.cum[i]>a+0.6);const lastCh=[...chs].reverse().find(([k,i])=>r.cum[i]<=a+0.6);
+  const sinceLast=lastCh?(a-r.cum[lastCh[1]])*r.scale:a*r.scale-10;
+  if(nextCh&&sinceLast>3&&sinceLast<8&&state==='moving')G('bg'+nextCh[0],true,'g_bg_'+nextCh[0],`<small>Game</small>Battery guess! What will it say at ${NAMES[nextCh[0]].replace(' Supercharger','')}?`);
+  if(lastCh&&lastCh[0]==='mojave'&&sinceLast>8&&sinceLast<14&&state==='moving')G('tesla',true,'g_tesla_go','<small>Game</small>Count the Teslas until Bishop!');
+  const toTop=(r.topA-a)*r.scale;if(toTop>8&&toTop<14)G('elev',true,'g_elev','<small>Game</small>Elevation guess! How high is the top of this pass?');
+  const pastB=(a-r.cum[bi])*r.scale;if(pastB>10&&pastB<16)G('snow',true,'g_snow','<small>Game</small>Snow watch! First to spot snow wins.');}
+ C.sort((x,y)=>x.p-y.p);const top=C[0];
+ const wxCard=top&&top.p>=1&&top.p<=1.5;D.hideWx=wxCard;
+ {const s=$('dstat'),u=[...new Set(STAT)];s.hidden=!u.length||wxCard;D.statOn=!s.hidden;s.textContent=u.length?'⚠ '+u.slice(0,2).join(' · ')+(u.length>2?` +${u.length-2}`:''):''}
+ const ae=$('dalert');ae.className='dalert'+(top?' on '+top.cls:'');ae.innerHTML=top?top.html:'';
+ if(showAt&&VOICE['a_'+atKey]){say('arr'+atKey,['a_'+atKey]);if(D.said['g'+'bg'+atKey])say('br'+atKey,['g_br']);if(atKey==='bishop'&&D.said.gtesla)say('teslaend',['g_tesla_end'])}
+ if(top&&top.speak){const crit=top.speak.some(x=>CRIT.has(x));say('a'+top.speak.join()+(top.p<2?Math.floor(now/12e4):''),top.speak,crit)}
+ /* charge line */
+ const chK=r.keys.find(([k,i])=>CHARGE[k]&&r.cum[i]>a+0.6);
+ const ct=$('dchargetxt');
+ if(showAt&&CHARGE[atKey]){const c=CHARGE[atKey];ct.textContent=`Charge ${c.arr}% → ${c.to}%`;$('dbatt').style.width=c.to*0.36+'%'}
+ else if(chK&&(D.route!=='395'||chK[0]==='mojave'||chK[0]==='bishop')){const c=CHARGE[chK[0]];ct.textContent=`${chK[0]==='bishop'?BISHOP[bishopKey()].name:NAMES[chK[0]].replace(' Supercharger','')}: arrive ~${c.arr}%, charge to ${c.to}%`;$('dbatt').style.width=c.arr*0.36+'%'}
+ else if(D.route==='395'&&a>r.cum[bi]){ct.textContent='Follow the Tesla’s charging plan on 395.';$('dbatt').style.width='12px'}
+ else{ct.textContent='Arrive with about 28%';$('dbatt').style.width='10px'}
+ {const wk=nk==='hawkshead'||nk==='legacy'?'reno':nk;const w=WXTIME[wk]?omAt(wk,eta):null;const el=$('dwx');
+  if(w&&!D.hideWx&&!D.statOn){el.hidden=false;el.textContent=`${WXNAME[wk]} at ${hm(eta).join(' ')}: ${w.T}°F · ${w.txt}${w.pp>=30?` · ${w.pp}% precip`:''}${w.wind?` · gusts ${w.g} mph`:''}${D.om?asOf(D.om.at):''}`}else el.hidden=true}
+ const pct=Math.max(0,Math.min(100,Math.round(a/r.endAlong*100)));$('dbar').style.width=pct+'%';
+ const [rt,rap]=hm(renoEta);
+ $('dleft').textContent=a>=r.endAlong-0.5?'Made it to Reno':`Reno ~${rt} ${rap}`;$('dpct').textContent=`${Math.max(0,Math.round((r.endAlong-a)*r.scale))} mi · ${pct}%`;
+ document.querySelector('.droute').hidden=a>r.cum[bi]+8;
+ $('dhere').hidden=!!live||state==='before';$('dlate').hidden=!!live||state==='before';$('dreset').hidden=!!live||!D.offset;
+ $('dgo').hidden=!(state==='before'&&!(live&&(D.fix.spd2||0)>3))||D.go.size>=GO.length;
+ if(sim)drawSimBar(r,a,state);
+ const pos=live?[D.fix.lat,D.fix.lon]:(state!=='before'?pointAlongR(r,a):null);if(pos)fetchWx(pos[0],pos[1]);
+ fetchOM();fetchCC();
+}
+
+/* ================= TEST MODE ================= */
+/* hold the GPS chip for 3 seconds. Fakes a drive along the route; the kickoff and close-out stay muted. */
+D.sim={on:false,t:T(7,58),x:30,play:false};
+let holdT=null;const chipEl=$('dgps');
+const startHold=e=>{holdT=setTimeout(()=>{D.sim.on?exitTest():enterTest()},3000)};const endHold=()=>clearTimeout(holdT);
+chipEl.addEventListener('pointerdown',startHold);['pointerup','pointerleave','pointercancel'].forEach(ev=>chipEl.addEventListener(ev,endHold));
+chipEl.addEventListener('contextmenu',e=>e.preventDefault());
+if(/[?&]test=1/.test(location.search))setTimeout(()=>enterTest(),300);
+const TP=$('tpanel');
+function enterTest(){D.sim.on=true;D.sim.t=T(7,58);D.sim.play=false;D.said={};D.mile={};D.gameAt={};D.simKick=0;D.simClose=0;D.fix=null;D.lastA=null;D.prevA=null;D.origin=null;D.mock={};D.force=null;D.seen={};
+ document.body.classList.add('testing');TP.hidden=false;buildTestPanel();simStep(0)}
+function exitTest(msg){D.sim.on=false;D.sim.play=false;D.fix=null;D.mile=LS.get('trt26-mile',{});D.said={};D.mock={};D.force=null;D.seen={};D.lastA=null;D.origin=null;
+ document.body.classList.remove('testing');TP.hidden=true;if(msg){D.force={p:0.5,cls:'look',html:esc(msg),until:Date.now()+8000}}dtick()}
+function simStep(realMs){if(!D.sim.on)return;const r=R_();if(D.sim.play)D.sim.t+=realMs*D.sim.x;
+ const p=planAlong(r,D.sim.t);const pos=pointAlongR(r,p.a);
+ const nk=r.keys.find(([k,i])=>r.cum[i]>p.a+0.6)||r.keys[r.keys.length-1],pk=[...r.keys].reverse().find(([k,i])=>r.cum[i]<=p.a+0.6)||r.keys[0];
+ const legMs=r.sched[nk[0]][0]-r.sched[pk[0]][1],legMi=(r.cum[nk[1]]-r.cum[pk[1]])*r.scale||1,mph=Math.max(25,Math.min(75,legMi/(legMs/36e5)||60));
+ let spd=p.state==='moving'?mph/2.237:0;if(p.state==='moving'&&mpd(pos,DROP)<3.5&&p.a>r.endAlong*0.8)spd=Math.min(spd,15.6);
+ if(p.state!=='before'||D.sim.play)takeFix(pos[0],pos[1],10,spd,null,D.sim.t);
+ if(!D.origin)D.origin=pos;dtick()}
+setInterval(()=>{if(D.sim.on&&D.sim.play)simStep(250)},250);
+const CLIPLIST=()=>Object.keys(window.VOICE||{}).filter(k=>k!=='chime');
+function jumpList(){const r=R_(),L=[['Start · Pico & Westwood',T(7,59)]];
+ r.keys.forEach(([k,i])=>{if(k!=='la')L.push([`Arrive ${NAMES[k]}`,r.sched[k][0]-4*6e4])});
+ r.sights.forEach(s=>L.push([`Sight · ${s.t}`,timeAt(r,Math.max(0,s.a-6/r.scale))]));
+ L.push(['Montgomery / Conway top',timeAt(r,r.topA-16/r.scale)]);
+ L.push(['Sunset + open range',Math.max(sunset+12*6e4,timeAt(r,r.cum[bi]+25/r.scale))]);
+ L.push(['Close-out zone',timeAt(r,r.endAlong-7/r.scale)]);
+ return L.sort((x,y)=>x[1]-y[1])}
+function buildTestPanel(){const J=jumpList();
+ TP.innerHTML=`<div class="tbar"><b>TEST</b><span id="tclock"></span><button id="tmin">Hide</button><button id="tx">Exit</button></div>
+ <div class="trow"><button id="tplay">▶ Play</button>${[30,120,600].map(x=>`<button data-x="${x}" aria-pressed="${D.sim.x===x}">${x}×</button>`).join('')}</div>
+ <label class="tlab">Jump to<select id="tjump">${J.map(([n,t],i)=>`<option value="${t}">${hm(t).join(' ')} · ${esc(n)}</option>`).join('')}</select></label>
+ <div class="tlab">Fake an alert</div><div class="tgrid">
+  <button data-f="w_395">395 wrong way</button><button data-f="w_fallon">Fallon wrong way</button><button data-f="w_geiger">Geiger Grade</button><button data-f="w_off">Off route</button>
+  <button data-m="wx">NWS alert</button><button data-m="cc">Chain control</button><button data-m="snow">Snow forecast</button><button data-m="clear">Clear fakes</button></div>
+ <div class="tlab">Every voice line</div><div class="tclips">${CLIPLIST().map(k=>`<button data-c="${k}">${k}</button>`).join('')}</div>`;
+ $('tx').onclick=()=>exitTest();$('tmin').onclick=()=>{const m=TP.classList.toggle('min');$('tmin').textContent=m?'Show':'Hide'};
+ $('tplay').onclick=()=>{D.sim.play=!D.sim.play;$('tplay').textContent=D.sim.play?'⏸ Pause':'▶ Play';simStep(0)};
+ TP.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{D.sim.x=+b.dataset.x;TP.querySelectorAll('[data-x]').forEach(z=>z.setAttribute('aria-pressed',z===b))});
+ $('tjump').onchange=e=>{D.sim.t=+e.target.value;D.lastA=null;D.prevA=null;D.fix=null;simStep(0)};
+ const FW={w_395:'This is 395 toward Mammoth. Turn around for US-6, or switch the route to 395.',w_fallon:'This is US-95 toward Fallon. 95 Alt at Schurz was the plan.',w_geiger:'This heads to Geiger Grade. The plan is I-80 from Fernley.',w_off:'Off the plan by about 8 mi. Check the nav.'};
+ TP.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{const k=b.dataset.f;delete D.said['a'+k+Math.floor(NOW()/12e4)];D.force={p:0,cls:'bad',html:FW[k],speak:[k],until:NOW()+6e4};dtick()});
+ TP.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{const m=b.dataset.m;D.seen={};
+  if(m==='wx')D.wx={event:'Winter Weather Advisory',area:'Mono County',ends:new Date(NOW()+5*36e5).toISOString(),t:NOW()};
+  if(m==='cc')D.cc={at:NOW(),list:[{route:'395',county:'MNO',st:'R-2',loc:'Conway Summit'}]};
+  if(m==='snow')D.mock.snow=true;
+  if(m==='clear'){D.mock={};D.wx=LS.get('trt26-wx',null);D.cc=LS.get('trt26-cc',null);D.force=null}
+  Object.keys(D.said).filter(k=>/w_|chain|wx|snow/.test(k)).forEach(k=>delete D.said[k]);dtick()});
+ TP.querySelectorAll('[data-c]').forEach(b=>{b.onclick=()=>{const k=b.dataset.c;
+  if(/^[kx]_/.test(k)&&b.dataset.arm!=='1'){b.dataset.arm='1';const t=b.textContent;b.textContent='Tap again: plays OUT LOUD';setTimeout(()=>{b.dataset.arm='';b.textContent=t},3500);return}
+  b.dataset.arm='';AQ=[];try{AU.pause()}catch(_){}AB=false;play(['chime',k])}})}
+function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x}×`}
+
+window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project};
+const APPV='v7 · Nov 21';if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'look',html:'<small>App updated</small>Version '+APPV,until:Date.now()+8000};LS.set('trt26-ver',APPV)}
+renderRouteWx();fetchOM(true);applyTheme();drawBishop();dtick();setInterval(()=>{if(!(D.sim.on&&D.sim.play))dtick()},5000);setInterval(applyTheme,60000);
+try{if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude\.ai|claudeusercontent/.test(location.hostname))navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(_){}
+
+drawSpots();
+/* ---------- tabs ---------- */
+const views=['drive','trip','map','spot','info'],VMAP={drive:['drive'],trip:['trip'],map:['map'],spot:['spot'],info:['nav','ready']};
+function route(){const h=location.hash.slice(1),v=views.includes(h)?h:'drive';
+ ['drive','trip','map','spot','nav','ready'].forEach(n=>$('v-'+n).classList.toggle('on',VMAP[v].includes(n)));
+ document.body.classList.toggle('driving',v==='drive');if(v==='drive'){window.scrollTo(0,0);dtick()}
+ document.querySelectorAll('.tabs a').forEach(a=>{if(a.dataset.v===v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+ if(v==='trip')drawChart();if(views.includes(h)&&v!=='drive')window.scrollTo({top:document.querySelector('.strip').offsetTop+document.querySelector('.strip').offsetHeight-8,behavior:'smooth'});}
+addEventListener('hashchange',route);route();
+status();setInterval(()=>{status();drawChart()},60000);
+}
+</script>
+</body></html>
