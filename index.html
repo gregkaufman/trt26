@@ -5,7 +5,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="TRT26">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Thanksgiving Road Trip 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -523,6 +523,9 @@ body.driving{padding-bottom:var(--tabsh,80px)}
 
 /* v7.27: stop name stays on one line and shrinks to fit */
 .dnmain .dname{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:unset;flex:1}
+
+/* v7.28: no accidental zoom */
+html,body{touch-action:manipulation;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </style></head>
 <body>
 
@@ -1402,6 +1405,9 @@ setTabH();addEventListener('resize',()=>{setTabH();if(D.view)drawRoad(D.view)});
 function fitName(){const el=$('dname');if(!el)return;el.style.fontSize='';const base=parseFloat(getComputedStyle(el).fontSize);let f=base;
  while(el.scrollWidth>el.clientWidth+1&&f>base*0.62){f-=1;el.style.fontSize=f+'px'}}
 addEventListener('resize',fitName);
+/* no pinch zoom (iOS gesture events), no double-tap zoom */
+['gesturestart','gesturechange','gestureend'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));
+document.addEventListener('touchmove',e=>{if(e.touches&&e.touches.length>1&&!e.target.closest('.leaflet-container'))e.preventDefault()},{passive:false});
 /* ================= SETTINGS SHEET ================= */
 function syncSheet(){document.querySelectorAll('#dsheet [data-th]').forEach(b=>{const on=(D.theme==='day'?'day':'night')===b.dataset.th;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
  document.querySelectorAll('#dsheet [data-vm]').forEach(b=>{const on=D.vmode===b.dataset.vm;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)})}
@@ -1466,7 +1472,7 @@ function buildTestPanel(){const J=jumpList();
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project,DRW,drawRoad};
-const APPV='v7.27 · one-line stop names';
+const APPV='v7.28 · no zoom';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){D.verSt=st;const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
