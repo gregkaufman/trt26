@@ -563,7 +563,7 @@ function pointAt(d){for(let i=1;i<P.length;i++){if(d<=cum[i]){const f=(d-cum[i-1
 /* ---------- timeline ---------- */
 const stops=[
  {k:'la',t:'8:00',ap:'AM',name:'Leave West LA',b:[90],fact:'<b>Fun fact:</b> we start near sea level. By mid-afternoon we’ll be over 7,100 feet up.'},
- {k:'mojave',t:'9:45',ap:'AM',name:'Mojave Supercharger',note:'Lunch at The Workz while the car charges.',b:[50,90],g:['~50 min'],fact:'<b>Look for it:</b> rows of parked jumbo jets at the Mojave Air &amp; Space Port, where airlines store planes in the dry desert air.'},
+ {k:'mojave',t:'9:45',ap:'AM',name:'Mojave Supercharger',note:'The Workz is next to the chargers if we want lunch here (or eat later in Bishop).',b:[50,90],g:['~50 min'],fact:'<b>Look for it:</b> rows of parked jumbo jets at the Mojave Air &amp; Space Port, where airlines store planes in the dry desert air.'},
  {k:'bishop',t:'1:20',ap:'PM',name:'Bishop Supercharger',note:'Lot 13 (on the route, near Schat’s Bakkerÿ) or Rocking W (24 stalls). Then the route decision.',b:[25,85],g:['Decision point'],fact:'<b>Elevation:</b> about 4,150 ft. The Sierra wall rises almost 10,000 feet straight above town to the west.'},
  {k:'pass',t:'~2:45',ap:'PM',name:'Montgomery Pass · 7,149′',note:'Highest point of the day. Nevada begins just before it.',fact:'<b>Look south:</b> the big white peak is Boundary Peak, Nevada’s tallest mountain at about 13,140 ft.'},
  {k:'hawthorne',t:'4:00',ap:'PM',name:'Hawthorne Supercharger',note:'Golden Gate truck stop · 150 kW stalls.',b:[35,70],g:['~30 min'],fact:'<b>Those mounds:</b> thousands of grass-covered bunkers belong to the Hawthorne Army Depot, often called the world’s largest ammunition storage site.'},
@@ -641,7 +641,7 @@ const mx=lon=>(lon-BB.w)/(BB.e-BB.w)*MW,my=lat=>(BB.n-lat)/(BB.n-BB.s)*MH;
 const pp=a=>a.map(p=>`${mx(p[1]).toFixed(1)},${my(p[0]).toFixed(1)}`).join(' L');
 const pins={
  la:['West LA','8:00 AM','We start here, near sea level.'],
- mojave:['Mojave','9:45 AM · lunch + charge','Lunch at The Workz. Look for the parked jumbo jets at the air and space port.'],
+ mojave:['Mojave','9:45 AM · charge','The Workz is next to the chargers if we eat here. Look for the parked jumbo jets at the air and space port.'],
  bishop:['Bishop','1:20 PM · charge + decide','Schat’s Bakkerÿ for snacks. Then we decide: bypass (default) or 395 over the summits.'],
  pass:['Montgomery Pass','~2:45 PM · 7,149 ft','Highest point of the day. Nevada starts just before here.'],
  mina:['Mina','~3:25 PM','A tiny desert town. This nav stop keeps us on the safe route.'],
@@ -713,7 +713,7 @@ drawPlates();
 const gm=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q),am=q=>'https://maps.apple.com/?daddr='+encodeURIComponent(q)+'&dirflg=d';
 let nav=[];
 function drawNav(){const B=BISHOP[bishopKey()];
- nav=[['Tesla Supercharger, 16862 CA-14, Mojave, CA 93501','At The Workz · lunch · charge 50% → 90%',0,'16862 CA-14, Mojave, CA 93501'],
+ nav=[['Tesla Supercharger, 16862 CA-14, Mojave, CA 93501','At The Workz · charge 50% → 90% · lunch here or in Bishop',0,'16862 CA-14, Mojave, CA 93501'],
  [B.addr,'Charge 25% → 85% · decision point',0,B.q],
  ['Mina, NV','Most important stop: forces US-6, keeps us off the 395 summits',1,'Mina, NV'],
  ['Tesla Supercharger, 705 Hwy 362, Hawthorne, NV 89415','Golden Gate truck stop · charge 35% → 70% (~30 min)',0,'705 Hwy 362, Hawthorne, NV 89415'],
@@ -741,7 +741,7 @@ const BISHOP={lot13:{pos:[37.36063,-118.396576],name:'Bishop · Lot 13',addr:'Te
  rockingw:{pos:[37.3772,-118.4227],name:'Bishop · Rocking W',addr:'Tesla Supercharger, 1335 Rocking W Dr, Bishop, CA 93514',q:'1335 Rocking W Dr, Bishop, CA 93514',note:'24 stalls, west edge of town'}};
 D.bishop=LS.get('trt26-bishop','auto');
 const bishopKey=()=>D.bishop==='auto'?(D.route==='395'?'rockingw':'lot13'):D.bishop;
-const CHARGE={mojave:{pos:[35.0687,-118.1741],arr:50,to:90,note:'Lunch at The Workz'},bishop:{arr:25,to:85,note:'Check QuickMap before you leave'},hawthorne:{pos:[38.5278,-118.6240],arr:35,to:70,note:'About 30 min (150 kW stalls)'},fernley:{pos:[39.6096,-119.2205],arr:25,to:45,note:'Quick top-up'}};
+const CHARGE={mojave:{pos:[35.0687,-118.1741],arr:50,to:90,note:'Lunch? The Workz is right here'},bishop:{arr:25,to:85,note:'Food in town if we didn’t eat in Mojave. Check QuickMap before you leave'},hawthorne:{pos:[38.5278,-118.6240],arr:35,to:70,note:'About 30 min (150 kW stalls)'},fernley:{pos:[39.6096,-119.2205],arr:25,to:45,note:'Quick top-up'}};
 const chPos=k=>k==='bishop'?BISHOP[bishopKey()].pos:CHARGE[k].pos;
 const NAMES={la:'West LA',mojave:'Mojave Supercharger',bishop:'Bishop Supercharger',pass:'Montgomery Pass',mina:'Mina',hawthorne:'Hawthorne Supercharger',walker:'Walker Lake',yerington:'Yerington',fernley:'Fernley Supercharger',hawkshead:'Family drop-off',legacy:'Silver Legacy',conway:'Conway Summit',carson:'Carson City'};
 const ALTK=[[37.36063,-118.396576,'bishop'],[37.3772,-118.4227],[37.4085,-118.5479],[37.5138,-118.5841],[37.5573,-118.6524],[37.5767,-118.7564],[37.6158,-118.8136],[37.6443,-118.9212],[37.7554,-118.9852],[37.8311,-119.0682],[37.9562,-119.1214],[38.0055,-119.1541],[38.0833,-119.1587],[38.0881,-119.1819,'conway'],[38.1813,-119.1966],[38.2119,-119.2313],[38.2553,-119.2232],[38.2576,-119.2708],[38.2841,-119.3021],[38.3460,-119.3266],[38.3450,-119.4526],[38.5120,-119.4500],[38.5420,-119.4986],[38.7333,-119.5573],[38.8419,-119.6367],[38.9559,-119.7793],[39.1646,-119.7664,'carson'],[39.2041,-119.7812],[39.2108,-119.8060],[39.3084,-119.8259],[39.3719,-119.7550],[DROP[0],DROP[1],'hawkshead'],[39.4731,-119.7907],[39.5189,-119.7810],[LEGACY[0],LEGACY[1],'legacy']];
@@ -1008,7 +1008,7 @@ function dtick(){
   for(const k of ahead){const w=omAt(k,WXTIME[k]+delay);if(w&&(w.snow||w.ice)){const [t,ap]=hm(WXTIME[k]+delay);STAT.push(`${w.snow?'Snow':'Icy'} forecast at ${WXNAME[k]}`);if(fresh('sn:'+k+(w.snow?'s':'i')))add(1.5,'',`<small>Forecast · ${WXNAME[k]} ~${t} ${ap}</small>${w.snow?'Snow possible':'Freezing temps with precipitation'} · ${w.T}°F`,['w_snow']);break}}}
  /* open range after dark */
  if(state!=='before'&&now>sunset+10*6e4&&a>r.cum[bi]+20&&a<r.endAlong-15){if(fresh('range'))add(2.2,'','<small>After dark</small>Open range. Watch for cattle, deer and wild horses.',['o_range'])}
- if(showAt&&atKey==='bishop')add(2,'',`<small>Before you leave Bishop</small>Check QuickMap. Few services for ~125 mi. Restroom stop?`,['i_bishop']);
+ if(showAt&&atKey==='bishop')add(2,'',`<small>Before you leave Bishop</small>Check QuickMap. Few services for ~125 mi. Food and restroom?`,['i_bishop']);
  else if(showAt&&CHARGE[atKey])add(4,'look',`<small>Charging</small>${esc(CHARGE[atKey].note||'Charge to '+CHARGE[atKey].to+'%')}`);
  if(state==='moving'&&now<sunset&&sunset-now<15*6e4)add(2.5,'',`Sunset in ${Math.round((sunset-now)/6e4)} min. Headlights on.`,['i_sunset']);
  if(r.bentonA!=null&&state!=='at'){const toB=(r.bentonA-a)*r.scale/mph*60;if(toB>0&&toB<=12)add(3,'','<small>Signal</small>Spotty for ~90 mi past Benton. Download podcasts now.',['i_signal'])}
