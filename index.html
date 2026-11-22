@@ -351,6 +351,84 @@ body.testing #v-drive{box-shadow:inset 0 0 0 3px #f5a623;border-radius:16px}
 body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 nav.tabs,.tabs{padding-left:max(2vw,6px,env(safe-area-inset-left));padding-right:max(2vw,6px,env(safe-area-inset-right))}
 .tpanel{left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right))}
+
+/* ===== road-ahead view (v7.17) ===== */
+.dview{position:relative;height:clamp(240px,42vh,500px);background:var(--d-card);border-radius:18px;overflow:hidden;cursor:pointer;flex:none}
+.dview svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.dvtag{position:absolute;left:10px;top:10px;font:700 14px/1 -apple-system,Inter,sans-serif;color:var(--d-sub);background:var(--d-bg);padding:6px 9px;border-radius:9px;opacity:.85;pointer-events:none}
+.dview .dalert{position:absolute;left:8px;right:8px;top:8px;margin:0;box-shadow:0 8px 28px rgba(0,0,0,.45);cursor:default}
+.dview .dalert.upd{cursor:pointer}
+.rv-cas{fill:none;stroke:var(--d-bg);stroke-width:17;stroke-linecap:round;stroke-linejoin:round}
+.rv-ahead{fill:none;stroke:var(--d-acc);stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.rv-done{fill:none;stroke:var(--d-sub);stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.rv-alt{fill:none;stroke:var(--d-sub);stroke-width:4;stroke-linecap:round;stroke-dasharray:2 7;opacity:.6}
+.rv-cc{fill:none;stroke:var(--d-alert);stroke-width:9;stroke-linecap:butt;stroke-dasharray:10 6}
+.rv-ns{fill:none;stroke:var(--d-sub);stroke-width:3;stroke-dasharray:3 6;transform:translate(13px,0)}
+.ov .rv-ns{transform:translate(9px,0)}
+.rv-ch circle{fill:var(--d-ok);stroke:var(--d-card);stroke-width:3}.rv-ch path{fill:#04140b}
+.rv-stop{fill:var(--d-ink);stroke:var(--d-card);stroke-width:3}
+.rv-cue rect{fill:var(--d-ink);stroke:var(--d-acc);stroke-width:3}
+.rv-nv{stroke:var(--d-ok);stroke-width:4;stroke-linecap:round}
+.rv-sight circle{fill:var(--d-alert);stroke:var(--d-card);stroke-width:2.5}
+.rv-town{fill:var(--d-sub)}
+.rv-me{fill:var(--d-ink);stroke:var(--d-acc);stroke-width:4}
+.rv-car path{fill:var(--d-ink);stroke:var(--d-acc);stroke-width:3;stroke-linejoin:round}
+.rv-lab{font:700 17px/1 -apple-system,Inter,sans-serif;fill:var(--d-ink);paint-order:stroke;stroke:var(--d-card);stroke-width:5px;stroke-linejoin:round}
+.rv-lab.cue{fill:var(--d-acc);font-weight:800}
+.rv-lab.sg{fill:var(--d-alert);font-size:16px}
+.rv-lab.tn{fill:var(--d-sub);font-size:15px;font-weight:650}
+.rv-lab.nv{fill:var(--d-ok)}
+.rv-min{fill:var(--d-sub);font-weight:650;font-size:14px}
+.dview.ov .dalert{display:none!important}
+.dview.ov .dvtag{top:auto;bottom:10px}
+.rv-tag{font:800 14px/1 -apple-system,Inter,sans-serif;letter-spacing:.04em;text-transform:uppercase;paint-order:stroke;stroke:var(--d-card);stroke-width:5px}
+.rv-tag.cc{fill:var(--d-alert)}.rv-tag.ns{fill:var(--d-sub)}
+.rv-wx{font:800 22px/1 -apple-system,Inter,sans-serif;fill:#9fd3ff;paint-order:stroke;stroke:var(--d-card);stroke-width:4px}
+.rv-wx.ice{font-size:13px;fill:var(--d-alert)}
+.rv-el{fill:var(--d-sub);opacity:.13}
+.rv-elln{fill:none;stroke:var(--d-sub);stroke-width:2;opacity:.6}
+.rv-elpk{fill:var(--d-ink)}
+.rv-elt{font:700 13px/1 -apple-system,Inter,sans-serif;fill:var(--d-sub)}
+.rv-elt.pk{fill:var(--d-ink)}
+.dnext{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.dnl{min-width:0}
+.dnext .dname{font-size:clamp(24px,7vw,34px);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dnext .deta{border:0;padding:0;flex:none;display:block;text-align:right}
+.dnext .deta .clock{font-size:clamp(34px,10vw,48px)}
+.dnext .deta .rt{font-size:clamp(17px,5vw,21px);line-height:1.2;color:var(--d-sub)}
+.dnext .deta .rt span{display:inline;color:var(--d-sub)}
+.dnext .deta .rt span+span:not(:empty)::before{content:" · "}
+.dcue{display:flex;align-items:baseline;gap:12px;padding:10px 14px}
+.dcue .txt{flex:1;min-width:0;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:clamp(18px,5.2vw,22px)}
+.dcue .meta{flex:none;margin:0;font-size:20px}
+.dcue.big{display:block;background:var(--d-acc);color:#fff;box-shadow:none}
+.dcue.big .txt{white-space:normal;font-size:clamp(22px,6.6vw,30px)}
+.dcue.big .meta{color:#fff;margin-top:8px;font-size:24px}
+.dsvc{font:650 clamp(16px,4.6vw,19px)/1.3 -apple-system,Inter,sans-serif;color:var(--d-sub)}
+.dsvc[hidden]{display:none}
+.dsvc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dstrip{display:block;width:100%;height:30px}
+.ts-bg{stroke:var(--d-card);stroke-width:10;stroke-linecap:round}
+.ts-done{stroke:var(--d-acc);stroke-width:10;stroke-linecap:round}
+.ts-ch circle{fill:var(--d-card);stroke:var(--d-ok);stroke-width:2.5}.ts-ch path{fill:var(--d-ok)}
+.ts-ch.done circle{fill:var(--d-ok)}.ts-ch.done path{fill:#04140b}
+.ts-end{fill:var(--d-ink)}
+.ts-me{fill:var(--d-ink);stroke:var(--d-acc);stroke-width:3}
+.dprog .row{margin-top:4px;font-size:17px}
+@media (orientation:landscape) and (min-width:600px) and (max-height:600px){
+ #v-drive.on{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-areas:none;grid-auto-rows:min-content;gap:8px 16px;align-content:start}
+ #v-drive>*{grid-area:auto;grid-column:2}
+ #v-drive::before{display:none!important}
+ #v-drive>.dview{grid-column:1;grid-row:1/span 12;height:calc(100dvh - 82px - var(--safe) - env(safe-area-inset-top,0px));min-height:240px}
+ body.testing #v-drive>.dview{height:calc(100dvh - 128px - var(--safe))}
+ .dtop>*{height:52px;min-height:52px}
+ .dnext .dname{font-size:clamp(22px,3.4vw,30px)}
+ .dnext .deta .clock{font-size:clamp(30px,4.6vw,42px)}
+ .dcue .txt{font-size:clamp(17px,2.4vw,21px)}
+ .dcue.big .txt{font-size:clamp(20px,3vw,26px)}
+ .dcharge{display:flex!important;font-size:18px}
+ .dview .dalert{font-size:19px;padding:10px 14px}
+}
 </style></head>
 <body>
 
@@ -412,25 +490,22 @@ nav.tabs,.tabs{padding-left:max(2vw,6px,env(safe-area-inset-left));padding-right
     <button class="chip" id="dgps" aria-label="GPS status. Hold 3 seconds for test mode."><i></i><span>Plan</span></button>
     <button class="chip vbtn" id="dvoice" aria-pressed="false" aria-label="Voice alerts"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor" stroke="none"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg><span>Voice off</span></button>
   </div>
+  <div class="dview" id="dview" role="img" aria-label="Road ahead. Tap for the whole route.">
+    <svg id="dsvg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="dvtag" id="dvtag"></div>
+    <div class="dalert" id="dalert" role="status" aria-live="polite"></div>
+  </div>
   <div class="dnext">
-    <div class="dlab" id="dlab">Next stop</div>
-    <div class="dname" id="dname">Mojave Supercharger</div>
+    <div class="dnl"><div class="dlab" id="dlab">Next stop</div><div class="dname" id="dname">Mojave Supercharger</div></div>
+    <div class="deta"><div class="clock" id="deta">9:45<small>AM</small></div><div class="rt"><span id="dmin">—</span><span id="dmi">—</span></div></div>
   </div>
-  <div class="deta">
-    <div class="clock" id="deta">9:45<small>AM</small></div>
-    <div class="rt"><div id="dmin">—</div><span id="dmi">—</span></div>
-  </div>
-  <div class="dcue">
-    <div class="dlab" id="dcuelab">Road</div>
-    <div class="txt" id="dcue">—</div>
-    <div class="meta" id="dcuemeta"></div>
-  </div>
+  <div class="dcue" id="dcuebox"><div class="txt" id="dcue">—</div><div class="meta" id="dcuemeta"></div></div>
+  <div class="dsvc" id="dsvc" hidden></div>
   <div class="dgo" id="dgo" hidden></div>
-  <div class="dalert" id="dalert" role="status" aria-live="polite"></div>
   <div class="dstat" id="dstat" hidden></div>
   <div class="dwx" id="dwx" hidden></div>
   <div class="dcharge" id="dcharge"><span class="b"><i id="dbatt"></i></span><span id="dchargetxt">—</span></div>
-  <div class="dprog"><div class="bar2"><i id="dbar"></i></div><div class="row"><span id="dleft">—</span><span id="dpct">—</span></div></div>
+  <div class="dprog"><svg id="dstrip" class="dstrip" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg><i id="dbar" hidden></i><div class="row"><span id="dleft">—</span><span id="dpct">—</span></div></div>
   <div class="dact">
     <button class="pri" id="dhere">We’re here</button>
     <button id="dlate">+15 min</button>
@@ -983,7 +1058,7 @@ function dtick(){
  const showAt=state==='at'&&atKey;
  const nameOf=k=>k==='bishop'?BISHOP[bishopKey()].name:NAMES[k];
  $('dlab').textContent=state==='before'?'First stop':showAt?'You’re at · leave at':'Next stop';
- $('dname').textContent=nameOf(showAt?atKey:nk);
+ $('dname').textContent=nameOf(showAt?atKey:nk).replace(' Supercharger','');
  if(showAt){const dwell=r.sched[atKey][1]-r.sched[atKey][0];const depAt=live?(D.atSince&&D.atKey===atKey?D.atSince:(D.atKey=atKey,D.atSince=now))+dwell:r.sched[atKey][1]+D.offset;
   const [t,ap]=hm(depAt);$('deta').innerHTML=`${t}<small>${ap}</small>`;const left=depAt-now;
   $('dmin').textContent=left>0?`in ${mins(left)}`:'now';$('dmi').textContent='to leave';}
@@ -1056,7 +1131,7 @@ function dtick(){
  const chK=r.keys.find(([k,i])=>CHARGE[k]&&r.cum[i]>a+0.6);
  const ct=$('dchargetxt');
  if(showAt&&CHARGE[atKey]){const c=CHARGE[atKey];ct.textContent=`Charge ${c.arr}% → ${c.to}%`;$('dbatt').style.width=c.to*0.36+'%'}
- else if(chK&&(D.route!=='395'||chK[0]==='mojave'||chK[0]==='bishop')){const c=CHARGE[chK[0]];ct.textContent=`${chK[0]==='bishop'?BISHOP[bishopKey()].name:NAMES[chK[0]].replace(' Supercharger','')}: arrive ~${c.arr}%, charge to ${c.to}%`;$('dbatt').style.width=c.arr*0.36+'%'}
+ else if(chK&&(D.route!=='395'||chK[0]==='mojave'||chK[0]==='bishop')){const c=CHARGE[chK[0]];ct.textContent=`${NAMES[chK[0]].replace(' Supercharger','')}: ~${c.arr}% → ${c.to}%`;$('dbatt').style.width=c.arr*0.36+'%'}
  else if(D.route==='395'&&a>r.cum[bi]){ct.textContent='Follow the Tesla’s charging plan on 395.';$('dbatt').style.width='12px'}
  else{ct.textContent='Arrive with about 28%';$('dbatt').style.width='10px'}
  {const wk=nk==='hawkshead'||nk==='legacy'?'reno':nk;const w=WXTIME[wk]?omAt(wk,eta):null;const el=$('dwx');
@@ -1067,10 +1142,148 @@ function dtick(){
  document.querySelector('.droute').hidden=a>r.cum[bi]+8;
  $('dhere').hidden=!!live||state==='before';$('dlate').hidden=!!live||state==='before';$('dreset').hidden=!!live||!D.offset;
  $('dgo').hidden=!(state==='before'&&!(live&&(D.fix.spd2||0)>3))||D.go.size>=GO.length;
+ {const big=!!(cue&&cm!=null&&cm<=5&&state!=='before'&&state!=='at');$('dcuebox').classList.toggle('big',big);
+  if(cue&&!big){const sh=CUESHORT[r.key][+cue.id.slice(1)];if(sh)$('dcue').textContent=(state==='before'?'First: ':'Next: ')+sh}}
+ D.view={a,state,pos:live?[D.fix.lat,D.fix.lon]:null,mph,delay};try{drawRoad(D.view)}catch(e){console.error(e)}
  if(sim)drawSimBar(r,a,state);
  const pos=live?[D.fix.lat,D.fix.lon]:(state!=='before'?pointAlongR(r,a):null);if(pos)fetchWx(pos[0],pos[1]);
  fetchOM();fetchCC();
 }
+
+/* road shapes for the road-ahead view (OSRM, simplified) */
+const GC=[[34.0401,-118.4285,'la'],[34.0362,-118.4367],[34.0378,-118.4387],[34.0807,-118.473],[34.1043,-118.4773],[34.1115,-118.4819],[34.1189,-118.4813],[34.1289,-118.4739],[34.1521,-118.468],[34.1749,-118.4677],[34.1857,-118.4738],[34.1963,-118.4742],[34.2715,-118.472],[34.2895,-118.4674],[34.3188,-118.4919],[34.3253,-118.5019],[34.3374,-118.5067],[34.3481,-118.5037],[34.3586,-118.5063],[34.3725,-118.499],[34.3895,-118.4778],[34.4057,-118.4491],[34.4163,-118.4422],[34.4273,-118.4187],[34.4281,-118.4054],[34.4336,-118.392],[34.4376,-118.3716],[34.451,-118.3526],[34.465,-118.3401],[34.467,-118.3246],[34.4715,-118.3177],[34.481,-118.2901],[34.4922,-118.2831],[34.4987,-118.2597],[34.5052,-118.2494],[34.4996,-118.2243],[34.4913,-118.2051],[34.4931,-118.1726],[34.4852,-118.1546],[34.4857,-118.1433],[34.4923,-118.1279],[34.5057,-118.1145],[34.5134,-118.1104],[34.5322,-118.1143],[34.55,-118.1315],[34.5792,-118.1333],[34.5955,-118.135],[34.6106,-118.1526],[34.6685,-118.1534],[34.6909,-118.1698],[34.857,-118.1718],[34.9828,-118.1588],[35.0089,-118.1606],[35.0665,-118.1782],[35.0687,-118.1741,'mojave'],[35.2135,-118.0547],[35.2705,-118.0328],[35.3186,-117.9811],[35.344,-117.9706],[35.3867,-117.9848],[35.4356,-117.9782],[35.6808,-117.8667],[35.8579,-117.8758],[35.8969,-117.8984],[35.9562,-117.9108],[36.1106,-117.9703],[36.2214,-117.98],[36.28,-118.],[36.3145,-118.027],[36.3381,-118.0206],[36.4643,-118.0364],[36.5059,-118.0321],[36.595,-118.0581],[36.6736,-118.0967],[36.8367,-118.2286],[36.8912,-118.2418],[37.054,-118.2339],[37.165,-118.2895],[37.174,-118.2907],[37.231,-118.3466],[37.2799,-118.3721],[37.2944,-118.3751],[37.3319,-118.3946],[37.3606,-118.3966,'bishop']];
+const GB=[[37.3606,-118.3965],[37.3953,-118.3936],[37.398,-118.359],[37.4024,-118.3503],[37.4633,-118.3497],[37.6132,-118.3935],[37.6687,-118.4028],[37.7568,-118.4564],[37.82,-118.4796],[37.8406,-118.4787],[37.8718,-118.4699],[37.8771,-118.4663],[37.9551,-118.3672],[37.9606,-118.3539],[37.9607,-118.3441],[37.9698,-118.3374],[37.9736,-118.3267,'pass'],[37.9851,-118.3159],[38.0026,-118.2807],[38.0107,-118.2754],[38.0251,-118.2836],[38.0549,-118.2782],[38.0758,-118.2858],[38.1017,-118.2783],[38.1447,-118.2403],[38.1528,-118.218],[38.1754,-118.1867],[38.1838,-118.1839],[38.206,-118.1896],[38.2325,-118.1734],[38.2411,-118.1371],[38.2701,-118.0963],[38.2851,-118.102],[38.3878,-118.1072,'mina'],[38.5034,-118.1759],[38.5259,-118.2201],[38.5424,-118.3925],[38.5495,-118.4346],[38.5504,-118.4826],[38.5295,-118.5505],[38.5252,-118.5745],[38.5245,-118.6189],[38.5278,-118.624,'hawthorne'],[38.5333,-118.6252],[38.583,-118.7071],[38.6074,-118.7133],[38.6229,-118.746],[38.6508,-118.7567],[38.6582,-118.7654],[38.6813,-118.7742,'walker'],[38.7103,-118.7638],[38.7289,-118.7696],[38.7512,-118.766],[38.7718,-118.7509],[38.7807,-118.7509],[38.879,-118.7956],[38.9403,-118.8103],[38.9556,-118.8291],[38.9553,-118.8337],[38.9765,-118.8591],[38.9976,-118.871],[39.0174,-118.8914],[39.0411,-118.9408],[39.0463,-118.9694],[39.0325,-118.9984],[39.0297,-119.0388],[38.9983,-119.1023],[38.9974,-119.1593],[38.9903,-119.1622,'yerington'],[38.9939,-119.1632],[38.994,-119.1819],[39.1478,-119.1826],[39.1743,-119.2056],[39.2065,-119.2152],[39.2443,-119.2383],[39.2636,-119.2392],[39.2764,-119.2336],[39.2899,-119.2496],[39.3045,-119.2546],[39.3319,-119.2416],[39.4162,-119.2247],[39.4608,-119.2228],[39.4727,-119.2058],[39.5149,-119.2273],[39.5479,-119.2335],[39.5932,-119.2508],[39.593,-119.227],[39.6041,-119.2269],[39.6096,-119.2205,'fernley'],[39.6141,-119.2177],[39.6185,-119.283],[39.6171,-119.3045],[39.6147,-119.3129],[39.6054,-119.3278],[39.5989,-119.3476],[39.5981,-119.3593],[39.5901,-119.3749],[39.5912,-119.3832],[39.5891,-119.3964],[39.5915,-119.413],[39.5895,-119.4259],[39.5902,-119.4582],[39.5844,-119.4688],[39.571,-119.4726],[39.5679,-119.4761],[39.5664,-119.4883],[39.5679,-119.5334],[39.5507,-119.5731],[39.5446,-119.5937],[39.5326,-119.6065],[39.5288,-119.6164],[39.5147,-119.6365],[39.5106,-119.6592],[39.5135,-119.6758],[39.5258,-119.6982],[39.5298,-119.7292],[39.5344,-119.7416],[39.534,-119.7715],[39.5317,-119.7864],[39.5274,-119.7851],[39.5074,-119.7802],[39.4729,-119.7907],[39.4535,-119.7811],[39.4226,-119.7532],[39.4222,-119.7413,'hawkshead'],[39.427,-119.7562],[39.4536,-119.7809],[39.4731,-119.7907],[39.5066,-119.7802],[39.5189,-119.781],[39.5256,-119.7985],[39.5251,-119.8095],[39.5303,-119.8137,'legacy']];
+const G3=[[37.3613,-118.423],[37.3758,-118.423],[37.3766,-118.4659],[37.4085,-118.5479],[37.4418,-118.5714],[37.4725,-118.5806],[37.5136,-118.584],[37.5186,-118.5936],[37.5205,-118.6101],[37.5241,-118.6202],[37.5371,-118.6385],[37.5515,-118.6417],[37.5578,-118.6535],[37.5652,-118.6866],[37.5719,-118.6982],[37.5716,-118.7098],[37.5752,-118.7212],[37.5735,-118.7404],[37.5769,-118.757],[37.5913,-118.7912],[37.6158,-118.8136],[37.6355,-118.8855],[37.6394,-118.9122],[37.6443,-118.9212],[37.7131,-118.9536],[37.7554,-118.9852],[37.7952,-119.0394],[37.8041,-119.0416],[37.8181,-119.0596],[37.8591,-119.085],[37.9417,-119.1017],[37.9518,-119.1174],[38.0053,-119.154],[38.0424,-119.1592],[38.069,-119.1699],[38.0883,-119.1822,'conway'],[38.1149,-119.1777],[38.1813,-119.1966],[38.1974,-119.2196],[38.2119,-119.2313],[38.2455,-119.221],[38.2553,-119.2232],[38.2576,-119.2708],[38.2841,-119.3021],[38.346,-119.3266],[38.3553,-119.4211],[38.3437,-119.4377],[38.3454,-119.4529],[38.3601,-119.4435],[38.3878,-119.4546],[38.4208,-119.4475],[38.466,-119.4633],[38.512,-119.45],[38.517,-119.4812],[38.542,-119.4986],[38.6346,-119.5238],[38.6717,-119.5491],[38.7333,-119.5573],[38.8419,-119.6367],[38.8683,-119.6795],[38.9328,-119.7346],[38.9559,-119.7793],[39.071,-119.7798],[39.1646,-119.7664,'carson'],[39.1811,-119.7673],[39.2037,-119.7809],[39.2074,-119.8019],[39.2108,-119.806],[39.3084,-119.8259],[39.3381,-119.8077],[39.3454,-119.7932],[39.3579,-119.7852],[39.3719,-119.755],[39.3811,-119.7528],[39.3961,-119.7583],[39.4049,-119.7553],[39.4133,-119.7472],[39.4232,-119.7503],[39.4222,-119.7413,'hawkshead'],[39.427,-119.7562],[39.4536,-119.7809],[39.4731,-119.7907],[39.5066,-119.7802],[39.5189,-119.781],[39.5256,-119.7985],[39.5251,-119.8095],[39.5303,-119.8137,'legacy']];
+
+/* ================= ROAD AHEAD (heading-up view, whole-route overview, trip strip) ================= */
+const DRW={bypass:{key:'bypass',pts:GC.concat(GB)},r395:{key:'r395',pts:GC.concat(G3)}};
+for(const k in DRW){const d=DRW[k];d.pts=d.pts.map(p=>p[2]==='hawkshead'?[DROP[0],DROP[1],'hawkshead']:p);d.cum=[0];for(let i=1;i<d.pts.length;i++)d.cum.push(d.cum[i-1]+mpd(d.pts[i-1],d.pts[i]));d.len=d.cum[d.cum.length-1]}
+const DR_=()=>D.route==='395'?DRW.r395:DRW.bypass;
+/* approximate elevations (ft), refined from Open-Meteo when there is signal */
+const ELEV=[[34.04,-118.428,150],[34.125,-118.474,1100],[34.19,-118.47,800],[34.27,-118.47,1150],[34.325,-118.50,1450],[34.39,-118.48,1550],[34.43,-118.42,1900],[34.47,-118.32,2500],[34.498,-118.26,3250],[34.49,-118.17,2700],[34.505,-118.115,3150],[34.58,-118.13,2650],[34.69,-118.17,2350],[34.86,-118.17,2350],[35.05,-118.17,2750],[35.21,-118.05,2300],[35.36,-117.99,2650],[35.44,-117.98,3300],[35.65,-117.88,2600],[35.80,-117.88,2450],[35.94,-117.91,3150],[36.05,-117.95,3350],[36.14,-117.97,3800],[36.28,-118.00,3650],[36.43,-118.03,3700],[36.60,-118.06,3730],[36.80,-118.20,3950],[37.17,-118.29,3990],[37.36,-118.40,4150],
+ [37.40,-118.35,4150],[37.52,-118.37,4250],[37.67,-118.40,4800],[37.82,-118.48,5400],[37.955,-118.37,6300],[37.974,-118.327,7149],[38.003,-118.28,6300],[38.14,-118.24,5600],[38.27,-118.10,4800],[38.39,-118.11,4550],[38.52,-118.20,4400],[38.54,-118.40,4450],[38.525,-118.62,4330],[38.68,-118.77,4000],[38.95,-118.83,4120],[39.03,-119.03,4300],[38.99,-119.16,4380],[39.17,-119.19,4250],[39.29,-119.24,4200],[39.41,-119.22,4200],[39.52,-119.23,4180],[39.61,-119.22,4150],[39.60,-119.36,4100],[39.57,-119.49,4250],[39.53,-119.61,4350],[39.53,-119.79,4500],[39.47,-119.79,4550],[39.4222,-119.7413,4650],
+ [37.38,-118.45,4400],[37.41,-118.55,5000],[37.47,-118.58,6000],[37.51,-118.58,6800],[37.56,-118.68,7000],[37.58,-118.76,7100],[37.64,-118.92,7400],[37.75,-118.99,7900],[37.79,-119.04,8036],[37.86,-119.09,7500],[37.96,-119.12,6780],[38.04,-119.16,7000],[38.088,-119.18,8143],[38.20,-119.21,6800],[38.255,-119.22,6460],[38.35,-119.33,7000],[38.355,-119.42,7519],[38.42,-119.45,6600],[38.52,-119.45,5400],[38.63,-119.52,5100],[38.73,-119.56,5000],[38.94,-119.75,4750],[39.07,-119.78,4700],[39.165,-119.77,4800],[39.30,-119.82,5050],[39.37,-119.75,4700]];
+for(const k in DRW){const d=DRW[k];d.el=ELEV.map(e=>{const p=project(d,[e[0],e[1]],null);return p.d<2.5?[p.a,e[2]]:null}).filter(Boolean).sort((x,y)=>x[0]-y[0])}
+D.elev=LS.get('trt26-elev2',{});
+function elevAt(d,a){const L=D.elev[d.key];if(L&&L.length>3){const i=a/3,j=Math.max(0,Math.min(L.length-2,Math.floor(i))),f=Math.max(0,Math.min(1,i-j));return L[j]+f*(L[j+1]-L[j])}
+ const E=d.el;if(!E.length)return 0;if(a<=E[0][0])return E[0][1];for(let i=1;i<E.length;i++)if(a<=E[i][0]){const f=(a-E[i-1][0])/((E[i][0]-E[i-1][0])||1);return E[i-1][1]+f*(E[i][1]-E[i-1][1])}return E[E.length-1][1]}
+D.elevTry=0;
+async function fetchElev(){if(D.sim&&D.sim.on||Date.now()-D.elevTry<6e5)return;const d=DR_();if(D.elev[d.key])return;D.elevTry=Date.now();
+ try{const pts=[];for(let a=0;a<=d.len;a+=3)pts.push(pointAlongR(d,a));const out=[];
+  for(let i=0;i<pts.length;i+=100){const c=pts.slice(i,i+100);const u=`https://api.open-meteo.com/v1/elevation?latitude=${c.map(p=>p[0].toFixed(3)).join(',')}&longitude=${c.map(p=>p[1].toFixed(3)).join(',')}`;
+   const res=await fetch(u);if(!res.ok)return;const j=await res.json();if(!j.elevation||j.elevation.length!==c.length)return;out.push(...j.elevation.map(m=>Math.round(m*3.281)))}
+  D.elev[d.key]=out;LS.set('trt26-elev2',D.elev)}catch(_){}}
+/* labels on the road */
+const TOWNS=[['Palmdale',34.58,-118.12,1],['Lancaster',34.69,-118.16,1],['Rosamond',34.86,-118.17],['Olancha',36.28,-118.00,1],['Lone Pine',36.60,-118.06,1],['Independence',36.80,-118.20,1],['Big Pine',37.165,-118.29,1],['Benton',37.82,-118.48],['Mina',38.39,-118.11],['Schurz',38.95,-118.82],['Yerington',38.99,-119.16,1],['Silver Springs',39.41,-119.22,1],['Reno',39.53,-119.79],
+ ['Tom’s Place',37.56,-118.68],['Mammoth turnoff',37.64,-118.92],['Lee Vining',37.96,-119.12,1],['Bridgeport',38.255,-119.23,1],['Walker',38.52,-119.47,1],['Gardnerville',38.94,-119.75,1],['Carson City',39.165,-119.77,1]];
+const SVCX=[['Mojave',35.05,-118.17],['Bishop',37.36,-118.40],['Hawthorne',38.525,-118.62],['Fernley',39.61,-119.22]];
+const CUESHORT={bypass:['CA-14 north','Onto US-395','Exit right · US-6','Left · NV-360','Left · US-95','Left · 95 Alt','Cross US-50','I-80 west','I-580 south','Follow nav'],r395:['CA-14 north','Onto US-395','Keep left · 395','Deadman Summit','Conway Summit','Nevada line','I-580 north','Follow nav']};
+const SHORT={mojave:'Mojave',bishop:'Bishop',hawthorne:'Hawthorne',fernley:'Fernley',hawkshead:'Drop-off',legacy:'Silver Legacy',pass:'Montgomery Pass',mina:'Mina',walker:'Walker Lake',yerington:'Yerington',conway:'Conway Summit',carson:'Carson City'};
+const CCSEG=[{m:c=>c.route==='14',p:[[34.34,-118.50],[35.77,-117.88]]},{m:c=>c.route==='395'&&c.county!=='MNO',p:[[35.77,-117.88],[37.36,-118.40]]},{m:c=>c.route==='6',p:[[37.372,-118.395],[37.96,-118.35]]},{m:c=>c.route==='395'&&c.county==='MNO',p:[[37.40,-118.53],[38.69,-119.52]]}];
+for(const k in DRW){const d=DRW[k],r=ROUTES[k];
+ d.towns=TOWNS.map(t=>{const p=project(d,[t[1],t[2]],null);return p.d<2?{a:p.a,n:t[0],svc:!!t[3]}:null}).filter(Boolean);
+ d.svc=d.towns.filter(t=>t.svc).concat(SVCX.map(t=>({a:project(d,[t[1],t[2]],null).a,n:t[0],svc:true}))).sort((x,y)=>x.a-y.a);
+ d.cues=r.cues.map((c,i)=>({a:project(d,[c[0],c[1]],null).a,t:CUESHORT[k][i]||''}));
+ d.sights=r.sights.map(s=>({...s,a:s.stateline?null:project(d,[s.lat,s.lon],null).a})).filter(s=>s.a!=null);
+ d.nv=lineAlong(d);
+ d.ccs=CCSEG.map(s=>{const A=project(d,s.p[0],null),B=project(d,s.p[1],null);return A.d<3&&B.d<3?{m:s.m,a0:A.a,a1:B.a}:null});
+ d.nosig=k==='bypass'?[project(d,[37.82,-118.48],null).a,project(d,[38.39,-118.11],null).a]:null;
+ d.wx=WXPTS.map(w=>{const p=project(d,[w[1],w[2]],null);return p.d<3?{k:w[0],a:p.a}:null}).filter(Boolean)}
+D.vr=30;D.hd=null;D.aD=null;D.aDk=null;D.ovUser=null;D.ovUntil=0;
+const brg=(A,B)=>Math.atan2((B[1]-A[1])*Math.cos(A[0]*rad),B[0]-A[0]);
+function stopsFor(d){const r=ROUTES[d.key];return r.keys.filter(([k])=>k!=='la').map(([k,i])=>{const pos=k==='bishop'?chPos('bishop'):k==='hawkshead'?DROP:r.pts[i];return{k,a:project(d,[pos[0],pos[1]],null).a,pos,ch:!!CHARGE[k]}})}
+function ccOn(d){if(!(D.cc&&D.cc.list&&NOW()-D.cc.at<2*36e5))return[];const out=[];D.cc.list.forEach(c=>d.ccs.forEach(s=>{if(s&&s.m(c))out.push({a0:s.a0,a1:s.a1,st:c.st})}));return out}
+function wxOn(d,delay){const out=[];for(const w of d.wx){if((w.k==='conway'||w.k==='carson')&&d.key!=='r395')continue;const x=omAt(w.k,WXTIME[w.k]+(delay||0));if(x&&(x.snow||x.ice))out.push({a:w.a,snow:x.snow,T:x.T})}return out}
+const SV='http://www.w3.org/2000/svg';
+function drawRoad(V){const svg=$('dsvg');if(!svg)return;const box=$('dview');const W=box.clientWidth||360,H=box.clientHeight||300;if(W<50)return;
+ svg.setAttribute('viewBox',`0 0 ${W} ${H}`);const d=DR_(),r=R_(),now=NOW();
+ const pos=V.pos||pointAlongR(r,V.a);
+ if(D.aDk!==d.key){D.aD=null;D.aDk=d.key;D.hd=null}
+ const pr=project(d,pos,D.aD);let aD=pr.a;if(V.state==='before')aD=0;D.aD=aD;
+ if(D.prevSt==='before'&&V.state!=='before')D.ovUser=null;D.prevSt=V.state;
+ const ov=D.ovUser!=null?D.ovUser:(V.state==='before'||Date.now()<D.ovUntil);
+ $('dview').classList.toggle('ov',ov);
+ const mph=V.mph||55,toMin=a=>Math.max(0,(a-aD)*r.scale/mph*60),fmtMin=m=>m<1?'now':m<60?Math.round(m)+' min':Math.floor(m/60)+'h '+String(Math.round(m%60)).padStart(2,'0');
+ const stops=stopsFor(d),cc=ccOn(d),wx=wxOn(d,V.delay);let s='';
+ const pathOf=(a0,a1,X)=>{a0=Math.max(0,a0);a1=Math.min(d.len,a1);if(a1<=a0)return'';const P2=[pointAlongR(d,a0)];for(let i=0;i<d.pts.length;i++)if(d.cum[i]>a0&&d.cum[i]<a1)P2.push(d.pts[i]);P2.push(pointAlongR(d,a1));return 'M'+P2.map(p=>{const q=X(p);return q[0].toFixed(1)+' '+q[1].toFixed(1)}).join('L')};
+ if(ov){/* whole route, north up */
+  const all=DRW.bypass.pts.concat(DRW.r395.pts);let la0=90,la1=-90,lo0=180,lo1=-180;all.forEach(p=>{la0=Math.min(la0,p[0]);la1=Math.max(la1,p[0]);lo0=Math.min(lo0,p[1]);lo1=Math.max(lo1,p[1])});
+  const k=Math.cos((la0+la1)/2*rad),pad=26,bot=V.state==='before'?28:56;const sc=Math.min((W-2*pad)/((lo1-lo0)*k),(H-pad-bot)/(la1-la0));
+  const ox=(W-(lo1-lo0)*k*sc)/2,oy=pad+((H-pad-bot)-(la1-la0)*sc)/2;const X=p=>[ox+(p[1]-lo0)*k*sc,oy+(la1-p[0])*sc];
+  const other=d.key==='bypass'?DRW.r395:DRW.bypass,obi=other.pts.findIndex(p=>p[2]==='bishop');
+  s+=`<path class="rv-alt" d="${pathOf(other.cum[obi],other.len,p=>X(p))}"/>`;
+  s+=`<path class="rv-cas" d="${pathOf(0,d.len,X)}"/><path class="rv-ahead" d="${pathOf(0,d.len,X)}"/><path class="rv-done" d="${pathOf(0,aD,X)}"/>`;
+  cc.forEach(c=>s+=`<path class="rv-cc" d="${pathOf(c.a0,c.a1,X)}"/>`);
+  if(d.nosig)s+=`<path class="rv-ns" d="${pathOf(d.nosig[0],d.nosig[1],X)}"/>`;
+  stops.forEach(t=>{const q=X(pointAlongR(d,t.a));if(t.k==='legacy'||t.k==='pass'||t.k==='mina'||t.k==='walker'||t.k==='yerington'||t.k==='conway'||t.k==='carson')return;
+   const right=t.k!=='hawkshead'&&q[0]<W*0.62;s+=t.ch?`<g class="rv-ch" transform="translate(${q[0]},${q[1]})"><circle r="11"/><path d="M1.5-7-4 1h4l-1.5 6 5.5-8h-4z"/></g>`:`<circle class="rv-stop" cx="${q[0]}" cy="${q[1]}" r="8"/>`;
+   s+=`<text class="rv-lab b" x="${q[0]+(right?16:-16)}" y="${q[1]+6}" text-anchor="${right?'start':'end'}">${esc(SHORT[t.k]||NAMES[t.k])}</text>`});
+  wx.forEach(w=>{const q=X(pointAlongR(d,w.a));s+=`<text class="rv-wx${w.snow?'':' ice'}" x="${q[0]-26}" y="${q[1]+7}" text-anchor="middle">${w.snow?'❄':'ICE'}</text>`});
+  {const q=X(pointAlongR(d,0));s+=`<text class="rv-lab b" x="${q[0]+14}" y="${q[1]+6}">West LA</text>`}
+  if(V.state!=='before'){const q=X(pointAlongR(d,aD));s+=`<circle class="rv-me" cx="${q[0]}" cy="${q[1]}" r="9"/>`}
+  $('dvtag').textContent=V.state==='before'?'Whole route':'Whole route · tap to go back';
+ }else{/* heading up */
+  const tgt=(()=>{const c=d.cues.find(c=>c.a>aD+0.15);const e=c?c.a-aD:99;return e<12?Math.max(5,Math.min(30,e*1.7+1.5)):30})();
+  D.vr+=(tgt-D.vr)*(Math.abs(tgt-D.vr)>12?1:0.35);const range=D.vr;
+  const look=Math.max(0.6,Math.min(5,range*0.22));const car=pointAlongR(d,aD);const h=brg(car,pointAlongR(d,Math.min(d.len,aD+look)));
+  if(D.hd==null)D.hd=h;else{let dh=Math.atan2(Math.sin(h-D.hd),Math.cos(h-D.hd));D.hd+=Math.abs(dh)>1?dh:dh*0.4}
+  const band=56,cx=W/2,cy=H-band-30,sc=(cy-14)/range,ch=Math.cos(D.hd),sh=Math.sin(D.hd),kx=Math.cos(car[0]*rad)*69.17;
+  const X=p=>{const dx=(p[1]-car[1])*kx,dy=(p[0]-car[0])*69.17;return[cx+(dx*ch-dy*sh)*sc,cy-(dx*sh+dy*ch)*sc]};
+  const a1=aD+range*1.5,a0=aD-range*0.2;
+  s+=`<path class="rv-cas" d="${pathOf(a0,a1,X)}"/><path class="rv-done" d="${pathOf(a0,aD,X)}"/><path class="rv-ahead" d="${pathOf(aD,a1,X)}"/>`;
+  cc.forEach(c=>{if(c.a1>aD&&c.a0<a1){s+=`<path class="rv-cc" d="${pathOf(Math.max(aD,c.a0),c.a1,X)}"/>`;const q=X(pointAlongR(d,Math.max(aD+range*0.12,c.a0)));if(q[1]>8)s+=`<text class="rv-tag cc" x="${q[0]+16}" y="${q[1]+5}">Chains ${esc(c.st)}</text>`}});
+  if(d.nosig&&d.nosig[1]>aD&&d.nosig[0]<a1){s+=`<path class="rv-ns" d="${pathOf(Math.max(aD,d.nosig[0]),d.nosig[1],X)}"/>`;const q=X(pointAlongR(d,Math.max(aD+range*0.1,d.nosig[0])));if(q[1]>8&&q[1]<cy)s+=`<text class="rv-tag ns" x="${q[0]-16}" y="${q[1]+5}" text-anchor="end">No signal</text>`}
+  const vis=a=>a>aD-0.05&&a<aD+range*1.08;const used=[];const place=(y,side)=>{if(y<14||y>cy+8)return false;if(used.some(u=>u.s===side&&Math.abs(u.y-y)<(u.two?40:24)))return false;used.push({y,s:side,two:false});return true};
+  const M=[];
+  stops.forEach(t=>{if(vis(t.a))M.push({a:t.a,p:0,kind:t.ch?'ch':'stop',n:SHORT[t.k]||NAMES[t.k],m:toMin(t.a)})});
+  d.cues.forEach(c=>{if(vis(c.a)&&c.t)M.push({a:c.a,p:1,kind:'cue',n:c.t})});
+  if(d.nv!=null&&vis(d.nv))M.push({a:d.nv,p:1.5,kind:'nv',n:'Nevada'});
+  wx.forEach(w=>{if(vis(w.a))M.push({a:w.a,p:1.2,kind:'wx',snow:w.snow,n:w.snow?'Snow':'Icy',m:toMin(w.a)})});
+  d.sights.forEach(g=>{if(vis(g.a))M.push({a:g.a,p:2,kind:'sight',n:g.t,side:/LEFT/.test(g.side)?-1:/RIGHT/.test(g.side)?1:0,m:toMin(g.a)})});
+  d.towns.forEach(t=>{if(vis(t.a))M.push({a:t.a,p:3,kind:'town',n:t.n,svc:t.svc})});
+  M.sort((x,y)=>x.p-y.p||x.a-y.a).forEach(m=>{const q=X(pointAlongR(d,m.a));if(q[1]<-20||q[1]>cy+20)return;
+   let side=m.kind==='sight'?(m.side||1):m.kind==='town'?-1:(q[0]<cx-W*0.18?1:q[0]>cx+W*0.18?-1:1);
+   if(m.kind==='sight'&&m.side===0)side=1;
+   const gap=m.kind==='sight'?30:m.kind==='cue'?28:18,tmS=m.m!=null&&(m.kind!=='sight'||m.m<=15)?fmtMin(m.m):'',estW=Math.min(22,m.n.length)*8.6;
+   if(m.kind!=='sight'){if(side<0&&q[0]-gap-estW<4)side=1;else if(side>0&&q[0]+gap+estW>W-4&&q[0]-gap-estW>4)side=-1}
+   const avail=(side>0?W-4-q[0]-gap:q[0]-gap-4)/8.6,maxN=Math.floor(Math.min(24,avail));
+   const lx=q[0]+side*gap,anc=side>0?'start':'end';
+   if(m.kind==='ch')s+=`<g class="rv-ch" transform="translate(${q[0]},${q[1]})"><circle r="12"/><path d="M1.5-7-4 1h4l-1.5 6 5.5-8h-4z"/></g>`;
+   else if(m.kind==='stop')s+=`<circle class="rv-stop" cx="${q[0]}" cy="${q[1]}" r="8"/>`;
+   else if(m.kind==='cue')s+=`<g class="rv-cue" transform="translate(${q[0]},${q[1]})"><rect x="-7" y="-7" width="14" height="14" rx="2" transform="rotate(45)"/></g>`;
+   else if(m.kind==='nv')s+=`<line class="rv-nv" x1="${q[0]-22}" x2="${q[0]+22}" y1="${q[1]}" y2="${q[1]}"/>`;
+   else if(m.kind==='wx')s+=`<text class="rv-wx${m.snow?'':' ice'}" x="${q[0]-side*24}" y="${q[1]+8}" text-anchor="middle">${m.snow?'❄':'ICE'}</text>`;
+   else if(m.kind==='sight')s+=`<g class="rv-sight" transform="translate(${q[0]+side*16},${q[1]})"><circle r="7"/></g>`;
+   else if(m.kind==='town')s+=`<circle class="rv-town" cx="${q[0]}" cy="${q[1]}" r="3.5"/>`;
+   if(m.kind==='wx')return;
+   if(!place(q[1],side))return;
+   const cls=m.kind==='ch'||m.kind==='stop'?'b':m.kind==='cue'?'cue':m.kind==='sight'?'sg':m.kind==='nv'?'nv':'tn';
+   if(maxN<5)return;const nm=m.n.length>maxN?m.n.slice(0,maxN-1).trimEnd()+'…':m.n;const tm=tmS;
+   if(tm)used[used.length-1].two=true;
+   s+=`<text class="rv-lab ${cls}" x="${lx}" y="${q[1]+(tm?-2:6)}" text-anchor="${anc}">${esc(nm)}${m.kind==='town'&&m.svc?' 🍴':''}${tm?`<tspan class="rv-min" x="${lx}" dy="17">${tm}</tspan>`:''}</text>`});
+  /* elevation strip */
+  const y0=H-6,y1=H-band+6;let lo=1e9,hi=-1e9;const N=40,ev=[];for(let i=0;i<=N;i++){const a=aD+range*i/N;const e=a<=d.len?elevAt(d,a):elevAt(d,d.len);ev.push(e);lo=Math.min(lo,e);hi=Math.max(hi,e)}
+  const span=Math.max(1500,hi-lo),base=lo-span*0.1;const ex=i=>10+(W-20)*i/N,ey=e=>y0-(e-base)/(span*1.15)*(y0-y1);
+  s+=`<path class="rv-el" d="M${ex(0)} ${y0}`+ev.map((e,i)=>`L${ex(i).toFixed(1)} ${ey(e).toFixed(1)}`).join('')+`L${ex(N)} ${y0}Z"/>`;
+  s+=`<path class="rv-elln" d="M`+ev.map((e,i)=>`${ex(i).toFixed(1)} ${ey(e).toFixed(1)}`).join('L')+`"/>`;
+  const im=ev.indexOf(Math.max(...ev));const ft=n=>Math.round(n/10)*10;
+  s+=`<text class="rv-elt" x="14" y="${y1+6}">${ft(ev[0]).toLocaleString()} ft</text>`;
+  if(im>3&&ev[im]-ev[0]>400)s+=`<circle class="rv-elpk" cx="${ex(im)}" cy="${ey(ev[im])}" r="3.5"/><text class="rv-elt pk" x="${Math.min(W-12,ex(im))}" y="${Math.max(y1+6,ey(ev[im])-7)}" text-anchor="${ex(im)>W-70?'end':'middle'}">${ft(ev[im]).toLocaleString()} ft</text>`;
+  s+=`<text class="rv-elt" x="${W-12}" y="${y0-4}" text-anchor="end">${Math.round(range)} mi</text>`;
+  s+=`<g class="rv-car" transform="translate(${cx},${cy})"><path d="M0-16 12 13 0 6-12 13z"/></g>`;
+  $('dvtag').textContent=V.state==='at'?'Stopped · tap for whole route':`${Math.round(range)} mi ahead · tap for whole route`}
+ svg.innerHTML=s;
+ /* next services */
+ {const el=$('dsvc');const nx=V.state==='before'||ov?null:d.svc.find(t=>t.a>aD-0.3);if(nx){const mi=Math.max(0,(nx.a-aD)*r.scale);el.hidden=false;el.textContent=`🍴 Food & restrooms · ${nx.n} · ${mi<1?'here':Math.round(mi)+' mi'}`}else el.hidden=true}
+ /* whole-trip strip */
+ {const st=$('dstrip');const w=st.clientWidth||300;st.setAttribute('viewBox',`0 0 ${w} 30`);const x=a=>10+(w-20)*Math.max(0,Math.min(1,a/r.endAlong));let t='';
+  t+=`<line class="ts-bg" x1="10" x2="${w-10}" y1="15" y2="15"/><line class="ts-done" x1="10" x2="${x(V.a)}" y1="15" y2="15"/>`;
+  r.keys.forEach(([k,i])=>{if(CHARGE[k]&&(D.route!=='395'||k==='mojave'||k==='bishop'))t+=`<g class="ts-ch${r.cum[i]<=V.a?' done':''}" transform="translate(${x(r.cum[i])},15)"><circle r="8"/><path d="M1-5-3 1h3l-1 4 4-6h-3z"/></g>`});
+  t+=`<rect class="ts-end" x="${w-16}" y="9" width="12" height="12" rx="3"/><circle class="ts-me" cx="${x(V.a)}" cy="15" r="6"/>`;st.innerHTML=t}
+ fetchElev()}
+$('dview').addEventListener('click',e=>{if(e.target.closest('.dalert'))return;const v=D.view;if(!v)return;
+ const ovNow=$('dview').classList.contains('ov');if(v.state==='before')D.ovUser=!ovNow;else{D.ovUser=null;D.ovUntil=ovNow?0:Date.now()+2e4}dtick()});
+addEventListener('resize',()=>{if(D.view)drawRoad(D.view)});
 
 /* ================= TEST MODE ================= */
 /* hold the GPS chip for 3 seconds. Fakes a drive along the route; the kickoff and close-out stay muted. */
@@ -1127,8 +1340,8 @@ function buildTestPanel(){const J=jumpList();
   b.dataset.arm='';AQ=[];try{AU.pause()}catch(_){}AB=false;play(['chime',k])}})}
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
-window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project};
-const APPV='v7.16 · Nov 21 5:55 PM';
+window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project,DRW,drawRoad};
+const APPV='v7.17 · road ahead';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
