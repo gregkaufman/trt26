@@ -481,7 +481,7 @@ body.testing #v-drive{box-shadow:inset 0 0 0 3px #f5a623;border-radius:16px}
   <div id="spots"></div>
   <h2>License plate game</h2>
   <p class="lead">Tap a state when you see its plate. How many can you get?</p>
-  <p class="fine">Voice games along the way: elevation guess before the big pass, Tesla count from Mojave to Bishop, and first to spot snow.</p>
+  <p class="fine">Voice games along the way: Tesla count from Mojave to Bishop, and first to spot snow.</p>
   <div class="prog"><div class="bar"><i id="pbar"></i></div><b id="pcount">0 states</b></div>
   <div class="plates" id="plates"></div>
   <button class="reset" id="preset">Start the plate game over</button>
@@ -1039,7 +1039,6 @@ function dtick(){
   const nextCh=chs.find(([k,i])=>r.cum[i]>a+0.6);const lastCh=[...chs].reverse().find(([k,i])=>r.cum[i]<=a+0.6);
   const sinceLast=lastCh?(a-r.cum[lastCh[1]])*r.scale:a*r.scale-10;
   if(lastCh&&lastCh[0]==='mojave'&&sinceLast>8&&sinceLast<14&&state==='moving')G('tesla',true,'g_tesla_go','<small>Game</small>Count the Teslas until Bishop!');
-  const toTop=(r.topA-a)*r.scale;if(toTop>8&&toTop<14)G('elev',true,'g_elev','<small>Game</small>Elevation guess! How high is the top of this pass?');
   const pastB=(a-r.cum[bi])*r.scale;if(pastB>10&&pastB<16)G('snow',true,'g_snow','<small>Game</small>Snow watch! First to spot snow wins.');}
  C.sort((x,y)=>x.p-y.p);const top=C[0];
  const wxCard=top&&top.p>=1&&top.p<=1.5;D.hideWx=wxCard;
@@ -1124,11 +1123,11 @@ function buildTestPanel(){const J=jumpList();
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project};
-const APPV='v7.13 · Nov 21 5:40 PM';
+const APPV='v7.14 · Nov 21 5:45 PM';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
- if(v.app!==APPV){showVer('old');D.updReady=v.app;D.force={p:0.65,cls:'bad upd',html:'<small>Update ready · '+esc(v.app)+'</small>Tap here when parked to update',until:Date.now()+6e5};dtick()}else{D.updReady=null;showVer('ok')}}catch(_){showVer('off')}}
+ if(v.app!==APPV){showVer('old');D.updReady=v.app;D.force={p:0.65,cls:'bad upd',html:'<small>Update ready · '+esc(v.app)+'</small>Tap here to update',until:Date.now()+6e5};dtick()}else{D.updReady=null;showVer('ok')}}catch(_){showVer('off')}}
 async function doUpdate(){try{await fetch('./?u='+Date.now(),{cache:'reload'})}catch(_){}location.reload()}
 $('dalert').addEventListener('click',()=>{if(D.updReady&&$('dalert').classList.contains('upd'))doUpdate()});
 {const b=$('vercheck');if(b)b.addEventListener('click',()=>{if(D.updReady)doUpdate();else{showVer('checking');checkVer()}})}
