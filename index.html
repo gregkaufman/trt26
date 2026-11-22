@@ -454,6 +454,18 @@ nav.tabs,.tabs{padding-left:max(2vw,6px,env(safe-area-inset-left));padding-right
  .dcue{padding:10px 14px}
  .dprog .row{margin-top:8px}
 }
+
+/* v7.19: Drive fits one screen; the road view takes whatever room is left */
+body.driving{padding-bottom:var(--tabsh,80px)}
+@media not ((orientation:landscape) and (min-width:600px) and (max-height:600px)){
+ #v-drive.on{box-sizing:border-box;height:calc(100dvh - var(--tabsh,80px));min-height:0;gap:12px;padding-bottom:10px}
+ #v-drive>.dview{flex:1 1 0;height:auto;min-height:190px}
+ #v-drive>:not(.dview){flex:none}
+ .dact{margin-top:0}
+}
+.dnext{align-items:flex-end}
+.dnext .deta .clock{font-size:clamp(28px,8vw,38px)}
+.dnext .deta .rt{margin-top:4px}
 </style></head>
 <body>
 
@@ -1242,8 +1254,8 @@ function drawRoad(V){const svg=$('dsvg');if(!svg)return;const box=$('dview');con
   if(d.nosig)s+=`<path class="rv-ns" d="${pathOf(d.nosig[0],d.nosig[1],X)}"/>`;
   stops.forEach(t=>{const q=X(pointAlongR(d,t.a));if(t.k==='legacy'||t.k==='pass'||t.k==='mina'||t.k==='walker'||t.k==='yerington'||t.k==='conway'||t.k==='carson')return;
    const right=t.k!=='hawkshead'&&q[0]<W*0.62;s+=t.ch?`<g class="rv-ch" transform="translate(${q[0]},${q[1]})"><circle r="11"/><path d="M1.5-7-4 1h4l-1.5 6 5.5-8h-4z"/></g>`:`<circle class="rv-stop" cx="${q[0]}" cy="${q[1]}" r="8"/>`;
-   s+=`<text class="rv-lab b" x="${q[0]+(right?16:-16)}" y="${q[1]+6}" text-anchor="${right?'start':'end'}">${esc(SHORT[t.k]||NAMES[t.k])}</text>`});
-  wx.forEach(w=>{const q=X(pointAlongR(d,w.a));s+=`<text class="rv-wx${w.snow?'':' ice'}" x="${q[0]-26}" y="${q[1]+7}" text-anchor="middle">${w.snow?'❄':'ICE'}</text>`});
+   s+=`<text class="rv-lab b" x="${q[0]+(right?16:-16)}" y="${q[1]+6}" text-anchor="${right?'start':'end'}">${esc(t.k==='hawkshead'?'Reno':SHORT[t.k]||NAMES[t.k])}</text>`});
+  wx.forEach(w=>{const q=X(pointAlongR(d,w.a));const end=w.a>d.len-25;s+=`<text class="rv-wx${w.snow?'':' ice'}" x="${q[0]+(end?14:-26)}" y="${q[1]+(end?34:7)}" text-anchor="middle">${w.snow?'❄':'ICE'}</text>`});
   {const q=X(pointAlongR(d,0));s+=`<text class="rv-lab b" x="${q[0]+14}" y="${q[1]+6}">West LA</text>`}
   if(V.state!=='before'){const q=X(pointAlongR(d,aD));s+=`<circle class="rv-me" cx="${q[0]}" cy="${q[1]}" r="9"/>`}
   $('dvtag').textContent=V.state==='before'?'Whole route':'Whole route · tap to go back';
@@ -1308,7 +1320,8 @@ function drawRoad(V){const svg=$('dsvg');if(!svg)return;const box=$('dview');con
  fetchElev()}
 $('dview').addEventListener('click',e=>{if(e.target.closest('.dalert'))return;const v=D.view;if(!v)return;
  const ovNow=$('dview').classList.contains('ov');if(v.state==='before')D.ovUser=!ovNow;else{D.ovUser=null;D.ovUntil=ovNow?0:Date.now()+2e4}dtick()});
-addEventListener('resize',()=>{if(D.view)drawRoad(D.view)});
+function setTabH(){const n=document.querySelector('nav.tabs');if(n)document.documentElement.style.setProperty('--tabsh',n.offsetHeight+'px')}
+setTabH();addEventListener('resize',()=>{setTabH();if(D.view)drawRoad(D.view)});
 
 /* ================= TEST MODE ================= */
 /* hold the GPS chip for 3 seconds. Fakes a drive along the route; the kickoff and close-out stay muted. */
@@ -1366,7 +1379,7 @@ function buildTestPanel(){const J=jumpList();
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project,DRW,drawRoad};
-const APPV='v7.18 · roomier';
+const APPV='v7.19 · fits one screen';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
