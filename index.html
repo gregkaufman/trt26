@@ -1255,7 +1255,7 @@ function drawRoad(V){const svg=$('dsvg');if(!svg)return;const box=$('dview');con
   stops.forEach(t=>{const q=X(pointAlongR(d,t.a));if(t.k==='legacy'||t.k==='pass'||t.k==='mina'||t.k==='walker'||t.k==='yerington'||t.k==='conway'||t.k==='carson')return;
    const right=t.k!=='hawkshead'&&q[0]<W*0.62;s+=t.ch?`<g class="rv-ch" transform="translate(${q[0]},${q[1]})"><circle r="11"/><path d="M1.5-7-4 1h4l-1.5 6 5.5-8h-4z"/></g>`:`<circle class="rv-stop" cx="${q[0]}" cy="${q[1]}" r="8"/>`;
    s+=`<text class="rv-lab b" x="${q[0]+(right?16:-16)}" y="${q[1]+6}" text-anchor="${right?'start':'end'}">${esc(t.k==='hawkshead'?'Reno':SHORT[t.k]||NAMES[t.k])}</text>`});
-  wx.forEach(w=>{const q=X(pointAlongR(d,w.a));const end=w.a>d.len-25;s+=`<text class="rv-wx${w.snow?'':' ice'}" x="${q[0]+(end?14:-26)}" y="${q[1]+(end?34:7)}" text-anchor="middle">${w.snow?'❄':'ICE'}</text>`});
+  wx.forEach(w=>{const q=X(pointAlongR(d,w.a));const end=w.a>d.len-25;s+=`<text class="rv-wx${w.snow?'':' ice'}" x="${q[0]+(end?14:-38)}" y="${q[1]+(end?34:7)}" text-anchor="middle">${w.snow?'❄':'ICE'}</text>`});
   {const q=X(pointAlongR(d,0));s+=`<text class="rv-lab b" x="${q[0]+14}" y="${q[1]+6}">West LA</text>`}
   if(V.state!=='before'){const q=X(pointAlongR(d,aD));s+=`<circle class="rv-me" cx="${q[0]}" cy="${q[1]}" r="9"/>`}
   $('dvtag').textContent=V.state==='before'?'Whole route':'Whole route · tap to go back';
@@ -1379,7 +1379,7 @@ function buildTestPanel(){const J=jumpList();
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project,DRW,drawRoad};
-const APPV='v7.19 · fits one screen';
+const APPV='v7.20 · snowflake spacing';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
