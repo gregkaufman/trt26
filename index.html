@@ -791,8 +791,8 @@ const R_=()=>D.route==='395'?ROUTES.r395:ROUTES.bypass;
 /* theme: Auto follows the clock (sunset in Reno is about 4:40 PM) */
 function applyTheme(){const d=new Date(NOW()),h=d.getHours()+d.getMinutes()/60;const night=D.theme==='night'||(D.theme==='auto'&&(h>=16.67||h<6.6));
  document.documentElement.setAttribute('data-theme',night?'dark':'light');
- const tb=$('dtheme');if(tb)tb.lastElementChild.textContent={day:'Day',night:'Night',auto:'Auto'}[D.theme];}
-$('dtheme').addEventListener('click',()=>{D.theme=D.theme==='auto'?'day':D.theme==='day'?'night':'auto';LS.set('trt26-theme',D.theme);applyTheme();wake()});
+ const tb=$('dtheme');if(tb){tb.lastElementChild.textContent={day:'Day',night:'Night',auto:'Auto'}[D.theme];tb.firstElementChild.innerHTML=night?'<path d="M20 15.5A8.5 8.5 0 0 1 8.5 4a8.5 8.5 0 1 0 11.5 11.5z" fill="currentColor" stroke="none"/>':'<circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>'}}
+$('dtheme').addEventListener('click',()=>{D.theme=D.theme==='auto'?'night':D.theme==='night'?'day':'auto';LS.set('trt26-theme',D.theme);applyTheme();wake()});
 document.querySelectorAll('[data-rt]').forEach(b=>b.addEventListener('click',()=>{D.route=b.dataset.rt;LS.set('trt26-route',D.route);D.lastA=null;drawBishop();dtick()}));
 function planAlong(r,t){
  const ks=r.keys;if(t<=r.sched.la[1])return{a:0,state:'before'};
