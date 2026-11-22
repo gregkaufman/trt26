@@ -466,6 +466,14 @@ body.driving{padding-bottom:var(--tabsh,80px)}
 .dnext{align-items:flex-end}
 .dnext .deta .clock{font-size:clamp(28px,8vw,38px)}
 .dnext .deta .rt{margin-top:4px}
+
+/* v7.22: route switch rides on the map, so the map keeps its full height */
+.dview .droute{position:absolute;right:8px;top:8px;z-index:2;gap:0;cursor:default}
+.dview .droute>span{display:none}
+.dview .droute .seg{flex:none;width:150px;background:var(--d-bg)}
+.dview .droute .seg button{min-height:38px;font-size:15px}
+.dview .dalert{z-index:3}
+@media (orientation:landscape) and (min-width:600px) and (max-height:600px){.dview .droute{display:flex!important}.dview .droute[hidden]{display:none!important}}
 </style></head>
 <body>
 
@@ -531,6 +539,7 @@ body.driving{padding-bottom:var(--tabsh,80px)}
     <svg id="dsvg" xmlns="http://www.w3.org/2000/svg"></svg>
     <div class="dvtag" id="dvtag"></div>
     <div class="dalert" id="dalert" role="status" aria-live="polite"></div>
+    <div class="droute"><span>Route after Bishop</span><div class="seg" role="group" aria-label="Route after Bishop"><button data-rt="bypass">Bypass</button><button data-rt="395">395</button></div></div>
   </div>
   <div class="dnext">
     <div class="dnl"><div class="dlab" id="dlab">Next stop</div><div class="dname" id="dname">Mojave Supercharger</div></div>
@@ -548,7 +557,6 @@ body.driving{padding-bottom:var(--tabsh,80px)}
     <button id="dlate">+15 min</button>
     <button id="dreset" hidden>On time</button>
   </div>
-  <div class="droute"><span>Route after Bishop</span><div class="seg" role="group" aria-label="Route after Bishop"><button data-rt="bypass">Bypass</button><button data-rt="395">395</button></div></div>
   <p class="dnote" id="dnote" hidden>Taps are for when you’re parked.</p>
 </section>
 <div class="tpanel" id="tpanel" hidden></div>
@@ -1245,8 +1253,8 @@ function drawRoad(V){const svg=$('dsvg');if(!svg)return;const box=$('dview');con
  const pathOf=(a0,a1,X)=>{a0=Math.max(0,a0);a1=Math.min(d.len,a1);if(a1<=a0)return'';const P2=[pointAlongR(d,a0)];for(let i=0;i<d.pts.length;i++)if(d.cum[i]>a0&&d.cum[i]<a1)P2.push(d.pts[i]);P2.push(pointAlongR(d,a1));return 'M'+P2.map(p=>{const q=X(p);return q[0].toFixed(1)+' '+q[1].toFixed(1)}).join('L')};
  if(ov){/* whole route, north up */
   const all=DRW.bypass.pts.concat(DRW.r395.pts);let la0=90,la1=-90,lo0=180,lo1=-180;all.forEach(p=>{la0=Math.min(la0,p[0]);la1=Math.max(la1,p[0]);lo0=Math.min(lo0,p[1]);lo1=Math.max(lo1,p[1])});
-  const k=Math.cos((la0+la1)/2*rad),pad=26,bot=V.state==='before'?28:56;const sc=Math.min((W-2*pad)/((lo1-lo0)*k),(H-pad-bot)/(la1-la0));
-  const ox=(W-(lo1-lo0)*k*sc)/2,oy=pad+((H-pad-bot)-(la1-la0)*sc)/2;const X=p=>[ox+(p[1]-lo0)*k*sc,oy+(la1-p[0])*sc];
+  const k=Math.cos((la0+la1)/2*rad),pad=26,top=document.querySelector('.droute').hidden?26:60,bot=V.state==='before'?28:56;const sc=Math.min((W-2*pad)/((lo1-lo0)*k),(H-top-bot)/(la1-la0));
+  const ox=(W-(lo1-lo0)*k*sc)/2,oy=top+((H-top-bot)-(la1-la0)*sc)/2;const X=p=>[ox+(p[1]-lo0)*k*sc,oy+(la1-p[0])*sc];
   const other=d.key==='bypass'?DRW.r395:DRW.bypass,obi=other.pts.findIndex(p=>p[2]==='bishop');
   s+=`<path class="rv-alt" d="${pathOf(other.cum[obi],other.len,p=>X(p))}"/>`;
   s+=`<path class="rv-cas" d="${pathOf(0,d.len,X)}"/><path class="rv-ahead" d="${pathOf(0,d.len,X)}"/><path class="rv-done" d="${pathOf(0,aD,X)}"/>`;
@@ -1308,7 +1316,7 @@ function drawRoad(V){const svg=$('dsvg');if(!svg)return;const box=$('dview');con
   if(im>3&&ev[im]-ev[0]>400)s+=`<circle class="rv-elpk" cx="${ex(im)}" cy="${ey(ev[im])}" r="3.5"/><text class="rv-elt pk" x="${Math.min(W-12,ex(im))}" y="${Math.max(y1+6,ey(ev[im])-7)}" text-anchor="${ex(im)>W-70?'end':'middle'}">${ft(ev[im]).toLocaleString()} ft</text>`;
   s+=`<text class="rv-elt" x="${W-12}" y="${y0-4}" text-anchor="end">${Math.round(range)} mi</text>`;
   s+=`<g class="rv-car" transform="translate(${cx},${cy})"><path d="M0-16 12 13 0 6-12 13z"/></g>`;
-  $('dvtag').textContent=V.state==='at'?'Stopped · tap for whole route':`${Math.round(range)} mi ahead · tap for whole route`}
+  $('dvtag').textContent=V.state==='at'?'Stopped':`${Math.round(range)} mi ahead`}
  svg.innerHTML=s;
  /* next services */
  {const el=$('dsvc');const nx=V.state==='before'||ov?null:d.svc.find(t=>t.a>aD-0.3);if(nx){const mi=Math.max(0,(nx.a-aD)*r.scale);el.hidden=false;el.textContent=`🍴 Food & restrooms · ${nx.n} · ${mi<1?'here':Math.round(mi)+' mi'}`}else el.hidden=true}
@@ -1318,7 +1326,7 @@ function drawRoad(V){const svg=$('dsvg');if(!svg)return;const box=$('dview');con
   r.keys.forEach(([k,i])=>{if(CHARGE[k]&&(D.route!=='395'||k==='mojave'||k==='bishop'))t+=`<g class="ts-ch${r.cum[i]<=V.a?' done':''}" transform="translate(${x(r.cum[i])},15)"><circle r="8"/><path d="M1-5-3 1h3l-1 4 4-6h-3z"/></g>`});
   t+=`<rect class="ts-end" x="${w-16}" y="9" width="12" height="12" rx="3"/><circle class="ts-me" cx="${x(V.a)}" cy="15" r="6"/>`;st.innerHTML=t}
  fetchElev()}
-$('dview').addEventListener('click',e=>{if(e.target.closest('.dalert'))return;const v=D.view;if(!v)return;
+$('dview').addEventListener('click',e=>{if(e.target.closest('.dalert,.droute'))return;const v=D.view;if(!v)return;
  const ovNow=$('dview').classList.contains('ov');if(v.state==='before')D.ovUser=!ovNow;else{D.ovUser=null;D.ovUntil=ovNow?0:Date.now()+2e4}dtick()});
 function setTabH(){const n=document.querySelector('nav.tabs');if(n)document.documentElement.style.setProperty('--tabsh',n.offsetHeight+'px')}
 setTabH();addEventListener('resize',()=>{setTabH();if(D.view)drawRoad(D.view)});
@@ -1379,7 +1387,7 @@ function buildTestPanel(){const J=jumpList();
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project,DRW,drawRoad};
-const APPV='v7.21 · snowflakes clear';
+const APPV='v7.22 · map fills the screen';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
