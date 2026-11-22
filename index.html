@@ -509,6 +509,17 @@ body.driving{padding-bottom:var(--tabsh,80px)}
  .sopts button svg{width:24px;height:24px}
  .sver{grid-column:2;margin-top:6px}
 }
+
+/* v7.26 next-stop block: labels on one line, name and time on one baseline */
+.dnext{display:block}
+.dnhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.dnhead .dlab{margin:0;white-space:nowrap}
+.dnr span+span:not(:empty)::before{content:" · "}
+.dnmain{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:6px}
+.dnmain .dname{font-size:clamp(28px,8.4vw,40px);line-height:1.08;margin:0;min-width:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dnmain .clock{flex:none;font-size:clamp(28px,8.4vw,40px);line-height:1.08;font-weight:800;font-variant-numeric:tabular-nums;color:var(--d-ink)}
+.dnmain .clock small{font-size:.5em;margin-left:4px;font-weight:700;color:var(--d-sub)}
+@media (orientation:landscape) and (min-width:600px) and (max-height:600px){.dnmain .dname,.dnmain .clock{font-size:clamp(24px,3.4vw,32px)}}
 </style></head>
 <body>
 
@@ -577,8 +588,8 @@ body.driving{padding-bottom:var(--tabsh,80px)}
     <div class="dalert" id="dalert" role="status" aria-live="polite"></div>
   </div>
   <div class="dnext">
-    <div class="dnl"><div class="dlab" id="dlab">Next stop</div><div class="dname" id="dname">Mojave Supercharger</div></div>
-    <div class="deta"><div class="clock" id="deta">9:45<small>AM</small></div><div class="rt"><span id="dmin">—</span><span id="dmi">—</span></div></div>
+    <div class="dnhead"><span class="dlab" id="dlab">First stop</span><span class="dlab dnr"><span id="dmin">planned arrival</span><span id="dmi"></span></span></div>
+    <div class="dnmain"><div class="dname" id="dname">Mojave</div><div class="clock" id="deta">9:45<small>AM</small></div></div>
   </div>
   <div class="dcue" id="dcuebox"><div class="txt" id="dcue">—</div><div class="meta" id="dcuemeta"></div></div>
   <div class="dsvc" id="dsvc" hidden></div>
@@ -1157,13 +1168,13 @@ function dtick(){
  const renoEta=r.sched.hawkshead[0]+delay;
  const showAt=state==='at'&&atKey;
  const nameOf=k=>k==='bishop'?BISHOP[bishopKey()].name:NAMES[k];
- $('dlab').textContent=state==='before'?'First stop':showAt?'You’re at · leave at':'Next stop';
+ $('dlab').textContent=state==='before'?'First stop':showAt?'You’re at':'Next stop';
  $('dname').textContent=nameOf(showAt?atKey:nk).replace(' Supercharger','');
  if(showAt){const dwell=r.sched[atKey][1]-r.sched[atKey][0];const depAt=live?(D.atSince&&D.atKey===atKey?D.atSince:(D.atKey=atKey,D.atSince=now))+dwell:r.sched[atKey][1]+D.offset;
   const [t,ap]=hm(depAt);$('deta').innerHTML=`${t}<small>${ap}</small>`;const left=depAt-now;
-  $('dmin').textContent=left>0?`in ${mins(left)}`:'now';$('dmi').textContent='to leave';}
+  $('dmin').textContent=left>0?`leave in ${mins(left)}`:'leave now';$('dmi').textContent='';}
  else{if(!live||state!=='at'){D.atKey=null;D.atSince=null}
-  const [t,ap]=hm(eta);$('deta').innerHTML=`${t}<small>${ap}</small>`;$('dmin').textContent=state==='before'?'planned':mins(eta-now);$('dmi').textContent=state==='before'?'':`${Math.round(remMi)} mi`;}
+  const [t,ap]=hm(eta);$('deta').innerHTML=`${t}<small>${ap}</small>`;$('dmin').textContent=state==='before'?'planned arrival':mins(eta-now);$('dmi').textContent=state==='before'?'':`${Math.round(remMi)} mi`;}
  const cue=r.cueA.find(c=>c.a>a+0.3);let cm=null;
  if(cue){$('dcue').textContent=cue.t;cm=(cue.a-a)*r.scale;$('dcuemeta').textContent=state==='before'?'':showAt?'after you leave':cm<1?'now':`in ${Math.round(cm)} mi`}
  else{$('dcue').textContent='Follow the nav.';$('dcuemeta').textContent=''}
@@ -1449,7 +1460,7 @@ function buildTestPanel(){const J=jumpList();
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project,DRW,drawRoad};
-const APPV='v7.25 · quiet settings';
+const APPV='v7.26 · cleaner next stop';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){D.verSt=st;const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
