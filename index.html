@@ -429,6 +429,31 @@ nav.tabs,.tabs{padding-left:max(2vw,6px,env(safe-area-inset-left));padding-right
  .dcharge{display:flex!important;font-size:18px}
  .dview .dalert{font-size:19px;padding:10px 14px}
 }
+
+/* v7.18: more breathing room in the info stack */
+#v-drive.on{gap:16px}
+.dview{height:clamp(230px,38vh,460px)}
+.dnext .dname{line-height:1.12}
+.dnext .deta .clock{line-height:1}
+.dnext .deta .rt{margin-top:8px}
+.dcue{padding:14px 16px}
+.dcue.big .meta{margin-top:12px}
+.dsvc{padding:2px 0}
+.dcharge{padding:2px 0}
+.dstrip{margin-top:4px}
+.dprog .row{margin-top:10px}
+.dact{margin-top:8px}
+@media (orientation:landscape) and (min-width:600px) and (max-height:600px){
+ #v-drive.on{gap:9px 18px}
+ .dtop>*{height:48px;min-height:48px}
+ .dsvc{font-size:16px;padding:0}
+ .dcharge{font-size:17px!important;padding:0}
+ .dprog .row{font-size:16px}
+ .dnext .deta .clock{font-size:clamp(28px,4.2vw,38px)}
+ .dnext .deta .rt{margin-top:6px}
+ .dcue{padding:10px 14px}
+ .dprog .row{margin-top:8px}
+}
 </style></head>
 <body>
 
@@ -1341,7 +1366,7 @@ function buildTestPanel(){const J=jumpList();
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project,DRW,drawRoad};
-const APPV='v7.17 · road ahead';
+const APPV='v7.18 · roomier';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
