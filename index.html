@@ -399,7 +399,7 @@ body.testing #v-drive{box-shadow:inset 0 0 0 3px #f5a623;border-radius:16px}
 
 <section id="v-drive" aria-label="Drive screen">
   <div class="dtop">
-    <button class="chip thbtn" id="dtheme" aria-label="Screen brightness: tap to switch Day, Night, Auto"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg><span>Auto</span></button>
+    <button class="chip thbtn" id="dtheme" aria-label="Screen: tap to switch Night and Day"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/></svg><span>Night</span></button>
     <button class="chip" id="dgps" aria-label="GPS status. Hold 3 seconds for test mode."><i></i><span>Plan</span></button>
     <button class="chip vbtn" id="dvoice" aria-pressed="false" aria-label="Voice alerts"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor" stroke="none"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg><span>Voice off</span></button>
   </div>
@@ -786,13 +786,13 @@ function project(r,pt,hint){
  return best;
 }
 prep(ROUTES.bypass);prep(ROUTES.r395);
-D.route=LS.get('trt26-route','bypass');D.theme=LS.get('trt26-theme','auto');D.offset=LS.get('trt26-offset',0);
+D.route=LS.get('trt26-route','bypass');D.theme=LS.get('trt26-theme','night')==='day'?'day':'night';D.offset=LS.get('trt26-offset',0);
 const R_=()=>D.route==='395'?ROUTES.r395:ROUTES.bypass;
 /* theme: Auto follows the clock (sunset in Reno is about 4:40 PM) */
-function applyTheme(){const d=new Date(NOW()),h=d.getHours()+d.getMinutes()/60;const night=D.theme==='night'||(D.theme==='auto'&&(h>=16.67||h<6.6));
+function applyTheme(){const d=new Date(NOW()),h=d.getHours()+d.getMinutes()/60;const night=D.theme!=='day';
  document.documentElement.setAttribute('data-theme',night?'dark':'light');
- const tb=$('dtheme');if(tb){tb.lastElementChild.textContent={day:'Day',night:'Night',auto:'Auto'}[D.theme];tb.firstElementChild.innerHTML=night?'<path d="M20 15.5A8.5 8.5 0 0 1 8.5 4a8.5 8.5 0 1 0 11.5 11.5z" fill="currentColor" stroke="none"/>':'<circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>'}}
-$('dtheme').addEventListener('click',()=>{D.theme=D.theme==='auto'?'night':D.theme==='night'?'day':'auto';LS.set('trt26-theme',D.theme);applyTheme();wake()});
+ const tb=$('dtheme');if(tb)tb.lastElementChild.textContent=night?'Night':'Day';}
+$('dtheme').addEventListener('click',()=>{D.theme=D.theme==='night'?'day':'night';LS.set('trt26-theme',D.theme);applyTheme();wake()});
 document.querySelectorAll('[data-rt]').forEach(b=>b.addEventListener('click',()=>{D.route=b.dataset.rt;LS.set('trt26-route',D.route);D.lastA=null;drawBishop();dtick()}));
 function planAlong(r,t){
  const ks=r.keys;if(t<=r.sched.la[1])return{a:0,state:'before'};
