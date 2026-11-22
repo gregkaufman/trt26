@@ -1106,8 +1106,8 @@ const ESS=k=>/^(in\d|[br]\d|a_|m_|w_|o_range)/.test(k);
 function say(key,ids,crit){if(D.vmode==='off'||D.said[key]||document.visibilityState!=='visible')return;
  if(D.sim&&D.sim.on&&D.sim.x==='smartp'&&(key.startsWith('c1')||!ids.every(ESS))){D.said[key]=NOW();return}
  if(D.vmode==='podcast'&&!crit)return;D.said[key]=NOW();play(D.vmode==='podcast'?['chime']:['chime',...ids])}
-function setVmode(m){D.vmode=m;LS.set('trt26-vmode',D.vmode);setVoiceBtn();setSession();AQ=[];
- try{AU.pause()}catch(_){}AB=false;if(D.vmode!=='off')play(['chime']);dtick();syncSheet()}
+function setVmode(m,quiet){D.vmode=m;LS.set('trt26-vmode',D.vmode);setVoiceBtn();setSession();AQ=[];
+ try{AU.pause()}catch(_){}AB=false;if(D.vmode!=='off'&&!quiet)play(['chime']);dtick();syncSheet()}
 vbtn.addEventListener('click',()=>setVmode(D.vmode==='off'?'music':D.vmode==='music'?'podcast':'off'));
 setVoiceBtn();setSession();
 const CRIT=new Set(['w_off','w_395','w_fallon','w_geiger','w_wx','w_chain','w_snow','o_range']);
@@ -1392,7 +1392,7 @@ function openSheet(o){$('dsheet').hidden=!o;if(o){syncSheet();if(typeof showVer=
 $('dset').addEventListener('click',()=>openSheet(true));$('dsetx').addEventListener('click',()=>openSheet(false));
 $('dsheet').addEventListener('click',e=>{if(e.target.id==='dsheet')openSheet(false)});
 document.querySelectorAll('#dsheet [data-th]').forEach(b=>b.addEventListener('click',()=>{D.theme=b.dataset.th;LS.set('trt26-theme',D.theme);applyTheme();syncSheet()}));
-document.querySelectorAll('#dsheet [data-vm]').forEach(b=>b.addEventListener('click',()=>{if(D.vmode!==b.dataset.vm)setVmode(b.dataset.vm)}));
+document.querySelectorAll('#dsheet [data-vm]').forEach(b=>b.addEventListener('click',()=>{if(D.vmode!==b.dataset.vm)setVmode(b.dataset.vm,true)}));
 /* ================= TEST MODE ================= */
 /* hold the GPS chip for 3 seconds. Fakes a drive along the route; the kickoff and close-out stay muted. */
 D.sim={on:false,t:T(7,58),x:'smart',play:false};
@@ -1449,7 +1449,7 @@ function buildTestPanel(){const J=jumpList();
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project,DRW,drawRoad};
-const APPV='v7.24 · settings';
+const APPV='v7.25 · quiet settings';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){D.verSt=st;const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
