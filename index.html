@@ -926,7 +926,7 @@ function say(key,ids,crit){if(D.vmode==='off'||D.said[key]||document.visibilityS
  if(D.sim&&D.sim.on&&D.sim.x==='smartp'&&(key.startsWith('c1')||!ids.every(ESS))){D.said[key]=NOW();return}
  if(D.vmode==='podcast'&&!crit)return;D.said[key]=NOW();play(D.vmode==='podcast'?['chime']:['chime',...ids])}
 vbtn.addEventListener('click',()=>{D.vmode=D.vmode==='off'?'music':D.vmode==='music'?'podcast':'off';LS.set('trt26-vmode',D.vmode);setVoiceBtn();setSession();AQ=[];
- try{AU.pause()}catch(_){}AB=false;if(D.vmode==='music')play(['chime','v_music']);else if(D.vmode==='podcast')play(['chime','v_pod']);dtick()});
+ try{AU.pause()}catch(_){}AB=false;if(D.vmode!=='off')play(['chime']);dtick()});
 setVoiceBtn();setSession();
 const CRIT=new Set(['w_off','w_395','w_fallon','w_geiger','w_wx','w_chain','w_snow','o_range']);
 
