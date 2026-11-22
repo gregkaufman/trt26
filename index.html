@@ -520,6 +520,9 @@ body.driving{padding-bottom:var(--tabsh,80px)}
 .dnmain .clock{flex:none;font-size:clamp(28px,8.4vw,40px);line-height:1.08;font-weight:800;font-variant-numeric:tabular-nums;color:var(--d-ink)}
 .dnmain .clock small{font-size:.5em;margin-left:4px;font-weight:700;color:var(--d-sub)}
 @media (orientation:landscape) and (min-width:600px) and (max-height:600px){.dnmain .dname,.dnmain .clock{font-size:clamp(24px,3.4vw,32px)}}
+
+/* v7.27: stop name stays on one line and shrinks to fit */
+.dnmain .dname{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:unset;flex:1}
 </style></head>
 <body>
 
@@ -1169,7 +1172,7 @@ function dtick(){
  const showAt=state==='at'&&atKey;
  const nameOf=k=>k==='bishop'?BISHOP[bishopKey()].name:NAMES[k];
  $('dlab').textContent=state==='before'?'First stop':showAt?'You’re at':'Next stop';
- $('dname').textContent=nameOf(showAt?atKey:nk).replace(' Supercharger','');
+ $('dname').textContent=nameOf(showAt?atKey:nk).replace(' Supercharger','');fitName();
  if(showAt){const dwell=r.sched[atKey][1]-r.sched[atKey][0];const depAt=live?(D.atSince&&D.atKey===atKey?D.atSince:(D.atKey=atKey,D.atSince=now))+dwell:r.sched[atKey][1]+D.offset;
   const [t,ap]=hm(depAt);$('deta').innerHTML=`${t}<small>${ap}</small>`;const left=depAt-now;
   $('dmin').textContent=left>0?`leave in ${mins(left)}`:'leave now';$('dmi').textContent='';}
@@ -1396,6 +1399,9 @@ $('dview').addEventListener('click',e=>{if(e.target.closest('.dalert,.droute'))r
 function setTabH(){const n=document.querySelector('nav.tabs');if(n)document.documentElement.style.setProperty('--tabsh',n.offsetHeight+'px')}
 setTabH();addEventListener('resize',()=>{setTabH();if(D.view)drawRoad(D.view)});
 
+function fitName(){const el=$('dname');if(!el)return;el.style.fontSize='';const base=parseFloat(getComputedStyle(el).fontSize);let f=base;
+ while(el.scrollWidth>el.clientWidth+1&&f>base*0.62){f-=1;el.style.fontSize=f+'px'}}
+addEventListener('resize',fitName);
 /* ================= SETTINGS SHEET ================= */
 function syncSheet(){document.querySelectorAll('#dsheet [data-th]').forEach(b=>{const on=(D.theme==='day'?'day':'night')===b.dataset.th;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
  document.querySelectorAll('#dsheet [data-vm]').forEach(b=>{const on=D.vmode===b.dataset.vm;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)})}
@@ -1460,7 +1466,7 @@ function buildTestPanel(){const J=jumpList();
 function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project,DRW,drawRoad};
-const APPV='v7.26 · cleaner next stop';
+const APPV='v7.27 · one-line stop names';
 if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
 function showVer(st){D.verSt=st;const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready':st==='checking'?' · checking…':' · couldn’t check (no signal)')}
 async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
