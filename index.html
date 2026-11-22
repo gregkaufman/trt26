@@ -508,7 +508,7 @@ body.testing #v-drive{box-shadow:inset 0 0 0 3px #f5a623;border-radius:16px}
   <div class="btns"><a class="btn o" href="https://quickmap.dot.ca.gov/">Caltrans QuickMap</a><a class="btn o" href="https://www.nvroads.com/">nvroads.com</a></div>
 </section>
 
-<footer><svg viewBox="0 0 72 72" aria-hidden="true"><use href="#logo"/></svg>Drive safe, look out the window.<b>Happy Thanksgiving!</b></footer>
+<footer><svg viewBox="0 0 72 72" aria-hidden="true"><use href="#logo"/></svg>Drive safe, look out the window.<b>Happy Thanksgiving!</b><small id="appver" style="display:block;margin-top:8px;opacity:.7"></small></footer>
 </main>
 
 <nav class="tabs" aria-label="Sections"><div class="in">
@@ -529,7 +529,7 @@ body.testing #v-drive{box-shadow:inset 0 0 0 3px #f5a623;border-radius:16px}
   </symbol>
 </defs></svg>
 
-<script src="voice.js"></script>
+<script src="voice.js?v=62f8e5be"></script>
 <script>
 {
 const $=id=>document.getElementById(id);
@@ -1121,10 +1121,15 @@ function buildTestPanel(){const J=jumpList();
  TP.querySelectorAll('[data-c]').forEach(b=>{b.onclick=()=>{const k=b.dataset.c;
   if(/^[kx]_/.test(k)&&b.dataset.arm!=='1'){b.dataset.arm='1';const t=b.textContent;b.textContent='Tap again: plays OUT LOUD';setTimeout(()=>{b.dataset.arm='';b.textContent=t},3500);return}
   b.dataset.arm='';AQ=[];try{AU.pause()}catch(_){}AB=false;play(['chime',k])}})}
-function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
+function drawSimBar(r,a,state){const el=$('tclock');if(!el)return;el.textContent=`${APPV} · ${hm(D.sim.t).join(' ')} · ${Math.round(a*r.scale)} mi · ${D.sim.x==='smart'?'Smart':D.sim.x==='smartp'?'Smart+':''} ${simX()}×`}
 
 window.__T={D,R_,simStep,hm,planAlong,pointAlongR,ROUTES,project};
-const APPV='v7 · Nov 21';if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'look',html:'<small>App updated</small>Version '+APPV,until:Date.now()+8000};LS.set('trt26-ver',APPV)}
+const APPV='v7.12 · Nov 21 5:30 PM';
+if(LS.get('trt26-ver','')!==APPV){if(LS.get('trt26-ver',''))D.force={p:0.7,cls:'mile',html:'<small>App updated</small>You have the newest version ('+APPV+')',until:Date.now()+8000};LS.set('trt26-ver',APPV)}
+function showVer(st){const el=$('appver');if(el)el.textContent=`Version ${APPV}`+(st==='ok'?' · up to date':st==='old'?' · update ready: close and reopen the app':' · couldn’t check (no signal)')}
+async function checkVer(){if(D.sim&&D.sim.on)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const v=await r.json();
+ if(v.app!==APPV){showVer('old');D.force={p:0.65,cls:'bad',html:'<small>Update ready</small>Close the app and open it again to get '+esc(v.app),until:Date.now()+15000};dtick()}else showVer('ok')}catch(_){showVer('off')}}
+showVer('off');setTimeout(checkVer,1500);setInterval(checkVer,10*6e4);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkVer()});
 renderRouteWx();fetchOM(true);applyTheme();drawBishop();dtick();setInterval(()=>{if(!(D.sim.on&&D.sim.play))dtick()},5000);setInterval(applyTheme,60000);
 try{if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude\.ai|claudeusercontent/.test(location.hostname))navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(_){}
 
